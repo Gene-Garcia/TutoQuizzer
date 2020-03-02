@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.project.tutoquizzer">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".EditTopicActivity" android:parentActivityName=".TutorialActivity"></activity>
+        <activity
+            android:name=".EditCourseActivity"
+            android:parentActivityName=".AddCourseActivity" />
+        <activity
+            android:name=".QuizActivity"
+            android:parentActivityName=".SelectCourseActivity" />
+        <activity
+            android:name=".TutorialActivity"
+            android:parentActivityName=".SelectCourseActivity" />
+        <activity
+            android:name=".SelectCourseActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddCourseActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddTopicActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

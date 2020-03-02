@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="10dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/text_view_topic_tutorial_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:text="Lorem Ipsum"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_view_description_tutorial_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_topic_tutorial_act"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="monospace"
+            android:lineSpacingExtra="8sp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis turpis ipsum, rutrum et sem quis, tristique porttitor massa. Aliquam maximus nulla at sem commodo, eget sagittis purus pharetra. Sed a justo velit. Duis pellentesque finibus quam, a gravida mauris tristique non. Nam in fermentum tortor. Nam tristique laoreet mauris, eget vehicula risus congue vel. Praesent accumsan elit et ipsum mollis, eget tempor diam consectetur. Ut vitae lorem in lorem auctor venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec luctus commodo ex at ullamcorper. Fusce congue lacus ut semper malesuada. Aliquam eu nulla a massa elementum posuere. Donec vitae bibendum quam, ac suscipit neque. Nullam ultrices dictum venenatis. Praesent in venenatis arcu. Nulla consequat ultrices nibh sit amet tempus."
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
