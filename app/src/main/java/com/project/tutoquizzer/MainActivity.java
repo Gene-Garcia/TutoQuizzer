@@ -1,5 +1,6 @@
 package com.project.tutoquizzer;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -7,10 +8,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.project.tutoquizzer.db.AppDatabase;
 import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.entities.SchoolYear;
@@ -36,77 +41,65 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle("TutoQuizzer - Home");
 
-        this.cvm = ViewModelProviders.of(this).get(CourseViewModel.class);
-        this.tvm = ViewModelProviders.of(this).get(TopicViewModel.class);
         init();
-
-        buttonListeners();
+        navigationListener();
 
     }
 
     // Main Activity Components
 
-    private Button btnQuiz, btnTutorial, btnAddCourse, btnAddTopic, btnDashboard;
+    // For Navigation
+    private BottomNavigationView bottomNavigationView;
 
     // End
 
     private void init(){
-
-        btnQuiz         = findViewById(R.id.quizBtnMainAct);
-        btnTutorial     = findViewById(R.id.tutorialBtnMainAct);
-        btnAddCourse    = findViewById(R.id.addCourseBtnMainAct);
-        btnAddTopic     = findViewById(R.id.addTopicBtnMainAct);
-        btnDashboard    = findViewById(R.id.dashboardBtnMainAct);
-
+        // For Navigation
+        bottomNavigationView = findViewById(R.id.menuAct);
     }
 
-    private void buttonListeners(){
+    // For Navigation
+    private void navigationListener(){
 
-        btnQuiz.setOnClickListener(new View.OnClickListener() {
+        bottomNavigationView.setSelectedItemId(R.id.homeMenu);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SelectCourseActivity.class);
-                intent.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_QUIZ);
-                startActivityForResult(intent, AppValues.REQ_CODE_QUIZ);
-            }
-        });
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-        btnTutorial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SelectCourseActivity.class);
-                intent.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_TUTORIAL);
-                startActivityForResult(intent, AppValues.REQ_CODE_TUTORIAL);
-            }
-        });
+                switch (menuItem.getItemId()){
 
-        btnAddCourse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                    case R.id.homeMenu:
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivityForResult( intent, AppValues.REQ_CODE_HOME);
+                        return true;
 
-                Intent intent = new Intent(MainActivity.this, AddCourseActivity.class);
-                startActivityForResult(intent, AppValues.REQ_CODE_ADD_COURSE);
+                    case R.id.quizMenu:
+                        Intent intent1 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        intent1.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_QUIZ);
+                        startActivityForResult(intent1, AppValues.REQ_CODE_QUIZ);
+                        return true;
 
-            }
-        });
+                    case R.id.tutorialMenu:
+                        Intent intent2 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        intent2.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_TUTORIAL);
+                        startActivityForResult(intent2, AppValues.REQ_CODE_TUTORIAL);
+                        return true;
 
-        btnAddTopic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                    case R.id.addCourseMenu:
+                        Intent intent3 = new Intent(getApplicationContext(), AddCourseActivity.class);
+                        startActivityForResult(intent3, AppValues.REQ_CODE_ADD_COURSE);
+                        return true;
 
-                Intent intent = new Intent(MainActivity.this, AddTopicActivity.class);
-                startActivityForResult(intent, AppValues.REQ_CODE_ADD_TOPIC);
+                    case R.id.addTopicMenu:
+                        Intent intent4 = new Intent(getApplicationContext(), AddTopicActivity.class);
+                        startActivityForResult(intent4, AppValues.REQ_CODE_ADD_TOPIC);
+                        return true;
+                }
 
-            }
-        });
-
-        btnDashboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+                return false;
             }
         });
 
     }
-
 }

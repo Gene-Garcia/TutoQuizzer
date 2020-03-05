@@ -1,5 +1,6 @@
 package com.project.tutoquizzer;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +19,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.entities.SchoolYear;
@@ -44,7 +48,6 @@ public class SelectCourseActivity extends AppCompatActivity {
         setContentView(R.layout.select_course_activity);
 
         setTitle("TutoQuizzer - Select Course");
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.return_arrow);
 
         this.cvm = ViewModelProviders.of(this).get(CourseViewModel.class);
         this.qvm = ViewModelProviders.of(this).get(QuarterViewModel.class);
@@ -61,6 +64,7 @@ public class SelectCourseActivity extends AppCompatActivity {
 
         populateSpinner();
         buttonListeners();
+        navigationListener();
 
         //on request, if REQUSTCODEQUIZ show another SPINNER for number of items,
         //else if REQUESTCODETUTORIAL DONT SHOW
@@ -74,6 +78,9 @@ public class SelectCourseActivity extends AppCompatActivity {
     private Spinner courseSpinner, schoolYearSpinner, quarterSpinner, numberItemsSpinner;
 
     private TextView numberItemsTV;
+
+    // For Navigation
+    private BottomNavigationView bottomNavigationView;
 
     // End Components
 
@@ -89,6 +96,54 @@ public class SelectCourseActivity extends AppCompatActivity {
 
         numberItemsSpinner  .setVisibility(View.INVISIBLE);
         numberItemsTV       .setVisibility(View.INVISIBLE);
+
+        // For Navigation
+        bottomNavigationView = findViewById(R.id.menuAct);
+    }
+
+    // For Navigation
+    private void navigationListener(){
+
+       // bottomNavigationView.setSelectedItemId(R.id.homeMenu);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                switch (menuItem.getItemId()){
+
+                    case R.id.homeMenu:
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivityForResult( intent, AppValues.REQ_CODE_HOME);
+                        return true;
+
+                    case R.id.quizMenu:
+                        Intent intent1 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        intent1.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_QUIZ);
+                        startActivityForResult(intent1, AppValues.REQ_CODE_QUIZ);
+                        return true;
+
+                    case R.id.tutorialMenu:
+                        Intent intent2 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        intent2.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_TUTORIAL);
+                        startActivityForResult(intent2, AppValues.REQ_CODE_TUTORIAL);
+                        return true;
+
+                    case R.id.addCourseMenu:
+                        Intent intent3 = new Intent(getApplicationContext(), AddCourseActivity.class);
+                        startActivityForResult(intent3, AppValues.REQ_CODE_ADD_COURSE);
+                        return true;
+
+                    case R.id.addTopicMenu:
+                        Intent intent4 = new Intent(getApplicationContext(), AddTopicActivity.class);
+                        startActivityForResult(intent4, AppValues.REQ_CODE_ADD_TOPIC);
+                        return true;
+                }
+
+                return false;
+            }
+        });
+
     }
 
     private void determineIds(){
@@ -109,36 +164,36 @@ public class SelectCourseActivity extends AppCompatActivity {
                 if (selectedQuarter == "Select item" || selectedSchoolYear == "Select item" || selectedCourse == "Select item"){
                     Toast.makeText(SelectCourseActivity.this, "Fill out all fields", Toast.LENGTH_SHORT).show();
                 }
-                else{
+                else {
                     determineIds();
-                }
 
-                if (isForQuiz){
+                    if (isForQuiz) {
 
-                    Intent intent = new Intent(SelectCourseActivity.this, QuizActivity.class);
-                    intent.putExtra(AppValues.INTENT_HOLDER_NUMITEMS, numberOfItems);
+                        Intent intent = new Intent(SelectCourseActivity.this, QuizActivity.class);
+                        intent.putExtra(AppValues.INTENT_HOLDER_NUMITEMS, numberOfItems);
 
-                    intent.putExtra(AppValues.INTENT_HOLDER_COURSE,     selectedCourse      );
-                    intent.putExtra(AppValues.INTENT_HOLDER_SCHOOLYEAR, selectedSchoolYear  );
-                    intent.putExtra(AppValues.INTENT_HOLDER_QUARTER,    selectedQuarter     );
+                        intent.putExtra(AppValues.INTENT_HOLDER_COURSE, selectedCourse);
+                        intent.putExtra(AppValues.INTENT_HOLDER_SCHOOLYEAR, selectedSchoolYear);
+                        intent.putExtra(AppValues.INTENT_HOLDER_QUARTER, selectedQuarter);
 
-                    intent.putExtra(AppValues.INTENT_HOLDER_ID_COURSE,      selectedCourseId    );
-                    intent.putExtra(AppValues.INTENT_HOLDER_ID_SCHOOLYEAR,  selectedSchoolYearId);
-                    intent.putExtra(AppValues.INTENT_HOLDER_ID_QUARTER,     selectedQuarterId   );
+                        intent.putExtra(AppValues.INTENT_HOLDER_ID_COURSE, selectedCourseId);
+                        intent.putExtra(AppValues.INTENT_HOLDER_ID_SCHOOLYEAR, selectedSchoolYearId);
+                        intent.putExtra(AppValues.INTENT_HOLDER_ID_QUARTER, selectedQuarterId);
 
-                    startActivityForResult(intent, AppValues.REQ_CODE_QUIZ);
-                }else {
-                    Intent intent = new Intent(SelectCourseActivity.this, TutorialActivity.class);
+                        startActivityForResult(intent, AppValues.REQ_CODE_QUIZ);
+                    } else {
+                        Intent intent = new Intent(SelectCourseActivity.this, TutorialActivity.class);
 
-                    intent.putExtra(AppValues.INTENT_HOLDER_COURSE,     selectedCourse      );
-                    intent.putExtra(AppValues.INTENT_HOLDER_SCHOOLYEAR, selectedSchoolYear  );
-                    intent.putExtra(AppValues.INTENT_HOLDER_QUARTER,    selectedQuarter     );
+                        intent.putExtra(AppValues.INTENT_HOLDER_COURSE, selectedCourse);
+                        intent.putExtra(AppValues.INTENT_HOLDER_SCHOOLYEAR, selectedSchoolYear);
+                        intent.putExtra(AppValues.INTENT_HOLDER_QUARTER, selectedQuarter);
 
-                    intent.putExtra(AppValues.INTENT_HOLDER_ID_COURSE,      selectedCourseId    );
-                    intent.putExtra(AppValues.INTENT_HOLDER_ID_SCHOOLYEAR,  selectedSchoolYearId);
-                    intent.putExtra(AppValues.INTENT_HOLDER_ID_QUARTER,     selectedQuarterId   );
+                        intent.putExtra(AppValues.INTENT_HOLDER_ID_COURSE, selectedCourseId);
+                        intent.putExtra(AppValues.INTENT_HOLDER_ID_SCHOOLYEAR, selectedSchoolYearId);
+                        intent.putExtra(AppValues.INTENT_HOLDER_ID_QUARTER, selectedQuarterId);
 
-                    startActivityForResult(intent, AppValues.REQ_CODE_TUTORIAL);
+                        startActivityForResult(intent, AppValues.REQ_CODE_TUTORIAL);
+                    }
                 }
             }
         });

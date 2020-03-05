@@ -1,5 +1,6 @@
 package com.project.tutoquizzer;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -15,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.project.tutoquizzer.entities.SchoolYear;
 import com.project.tutoquizzer.entities.Topics;
 import com.project.tutoquizzer.viewmodels.TopicViewModel;
@@ -36,11 +39,11 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.quiz_activity);
 
         setTitle("TutoQuizzer - Quiz");
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.return_arrow);
 
         this.tvm = ViewModelProviders.of(this).get(TopicViewModel.class);
 
         init();
+        navigationListener();
 
         Intent intent = getIntent();
         setIds(intent);
@@ -208,6 +211,57 @@ public class QuizActivity extends AppCompatActivity {
         selectionTV.setText( schoolYear + " > " + course.toUpperCase() + " > " + quarter.toUpperCase() );
     }
 
+    // For Navigation
+    private void navigationListener(){
+
+        bottomNavigationView.setSelectedItemId(R.id.homeMenu);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                switch (menuItem.getItemId()){
+
+                    case R.id.homeMenu:
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivityForResult( intent, AppValues.REQ_CODE_HOME);
+                        return true;
+
+                    case R.id.quizMenu:
+                        Intent intent1 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        intent1.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_QUIZ);
+                        startActivityForResult(intent1, AppValues.REQ_CODE_QUIZ);
+                        return true;
+
+                    case R.id.tutorialMenu:
+                        Intent intent2 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        intent2.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_TUTORIAL);
+                        startActivityForResult(intent2, AppValues.REQ_CODE_TUTORIAL);
+                        return true;
+
+                    case R.id.addCourseMenu:
+                        Intent intent3 = new Intent(getApplicationContext(), AddCourseActivity.class);
+                        startActivityForResult(intent3, AppValues.REQ_CODE_ADD_COURSE);
+                        return true;
+
+                    case R.id.addTopicMenu:
+                        Intent intent4 = new Intent(getApplicationContext(), AddTopicActivity.class);
+                        startActivityForResult(intent4, AppValues.REQ_CODE_ADD_TOPIC);
+                        return true;
+                }
+
+                return false;
+            }
+        });
+
+        //Intent intent = new Intent(MainActivity.this, AddCourseActivity.class);
+        //startActivityForResult(intent, AppValues.REQ_CODE_ADD_COURSE);
+
+        //Intent intent1 = new Intent(MainActivity.this, AddTopicActivity.class);
+        //startActivityForResult(intent1, AppValues.REQ_CODE_ADD_TOPIC);
+
+    }
+
     // Components
 
     private TextView questionTV, selectionTV;
@@ -217,6 +271,9 @@ public class QuizActivity extends AppCompatActivity {
     private Button btnSaveAnswer;
 
     private RadioGroup radGroup;
+
+    // For Navigation
+    private BottomNavigationView bottomNavigationView;
 
     // End Components
 
@@ -233,6 +290,8 @@ public class QuizActivity extends AppCompatActivity {
         radBtnD = findViewById(R.id.rBtnDQuizAct);
 
         btnSaveAnswer = findViewById(R.id.saveAnswerBtnQuizAct);
+
+        bottomNavigationView = findViewById(R.id.menuAct);
 
     }
 

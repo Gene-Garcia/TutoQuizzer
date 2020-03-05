@@ -1,12 +1,15 @@
 package com.project.tutoquizzer;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.entities.SchoolYear;
@@ -50,6 +54,7 @@ public class AddTopicActivity extends AppCompatActivity {
         init();
         populateSpinner();
         buttonListeners();
+        navigationListener();
 
     }
 
@@ -61,7 +66,55 @@ public class AddTopicActivity extends AppCompatActivity {
 
     private EditText topicET, descriptionET;
 
+    // For Navigation
+    private BottomNavigationView bottomNavigationView;
+
     // End Components
+
+    // For Navigation
+    private void navigationListener(){
+
+        bottomNavigationView.setSelectedItemId(R.id.addTopicMenu);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                switch (menuItem.getItemId()){
+
+                    case R.id.homeMenu:
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivityForResult( intent, AppValues.REQ_CODE_HOME);
+                        return true;
+
+                    case R.id.quizMenu:
+                        Intent intent1 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        intent1.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_QUIZ);
+                        startActivityForResult(intent1, AppValues.REQ_CODE_QUIZ);
+                        return true;
+
+                    case R.id.tutorialMenu:
+                        Intent intent2 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        intent2.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_TUTORIAL);
+                        startActivityForResult(intent2, AppValues.REQ_CODE_TUTORIAL);
+                        return true;
+
+                    case R.id.addCourseMenu:
+                        Intent intent3 = new Intent(getApplicationContext(), AddCourseActivity.class);
+                        startActivityForResult(intent3, AppValues.REQ_CODE_ADD_COURSE);
+                        return true;
+
+                    case R.id.addTopicMenu:
+                        Intent intent4 = new Intent(getApplicationContext(), AddTopicActivity.class);
+                        startActivityForResult(intent4, AppValues.REQ_CODE_ADD_TOPIC);
+                        return true;
+                }
+
+                return false;
+            }
+        });
+
+    }
 
     private void init(){
         btnAdd              = findViewById(R.id.addBtnAddTopicActivity);
@@ -72,6 +125,9 @@ public class AddTopicActivity extends AppCompatActivity {
 
         topicET             = findViewById(R.id.topicAddTopicEditText);
         descriptionET       = findViewById(R.id.descriptionAddTopicEditText);
+
+        bottomNavigationView = findViewById(R.id.menuAct);
+
     }
 
     private void buttonListeners(){

@@ -1,90 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
-    <Button
-        android:id="@+id/tutorialBtnMainAct"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:padding="10dp"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-        android:drawableLeft="@drawable/tutorial"
-        android:text="Tutorial" />
-
-    <Button
-        android:id="@+id/quizBtnMainAct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:padding="10dp"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-        android:drawableLeft="@drawable/quiz"
-        android:text="Quiz" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        android:background="@color/colorAccent"
-        />
-
-    <Button
-        android:id="@+id/addCourseBtnMainAct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="60dp"
-        android:padding="1dp"
-        android:textAppearance="@android:style/TextAppearance.Medium"
-        android:text="Add Course" />
-
-    <Button
-        android:id="@+id/addTopicBtnMainAct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="60dp"
-        android:padding="1dp"
-        android:textAppearance="@android:style/TextAppearance.Medium"
-        android:text="Add Topic" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        android:background="@color/colorAccent"
-        />
-
-    <Button
-        android:id="@+id/dashboardBtnMainAct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_margin="15dp"
         android:padding="15dp"
-        android:textAppearance="@android:style/TextAppearance.Medium"
-        android:text="Dashboard" />
+        android:text="Welcome!"
+        android:textColor="#155e63"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="15dp"
+
+        android:gravity="right"
+        android:lineSpacingExtra="12sp"
+        android:padding="15dp"
+        android:text="Tutorial allows you to read and browse topics that you’ve encoded to TutoQuizzer."
+        android:textColor="#155e63" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="15dp"
+        android:lineSpacingExtra="12sp"
+
+        android:padding="15dp"
+        android:text="Quiz creates and identification-like with multiple choices. Topics are based on your topics."
+        android:textColor="#155e63" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="15dp"
+        android:lineSpacingExtra="12sp"
+
+        android:padding="15dp"
+        android:text="Quiz creates and identification-like with multiple choices. Topics are based on your topics."
+        android:textColor="#155e63" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="15dp"
+        android:lineSpacingExtra="12sp"
+
+        android:padding="15dp"
+        android:text="Quiz creates and identification-like with multiple choices. Topics are based on your topics."
+        android:textColor="#155e63" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="15dp"
+        android:lineSpacingExtra="12sp"
+
+        android:padding="15dp"
+        android:text="Quiz creates and identification-like with multiple choices. Topics are based on your topics."
+        android:textColor="#155e63" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="15dp"
+        android:lineSpacingExtra="12sp"
+
+        android:padding="15dp"
+        android:text="Quiz creates and identification-like with multiple choices. Topics are based on your topics."
+        android:textColor="#155e63" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="15dp"
+
+        android:gravity="right"
+        android:lineSpacingExtra="12sp"
+        android:padding="15dp"
+        android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)."
+        android:textColor="#155e63" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:paddingTop="20dp">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/menuAct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/layout_bg"
+                app:itemTextColor="#f9f8eb"
+                app:menu="@menu/main_menu" />
+
+    </RelativeLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

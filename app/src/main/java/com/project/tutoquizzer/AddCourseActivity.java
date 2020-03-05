@@ -1,5 +1,6 @@
 package com.project.tutoquizzer;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
@@ -10,11 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.entities.SchoolYear;
@@ -58,6 +61,7 @@ public class AddCourseActivity extends AppCompatActivity {
         adapterListener(coursesAdapter);
 
         buttonListeners();
+        navigationListener();
     }
 
     private void adapterListener(CoursesAdapter adapter){
@@ -81,6 +85,9 @@ public class AddCourseActivity extends AppCompatActivity {
 
     private Button addBtn;
 
+    // For Navigation
+    private BottomNavigationView bottomNavigationView;
+
     // End
 
     private void init(){
@@ -90,6 +97,54 @@ public class AddCourseActivity extends AppCompatActivity {
         courseNameET    = findViewById(R.id.courseNameAddCourseEditText);
 
         addBtn          = findViewById(R.id.addBtnAddCourseActivity);
+
+        // For Navigation
+        bottomNavigationView = findViewById(R.id.menuAct);
+
+    }
+
+    // For Navigation
+    private void navigationListener(){
+
+        bottomNavigationView.setSelectedItemId(R.id.addCourseMenu);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                switch (menuItem.getItemId()){
+
+                    case R.id.homeMenu:
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivityForResult( intent, AppValues.REQ_CODE_HOME);
+                        return true;
+
+                    case R.id.quizMenu:
+                        Intent intent1 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        intent1.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_QUIZ);
+                        startActivityForResult(intent1, AppValues.REQ_CODE_QUIZ);
+                        return true;
+
+                    case R.id.tutorialMenu:
+                        Intent intent2 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        intent2.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_TUTORIAL);
+                        startActivityForResult(intent2, AppValues.REQ_CODE_TUTORIAL);
+                        return true;
+
+                    case R.id.addCourseMenu:
+                        Intent intent3 = new Intent(getApplicationContext(), AddCourseActivity.class);
+                        startActivityForResult(intent3, AppValues.REQ_CODE_ADD_COURSE);
+                        return true;
+
+                    case R.id.addTopicMenu:
+                        Intent intent4 = new Intent(getApplicationContext(), AddTopicActivity.class);
+                        startActivityForResult(intent4, AppValues.REQ_CODE_ADD_TOPIC);
+                        return true;
+                }
+
+                return false;
+            }
+        });
 
     }
 

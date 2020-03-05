@@ -72,9 +72,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
+        android:textColor="#f9f8eb"
+        android:background="@drawable/layout_button_bg"
         android:text="Start" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/menuAct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/layout_bg"
+            app:itemTextColor="#f9f8eb"
+            app:menu="@menu/main_menu" />
+
+    </RelativeLayout>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

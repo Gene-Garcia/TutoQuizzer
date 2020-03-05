@@ -51,11 +51,28 @@
         android:id="@+id/selectBtnSelectCourseAct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/layout_button_bg"
         android:layout_gravity="end"
         android:layout_marginEnd="35dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="80dp"
+        android:textColor="#f9f8eb"
         android:text="Select" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/menuAct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/layout_bg"
+            app:itemTextColor="#f9f8eb"
+            app:menu="@menu/main_menu" />
+
+    </RelativeLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

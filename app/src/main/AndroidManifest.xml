@@ -9,25 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditTopicActivity" android:parentActivityName=".TutorialActivity"></activity>
+        <activity
+            android:name=".EditTopicActivity"
+            android:parentActivityName=".TutorialActivity" />
         <activity
             android:name=".EditCourseActivity"
             android:parentActivityName=".AddCourseActivity" />
         <activity
             android:name=".QuizActivity"
-            android:parentActivityName=".SelectCourseActivity" />
+             />
         <activity
             android:name=".TutorialActivity"
-            android:parentActivityName=".SelectCourseActivity" />
+             />
         <activity
             android:name=".SelectCourseActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AddCourseActivity"
-            android:parentActivityName=".MainActivity" />
+             />
         <activity
             android:name=".AddTopicActivity"
-            android:parentActivityName=".MainActivity" />
+             />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
