@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,53 +7,50 @@
     android:orientation="vertical"
     tools:context=".EditCourseActivity">
 
-    <EditText
-        android:id="@+id/courseCodeEditCourseEditText"
+    <RelativeLayout
+        android:id="@+id/relLayoutInsideEC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:hint="Course Code" />
+        android:padding="20dp"
 
-    <EditText
-        android:id="@+id/courseNameEditCourseEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:hint="Course Name" />
+        android:elevation="10dp"
+        android:background="@drawable/shadow"
+
+        >
+
+        <EditText
+            android:id="@+id/courseCodeEditCourseEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Course Code"
+
+            android:padding="20dp"
+            />
+
+        <EditText
+            android:id="@+id/courseNameEditCourseEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Course Name"
+
+            android:layout_below="@+id/courseCodeEditCourseEditText"
+
+            android:padding="20dp"
+            />
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/saveEditBtnEditCourseAct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Save Edit"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:layout_marginBottom="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="end"
-        android:textColor="#f9f8eb"
-        android:background="@drawable/layout_button_bg"
-        android:text="Save Edit"/>
+        />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/menuAct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/layout_bg"
-            app:itemTextColor="#f9f8eb"
-            app:menu="@menu/main_menu" />
-
-    </RelativeLayout>
-
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>

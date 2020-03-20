@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddTopicFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relLayoutInAT1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:elevation="10dp"
+            android:background="@drawable/shadow"
+            android:layout_marginBottom="20dp">
+
+            <EditText
+                android:id="@+id/topicAddTopicEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Topic"
+
+                android:padding="20dp"
+                android:textColor="@color/colorPrimary" />
+
+            <EditText
+                android:id="@+id/descriptionAddTopicEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/topicAddTopicEditText"
+                android:hint="Description"
+
+                android:inputType="textMultiLine"
+                android:padding="20dp"
+                android:textColor="@color/colorPrimary" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relLayoutInAT2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:padding="20dp"
+            android:elevation="10dp"
+            android:background="@drawable/shadow"
+
+            android:layout_below="@+id/relLayoutInAT1">
+
+            <Spinner
+                android:id="@+id/coursesSpnrAddTopicActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:backgroundTint="@color/colorPrimary"
+                />
+
+            <Spinner
+                android:id="@+id/schoolYearSpnrAddTopicActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/colorPrimary"
+
+                android:layout_below="@+id/coursesSpnrAddTopicActivity"
+                />
+
+            <Spinner
+                android:id="@+id/quarterSpnrAddTopicActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/colorPrimary"
+
+                android:layout_below="@+id/schoolYearSpnrAddTopicActivity"
+                />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/addBtnAddTopicActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_below="@+id/relLayoutInAT2"
+            android:layout_alignParentRight="true"
+
+            android:text="Add" />
+
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

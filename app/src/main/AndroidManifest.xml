@@ -20,22 +20,22 @@
 
         <activity
             android:name=".EditTopicActivity"
-            android:parentActivityName=".TutorialActivity" />
+            android:parentActivityName=".TutorialFragment" />
         <activity
             android:name=".EditCourseActivity"
-            android:parentActivityName=".AddCourseActivity" />
+            android:parentActivityName=".AddCourseFragment" />
 
-        <activity android:name=".QuizActivity" />
+        <activity android:name=".QuizFragment" />
 
-        <activity android:name=".TutorialActivity" />
+        <activity android:name=".TutorialFragment" />
 
         <activity
-            android:name=".SelectCourseActivity"
+            android:name=".SelectCourseFragment"
             android:parentActivityName=".MainFragment" />
 
-        <activity android:name=".AddCourseActivity" />
+        <activity android:name=".AddCourseFragment" />
 
-        <activity android:name=".AddTopicActivity" />
+        <activity android:name=".AddTopicFragment" />
 
         <activity android:name=".MainFragment">
 

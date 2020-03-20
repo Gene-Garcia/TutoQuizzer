@@ -20,14 +20,14 @@ import com.project.tutoquizzer.viewmodels.TopicViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TutorialActivity extends AppCompatActivity {
+public class TutorialFragment extends AppCompatActivity {
 
     private TopicViewModel tvm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tutorial_activity);
+        setContentView(R.layout.fragment_tutorial);
 
         setTitle("TutoQuizzer - Tutorial");
 
@@ -70,7 +70,7 @@ public class TutorialActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new TutorialAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Topics topic) {
-                Intent intent  = new Intent(TutorialActivity.this, EditTopicActivity.class);
+                Intent intent  = new Intent(TutorialFragment.this, EditTopicActivity.class);
                 intent.putExtra(AppValues.INTENT_HOLDER_ID_TOPIC, topic.getTopicId());
                 intent.putExtra(AppValues.INTENT_HOLDER_TOPIC, topic.getTopic());
                 intent.putExtra(AppValues.INTENT_HOLDER_MEANING, topic.getMeaning());
@@ -141,23 +141,23 @@ public class TutorialActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.quizMenu:
-                        Intent intent1 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        Intent intent1 = new Intent(getApplicationContext(), SelectCourseFragment.class);
                         intent1.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_QUIZ);
                         startActivityForResult(intent1, AppValues.REQ_CODE_QUIZ);
                         return true;
 
                     case R.id.tutorialMenu:
-                        Intent intent2 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        Intent intent2 = new Intent(getApplicationContext(), SelectCourseFragment.class);
                         intent2.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_TUTORIAL);
                         startActivityForResult(intent2, AppValues.REQ_CODE_TUTORIAL);
 
                     case R.id.addCourseMenu:
-                        Intent intent3 = new Intent(getApplicationContext(), AddCourseActivity.class);
+                        Intent intent3 = new Intent(getApplicationContext(), AddCourseFragment.class);
                         startActivityForResult(intent3, AppValues.REQ_CODE_ADD_COURSE);
                         return true;
 
                     case R.id.addTopicMenu:
-                        Intent intent4 = new Intent(getApplicationContext(), AddTopicActivity.class);
+                        Intent intent4 = new Intent(getApplicationContext(), AddTopicFragment.class);
                         startActivityForResult(intent4, AppValues.REQ_CODE_ADD_TOPIC);
                         return true;
                 }
@@ -166,10 +166,10 @@ public class TutorialActivity extends AppCompatActivity {
             }
         });
 
-        //Intent intent = new Intent(MainFragment.this, AddCourseActivity.class);
+        //Intent intent = new Intent(MainFragment.this, AddCourseFragment.class);
         //startActivityForResult(intent, AppValues.REQ_CODE_ADD_COURSE);
 
-        //Intent intent1 = new Intent(MainFragment.this, AddTopicActivity.class);
+        //Intent intent1 = new Intent(MainFragment.this, AddTopicFragment.class);
         //startActivityForResult(intent1, AppValues.REQ_CODE_ADD_TOPIC);
 
     }

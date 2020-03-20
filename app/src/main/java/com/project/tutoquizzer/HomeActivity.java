@@ -3,6 +3,8 @@ package com.project.tutoquizzer;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -40,16 +42,20 @@ public class HomeActivity extends AppCompatActivity {
                             selectedFragment = new MainFragment();
                             break;
                         case R.id.addCourseMenu:
-                            //selectedFragment = new AddFragment();
+                            selectedFragment = new AddCourseFragment();
                             break;
                         case R.id.addTopicMenu:
-                            //selectedFragment = new SelectFragment();
+                            selectedFragment = new AddTopicFragment();
                             break;
                         case R.id.quizMenu:
-                            //selectedFragment = new SelectFragment();
+                            Bundle bundle = new Bundle();
+                            bundle.putString(RouteValues.QUIZSELECTEDVALUEACCESS, RouteValues.QUIZSELECTED);
+                            selectedFragment = new QuizFragment();
+                            selectedFragment.setArguments(bundle);
+
                             break;
                         case R.id.tutorialMenu:
-                            //selectedFragment = new SelectFragment();
+                            selectedFragment = new SelectCourseFragment();
                             break;
                     }
 

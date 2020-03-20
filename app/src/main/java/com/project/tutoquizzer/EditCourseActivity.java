@@ -54,7 +54,7 @@ public class EditCourseActivity extends AppCompatActivity {
                 course.setCode( courseCode.getText().toString().trim() );
                 cvm.update(course);
 
-                Intent intent = new Intent(EditCourseActivity.this, AddCourseActivity.class);
+                Intent intent = new Intent(EditCourseActivity.this, AddCourseFragment.class);
                 startActivityForResult(intent, AppValues.REQ_CODE_ADD_COURSE);
 
             }
@@ -100,24 +100,24 @@ public class EditCourseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.quizMenu:
-                        Intent intent1 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        Intent intent1 = new Intent(getApplicationContext(), SelectCourseFragment.class);
                         intent1.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_QUIZ);
                         startActivityForResult(intent1, AppValues.REQ_CODE_QUIZ);
                         return true;
 
                     case R.id.tutorialMenu:
-                        Intent intent2 = new Intent(getApplicationContext(), SelectCourseActivity.class);
+                        Intent intent2 = new Intent(getApplicationContext(), SelectCourseFragment.class);
                         intent2.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_TUTORIAL);
                         startActivityForResult(intent2, AppValues.REQ_CODE_TUTORIAL);
                         return true;
 
                     case R.id.addCourseMenu:
-                        Intent intent3 = new Intent(getApplicationContext(), AddCourseActivity.class);
+                        Intent intent3 = new Intent(getApplicationContext(), AddCourseFragment.class);
                         startActivityForResult(intent3, AppValues.REQ_CODE_ADD_COURSE);
                         return true;
 
                     case R.id.addTopicMenu:
-                        Intent intent4 = new Intent(getApplicationContext(), AddTopicActivity.class);
+                        Intent intent4 = new Intent(getApplicationContext(), AddTopicFragment.class);
                         startActivityForResult(intent4, AppValues.REQ_CODE_ADD_TOPIC);
                         return true;
                 }

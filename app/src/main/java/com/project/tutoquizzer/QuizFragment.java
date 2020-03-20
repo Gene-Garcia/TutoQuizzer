@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -26,32 +29,43 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class QuizActivity extends AppCompatActivity {
+public class QuizFragment extends Fragment {
 
     private TopicViewModel tvm;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.quiz_activity);
+    private View rootView;
 
-        setTitle("TutoQuizzer - Quiz");
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        this.rootView = inflater.inflate(R.layout.fragment_quiz, container, false);
 
         this.tvm = ViewModelProviders.of(this).get(TopicViewModel.class);
 
         init();
-        navigationListener();
+        configureCall();
 
-        Intent intent = getIntent();
+        /*Intent intent = getIntent();
         setIds(intent);
         setSelectionDisplay(intent);
+        selectedNumberOfQuestions = intent.getIntExtra(AppValues.INTENT_HOLDER_NUMITEMS, 5);*/
 
-        selectedNumberOfQuestions = intent.getIntExtra(AppValues.INTENT_HOLDER_NUMITEMS, 5);
-        Toast.makeText(QuizActivity.this, String.valueOf(selectedNumberOfQuestions), Toast.LENGTH_SHORT).show();
-        createQuestion();
-        createPoolOfAnswers();
-        setRadioListeners();
-        buttonListeners();
+        //createQuestion();
+        //createPoolOfAnswers();
+        //setRadioListeners();
+        //buttonListeners();
+
+        return rootView;
+    }
+
+    private void configureCall(){
+        Bundle bundle = getArguments();
+
+        if (bundle.get(RouteValues.QUIZSELECTEDVALUEACCESS).equals(RouteValues.QUIZSELECTED)){
+            // Quiz button selected
+            Toast.makeText(getContext(), "Quiz", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     private void buttonListeners(){
@@ -85,8 +99,8 @@ public class QuizActivity extends AppCompatActivity {
 
                     // insert to statistics
 
-                    Intent intent = new Intent(QuizActivity.this, MainFragment.class);
-                    startActivityForResult(intent, AppValues.REQ_CODE_HOME);
+                    //Intent intent = new Intent(QuizFragment.this, MainFragment.class);
+                    //startActivityForResult(intent, AppValues.REQ_CODE_HOME);
                 }
 
 
@@ -95,7 +109,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public void showMessage (String title, String msg){
-        AlertDialog.Builder bld = new AlertDialog.Builder(this);
+        AlertDialog.Builder bld = new AlertDialog.Builder(rootView.getContext());
         bld.setCancelable(true);
         bld.setTitle(title);
         bld.setMessage(msg);
@@ -208,57 +222,6 @@ public class QuizActivity extends AppCompatActivity {
         selectionTV.setText( schoolYear + " > " + course.toUpperCase() + " > " + quarter.toUpperCase() );
     }
 
-    // For Navigation
-    private void navigationListener(){
-
-        bottomNavigationView.setSelectedItemId(R.id.homeMenu);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                switch (menuItem.getItemId()){
-
-                    case R.id.homeMenu:
-                        Intent intent = new Intent(getApplicationContext(), MainFragment.class);
-                        startActivityForResult( intent, AppValues.REQ_CODE_HOME);
-                        return true;
-
-                    case R.id.quizMenu:
-                        Intent intent1 = new Intent(getApplicationContext(), SelectCourseActivity.class);
-                        intent1.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_QUIZ);
-                        startActivityForResult(intent1, AppValues.REQ_CODE_QUIZ);
-                        return true;
-
-                    case R.id.tutorialMenu:
-                        Intent intent2 = new Intent(getApplicationContext(), SelectCourseActivity.class);
-                        intent2.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_TUTORIAL);
-                        startActivityForResult(intent2, AppValues.REQ_CODE_TUTORIAL);
-                        return true;
-
-                    case R.id.addCourseMenu:
-                        Intent intent3 = new Intent(getApplicationContext(), AddCourseActivity.class);
-                        startActivityForResult(intent3, AppValues.REQ_CODE_ADD_COURSE);
-                        return true;
-
-                    case R.id.addTopicMenu:
-                        Intent intent4 = new Intent(getApplicationContext(), AddTopicActivity.class);
-                        startActivityForResult(intent4, AppValues.REQ_CODE_ADD_TOPIC);
-                        return true;
-                }
-
-                return false;
-            }
-        });
-
-        //Intent intent = new Intent(MainFragment.this, AddCourseActivity.class);
-        //startActivityForResult(intent, AppValues.REQ_CODE_ADD_COURSE);
-
-        //Intent intent1 = new Intent(MainFragment.this, AddTopicActivity.class);
-        //startActivityForResult(intent1, AppValues.REQ_CODE_ADD_TOPIC);
-
-    }
-
     // Components
 
     private TextView questionTV, selectionTV;
@@ -276,19 +239,19 @@ public class QuizActivity extends AppCompatActivity {
 
     private void init(){
 
-        questionTV  = findViewById(R.id.questionTextViewQuizAct);
-        selectionTV = findViewById(R.id.displaySelectionTextViewQuizAct);
+        questionTV  = rootView.findViewById(R.id.questionTextViewQuizAct);
+        selectionTV = rootView.findViewById(R.id.displaySelectionTextViewQuizAct);
 
-        radGroup = findViewById(R.id.radGroupQuizAct);
+        radGroup = rootView.findViewById(R.id.radGroupQuizAct);
 
-        radBtnA = findViewById(R.id.rBtnAQuizAct);
-        radBtnB = findViewById(R.id.rBtnBQuizAct);
-        radBtnC = findViewById(R.id.rBtnCQuizAct);
-        radBtnD = findViewById(R.id.rBtnDQuizAct);
+        radBtnA = rootView.findViewById(R.id.rBtnAQuizAct);
+        radBtnB = rootView.findViewById(R.id.rBtnBQuizAct);
+        radBtnC = rootView.findViewById(R.id.rBtnCQuizAct);
+        radBtnD = rootView.findViewById(R.id.rBtnDQuizAct);
 
-        btnSaveAnswer = findViewById(R.id.saveAnswerBtnQuizAct);
+        btnSaveAnswer = rootView.findViewById(R.id.saveAnswerBtnQuizAct);
 
-        bottomNavigationView = findViewById(R.id.menuAct);
+        bottomNavigationView = rootView.findViewById(R.id.menuAct);
 
     }
 
@@ -299,7 +262,7 @@ public class QuizActivity extends AppCompatActivity {
                 if (selectedNumberOfQuestions >= topics.size()){
                     selectedNumberOfQuestions = topics.size();
                 }
-                Toast.makeText(QuizActivity.this, String.valueOf(selectedNumberOfQuestions), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), String.valueOf(selectedNumberOfQuestions), Toast.LENGTH_SHORT).show();
                 Collections.shuffle(topics);
 
                 for (int i = 0; i < selectedNumberOfQuestions; i++){
@@ -309,7 +272,7 @@ public class QuizActivity extends AppCompatActivity {
                 }
             }
         };
-        tvm.getSelectedTopics(selectedCourseId, selectedSchoolYearId, selectedQuarterId).observe(QuizActivity.this, observer);
+        tvm.getSelectedTopics(selectedCourseId, selectedSchoolYearId, selectedQuarterId).observe(getViewLifecycleOwner(), observer);
 
     }
 
@@ -327,7 +290,7 @@ public class QuizActivity extends AppCompatActivity {
                 }
             }
         };
-        tvm.getAllTopics().observe(QuizActivity.this, observer);
+        tvm.getAllTopics().observe(getViewLifecycleOwner(), observer);
 
     }
 }

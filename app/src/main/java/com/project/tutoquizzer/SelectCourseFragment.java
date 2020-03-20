@@ -3,13 +3,16 @@ package com.project.tutoquizzer;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,21 +31,21 @@ import com.project.tutoquizzer.viewmodels.SchoolYearViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectCourseActivity extends AppCompatActivity {
+public class SelectCourseFragment extends Fragment {
 
     private CourseViewModel cvm;
     private QuarterViewModel qvm;
     private SchoolYearViewModel syvm;
 
+    private View rootView;
+
     private boolean isForQuiz = false;
     private int numberOfItems;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.select_course_activity);
-
-        setTitle("TutoQuizzer - Select Course");
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        this.rootView = inflater.inflate(R.layout.fragment_add_topic, container, false);
 
         this.cvm = ViewModelProviders.of(this).get(CourseViewModel.class);
         this.qvm = ViewModelProviders.of(this).get(QuarterViewModel.class);
@@ -50,20 +53,20 @@ public class SelectCourseActivity extends AppCompatActivity {
 
         init();
 
-        Intent intent = getIntent();
+        /*Intent intent = getIntent();
         if (intent.getIntExtra(AppValues.INTENT_NAME_SELECT_COURSE, 0) == AppValues.REQ_CODE_QUIZ){
             numberItemsSpinner.setVisibility(View.VISIBLE);
             numberItemsTV.setVisibility(View.VISIBLE);
             isForQuiz = true;
-        }
+        }*/
 
         populateSpinner();
         buttonListeners();
-        navigationListener();
 
         //on request, if REQUSTCODEQUIZ show another SPINNER for number of items,
         //else if REQUESTCODETUTORIAL DONT SHOW
 
+        return this.rootView;
     }
 
     // Components
@@ -80,65 +83,20 @@ public class SelectCourseActivity extends AppCompatActivity {
     // End Components
 
     private void init(){
-        numberItemsTV       = findViewById(R.id.textView);
+        numberItemsTV       = rootView.findViewById(R.id.textView);
 
-        btnSelect           = findViewById(R.id.selectBtnSelectCourseAct);
+        btnSelect           = rootView.findViewById(R.id.selectBtnSelectCourseAct);
 
-        courseSpinner       = findViewById(R.id.coursesSpnrSelectCourseAct);
-        schoolYearSpinner   = findViewById(R.id.schoolYearSpnrSelectCourseAct);
-        quarterSpinner      = findViewById(R.id.quarterSpnrSelectCourseAct);
-        numberItemsSpinner  = findViewById(R.id.numberItemsSpnrSelectCourseAct);
+        courseSpinner       = rootView.findViewById(R.id.coursesSpnrSelectCourseAct);
+        schoolYearSpinner   = rootView.findViewById(R.id.schoolYearSpnrSelectCourseAct);
+        quarterSpinner      = rootView.findViewById(R.id.quarterSpnrSelectCourseAct);
+        numberItemsSpinner  = rootView.findViewById(R.id.numberItemsSpnrSelectCourseAct);
 
         numberItemsSpinner  .setVisibility(View.INVISIBLE);
         numberItemsTV       .setVisibility(View.INVISIBLE);
 
         // For Navigation
-        bottomNavigationView = findViewById(R.id.menuAct);
-    }
-
-    // For Navigation
-    private void navigationListener(){
-
-       // bottomNavigationView.setSelectedItemId(R.id.homeMenu);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                switch (menuItem.getItemId()){
-
-                    case R.id.homeMenu:
-                        Intent intent = new Intent(getApplicationContext(), MainFragment.class);
-                        startActivityForResult( intent, AppValues.REQ_CODE_HOME);
-                        return true;
-
-                    case R.id.quizMenu:
-                        Intent intent1 = new Intent(getApplicationContext(), SelectCourseActivity.class);
-                        intent1.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_QUIZ);
-                        startActivityForResult(intent1, AppValues.REQ_CODE_QUIZ);
-                        return true;
-
-                    case R.id.tutorialMenu:
-                        Intent intent2 = new Intent(getApplicationContext(), SelectCourseActivity.class);
-                        intent2.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_TUTORIAL);
-                        startActivityForResult(intent2, AppValues.REQ_CODE_TUTORIAL);
-                        return true;
-
-                    case R.id.addCourseMenu:
-                        Intent intent3 = new Intent(getApplicationContext(), AddCourseActivity.class);
-                        startActivityForResult(intent3, AppValues.REQ_CODE_ADD_COURSE);
-                        return true;
-
-                    case R.id.addTopicMenu:
-                        Intent intent4 = new Intent(getApplicationContext(), AddTopicActivity.class);
-                        startActivityForResult(intent4, AppValues.REQ_CODE_ADD_TOPIC);
-                        return true;
-                }
-
-                return false;
-            }
-        });
-
+        bottomNavigationView = rootView.findViewById(R.id.menuAct);
     }
 
     private void determineIds(){
@@ -157,14 +115,14 @@ public class SelectCourseActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (selectedQuarter == "Select item" || selectedSchoolYear == "Select item" || selectedCourse == "Select item"){
-                    Toast.makeText(SelectCourseActivity.this, "Fill out all fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Fill out all fields", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     determineIds();
 
-                    if (isForQuiz) {
+                    /*if (isForQuiz) {
 
-                        Intent intent = new Intent(SelectCourseActivity.this, QuizActivity.class);
+                        Intent intent = new Intent(SelectCourseFragment.this, QuizFragment.class);
                         intent.putExtra(AppValues.INTENT_HOLDER_NUMITEMS, numberOfItems);
 
                         intent.putExtra(AppValues.INTENT_HOLDER_COURSE, selectedCourse);
@@ -177,7 +135,7 @@ public class SelectCourseActivity extends AppCompatActivity {
 
                         startActivityForResult(intent, AppValues.REQ_CODE_QUIZ);
                     } else {
-                        Intent intent = new Intent(SelectCourseActivity.this, TutorialActivity.class);
+                        Intent intent = new Intent(SelectCourseFragment.this, TutorialFragment.class);
 
                         intent.putExtra(AppValues.INTENT_HOLDER_COURSE, selectedCourse);
                         intent.putExtra(AppValues.INTENT_HOLDER_SCHOOLYEAR, selectedSchoolYear);
@@ -188,7 +146,7 @@ public class SelectCourseActivity extends AppCompatActivity {
                         intent.putExtra(AppValues.INTENT_HOLDER_ID_QUARTER, selectedQuarterId);
 
                         startActivityForResult(intent, AppValues.REQ_CODE_TUTORIAL);
-                    }
+                    }*/
                 }
             }
         });
@@ -227,9 +185,9 @@ public class SelectCourseActivity extends AppCompatActivity {
                 }
             }
         };
-        cvm.getReferencedCourses().observe(SelectCourseActivity.this, observer);
+        cvm.getReferencedCourses().observe(getViewLifecycleOwner(), observer);
 
-        ArrayAdapter<String> coursesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, courses);
+        ArrayAdapter<String> coursesAdapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_spinner_item, courses);
         coursesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         courseSpinner.setAdapter(coursesAdapter);
 
@@ -246,9 +204,9 @@ public class SelectCourseActivity extends AppCompatActivity {
                 }
             }
         };
-        syvm.getReferencedSchoolYears().observe(SelectCourseActivity.this, observer1);
+        syvm.getReferencedSchoolYears().observe(getViewLifecycleOwner(), observer1);
 
-        ArrayAdapter<String> schoolYearAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, schoolYears);
+        ArrayAdapter<String> schoolYearAdapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_spinner_item, schoolYears);
         schoolYearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         schoolYearSpinner.setAdapter(schoolYearAdapter);
 
@@ -265,9 +223,9 @@ public class SelectCourseActivity extends AppCompatActivity {
                 }
             }
         };
-        qvm.getReferencedQuarters().observe(SelectCourseActivity.this, observer2);
+        qvm.getReferencedQuarters().observe(getViewLifecycleOwner(), observer2);
 
-        ArrayAdapter<String> quarterAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, quarter);
+        ArrayAdapter<String> quarterAdapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_spinner_item, quarter);
         quarterAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         quarterSpinner.setAdapter(quarterAdapter);
 
@@ -278,7 +236,7 @@ public class SelectCourseActivity extends AppCompatActivity {
         items.add("20");
         items.add("25");
         items.add("30");
-        ArrayAdapter<String> numberItemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+        ArrayAdapter<String> numberItemAdapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_spinner_item, items);
         numberItemAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         numberItemsSpinner.setAdapter(numberItemAdapter);
 
