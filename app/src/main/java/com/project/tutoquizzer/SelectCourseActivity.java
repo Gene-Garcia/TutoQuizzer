@@ -5,8 +5,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,12 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.entities.SchoolYear;
-import com.project.tutoquizzer.entities.Topics;
-import com.project.tutoquizzer.view.adapters.CoursesAdapter;
 import com.project.tutoquizzer.viewmodels.CourseViewModel;
 import com.project.tutoquizzer.viewmodels.QuarterViewModel;
 import com.project.tutoquizzer.viewmodels.SchoolYearViewModel;
@@ -113,7 +108,7 @@ public class SelectCourseActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
 
                     case R.id.homeMenu:
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainFragment.class);
                         startActivityForResult( intent, AppValues.REQ_CODE_HOME);
                         return true;
 

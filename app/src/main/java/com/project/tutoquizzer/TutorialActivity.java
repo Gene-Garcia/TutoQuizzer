@@ -136,7 +136,7 @@ public class TutorialActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
 
                     case R.id.homeMenu:
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainFragment.class);
                         startActivityForResult( intent, AppValues.REQ_CODE_HOME);
                         return true;
 
@@ -166,10 +166,10 @@ public class TutorialActivity extends AppCompatActivity {
             }
         });
 
-        //Intent intent = new Intent(MainActivity.this, AddCourseActivity.class);
+        //Intent intent = new Intent(MainFragment.this, AddCourseActivity.class);
         //startActivityForResult(intent, AppValues.REQ_CODE_ADD_COURSE);
 
-        //Intent intent1 = new Intent(MainActivity.this, AddTopicActivity.class);
+        //Intent intent1 = new Intent(MainFragment.this, AddTopicActivity.class);
         //startActivityForResult(intent1, AppValues.REQ_CODE_ADD_TOPIC);
 
     }

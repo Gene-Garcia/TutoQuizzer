@@ -3,7 +3,6 @@ package com.project.tutoquizzer;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -83,7 +82,7 @@ public class AddTopicActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
 
                     case R.id.homeMenu:
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainFragment.class);
                         startActivityForResult( intent, AppValues.REQ_CODE_HOME);
                         return true;
 

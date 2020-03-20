@@ -18,15 +18,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.project.tutoquizzer.entities.SchoolYear;
 import com.project.tutoquizzer.entities.Topics;
 import com.project.tutoquizzer.viewmodels.TopicViewModel;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Observable;
 import java.util.Random;
 
 public class QuizActivity extends AppCompatActivity {
@@ -88,7 +85,7 @@ public class QuizActivity extends AppCompatActivity {
 
                     // insert to statistics
 
-                    Intent intent = new Intent(QuizActivity.this, MainActivity.class);
+                    Intent intent = new Intent(QuizActivity.this, MainFragment.class);
                     startActivityForResult(intent, AppValues.REQ_CODE_HOME);
                 }
 
@@ -223,7 +220,7 @@ public class QuizActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
 
                     case R.id.homeMenu:
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainFragment.class);
                         startActivityForResult( intent, AppValues.REQ_CODE_HOME);
                         return true;
 
@@ -254,10 +251,10 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        //Intent intent = new Intent(MainActivity.this, AddCourseActivity.class);
+        //Intent intent = new Intent(MainFragment.this, AddCourseActivity.class);
         //startActivityForResult(intent, AppValues.REQ_CODE_ADD_COURSE);
 
-        //Intent intent1 = new Intent(MainActivity.this, AddTopicActivity.class);
+        //Intent intent1 = new Intent(MainFragment.this, AddTopicActivity.class);
         //startActivityForResult(intent1, AppValues.REQ_CODE_ADD_TOPIC);
 
     }

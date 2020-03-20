@@ -2,48 +2,38 @@ package com.project.tutoquizzer;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.view.ViewGroup;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.project.tutoquizzer.db.AppDatabase;
-import com.project.tutoquizzer.entities.Courses;
-import com.project.tutoquizzer.entities.Quarters;
-import com.project.tutoquizzer.entities.SchoolYear;
-import com.project.tutoquizzer.entities.Topics;
 import com.project.tutoquizzer.viewmodels.CourseViewModel;
 import com.project.tutoquizzer.viewmodels.QuarterViewModel;
 import com.project.tutoquizzer.viewmodels.SchoolYearViewModel;
 import com.project.tutoquizzer.viewmodels.TopicViewModel;
 
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
+public class MainFragment extends Fragment {
 
     private CourseViewModel cvm;
     private QuarterViewModel qvm;
     private SchoolYearViewModel syvm;
     private TopicViewModel tvm;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
+    private View rootView;
 
-        setTitle("TutoQuizzer - Home");
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        this.rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         init();
-        navigationListener();
 
+        return this.rootView;
     }
 
     // Main Activity Components
@@ -55,10 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void init(){
         // For Navigation
-        bottomNavigationView = findViewById(R.id.menuAct);
+        bottomNavigationView = rootView.findViewById(R.id.menuAct);
     }
 
     // For Navigation
+    /*
     private void navigationListener(){
 
         bottomNavigationView.setSelectedItemId(R.id.homeMenu);
@@ -70,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
 
                     case R.id.homeMenu:
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainFragment.class);
                         startActivityForResult( intent, AppValues.REQ_CODE_HOME);
                         return true;
 
@@ -102,4 +93,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+     */
 }

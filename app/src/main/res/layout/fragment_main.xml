@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainFragment"
+    >
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shadow"
+                android:elevation="4dp"
+                android:fontFamily="@font/sumana"
+                android:padding="25dp"
+                android:text="Welcome to TutoQuizzer!"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvWelcome"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shadow"
+                android:elevation="4dp"
+                android:padding="30dp"
+                android:textColor="@color/colorBG"
+
+                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
+                />
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
+                android:padding="30dp"
+                android:elevation="4dp"
+                android:background="@drawable/shadow"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/colorBG"
+
+                android:layout_below="@+id/tv1"
+                />
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
+                android:padding="30dp"
+                android:elevation="4dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shadow"
+                android:textColor="@color/colorBG"
+
+                android:layout_below="@+id/tv2"
+                />
+            <TextView
+                android:id="@+id/tv4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
+                android:padding="30dp"
+                android:elevation="4dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shadow"
+                android:textColor="@color/colorBG"
+
+                android:layout_below="@+id/tv3"
+                />
+            <TextView
+                android:id="@+id/tv5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
+                android:padding="30dp"
+                android:elevation="4dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shadow"
+                android:textColor="@color/colorBG"
+
+                android:layout_below="@+id/tv4"
+                />
+            <TextView
+                android:id="@+id/tv6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
+                android:padding="30dp"
+                android:elevation="4dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shadow"
+                android:textColor="@color/colorBG"
+
+                android:layout_below="@+id/tv5"
+                />
+            <TextView
+                android:id="@+id/tv7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
+                android:padding="30dp"
+                android:elevation="4dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shadow"
+                android:textColor="@color/colorBG"
+
+                android:layout_below="@+id/tv6"
+                />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

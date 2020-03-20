@@ -5,31 +5,32 @@
     <item
         android:id="@+id/homeMenu"
         android:title="Home"
-        android:icon="@drawable/home"
+        android:icon="@drawable/ic_home_black_24dp"
     />
-
-    <item
-        android:id="@+id/quizMenu"
-        android:title="Test"
-        android:icon="@drawable/quiz"
-        />
-
-    <item
-        android:id="@+id/tutorialMenu"
-        android:title="Tutorial"
-        android:icon="@drawable/tutorial"
-        />
 
     <item
         android:id="@+id/addCourseMenu"
         android:title="Add Courses"
-        android:icon="@drawable/add"
+        android:icon="@drawable/ic_add_circle_outline_black_24dp"
         />
 
     <item
         android:id="@+id/addTopicMenu"
         android:title="Add Topic"
-        android:icon="@drawable/add"
+        android:icon="@drawable/ic_add_circle_outline_black_24dp"
         />
+
+    <item
+        android:id="@+id/quizMenu"
+        android:title="Test"
+        android:icon="@drawable/ic_quiz_black_24dp"
+        />
+
+    <item
+        android:id="@+id/tutorialMenu"
+        android:title="Tutorial"
+        android:icon="@drawable/ic_library_books_black_24dp"
+        />
+
 
 </menu>
