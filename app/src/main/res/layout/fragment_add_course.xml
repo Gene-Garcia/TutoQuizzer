@@ -20,29 +20,45 @@
             android:background="@drawable/shadow"
             >
 
-            <EditText
-                android:id="@+id/courseNameAddCourseEditText"
+            <TextView
+                android:id="@+id/courseCodeTVAddCourse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:padding="20dp"
-
-                android:hint="Course Name"
-
-                android:textColor="@color/colorPrimary"
-                />
+                android:text="Course Code"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/colorPrimaryDark"/>
 
             <EditText
                 android:id="@+id/courseCodeAddCourseEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:padding="20dp"
-
-                android:layout_below="@id/courseNameAddCourseEditText"
+                android:layout_below="@id/courseCodeTVAddCourse"
                 android:hint="Course Code"
                 android:textColor="@color/colorPrimary"
+                />
 
+            <TextView
+                android:id="@+id/courseNameTVEditCourse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Course Name"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="5dp"
+                android:layout_below="@id/courseCodeAddCourseEditText"
+                android:textColor="@color/colorPrimaryDark"/>
+
+            <EditText
+                android:id="@+id/courseNameAddCourseEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/courseNameTVEditCourse"
+                android:padding="20dp"
+                android:hint="Course Name"
+                android:textColor="@color/colorPrimary"
                 />
 
         </RelativeLayout>

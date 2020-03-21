@@ -19,12 +19,34 @@
             android:elevation="10dp"
             android:background="@drawable/shadow">
 
+            <TextView
+                android:id="@+id/topicTVEditTopic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Topic"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/colorPrimaryDark"/>
+
             <EditText
                 android:id="@+id/topicEditTopicEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
+                android:layout_below="@+id/topicTVEditTopic"
                 android:hint="Topic" />
+
+            <TextView
+                android:id="@+id/descriptionTVEditTopic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="5dp"
+                android:layout_below="@+id/topicEditTopicEditText"
+                android:textColor="@color/colorPrimaryDark"/>
 
             <EditText
                 android:id="@+id/descriptionEditTopicEditText"
@@ -32,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:padding="20dp"
-                android:layout_below="@+id/topicEditTopicEditText"
+                android:layout_below="@+id/descriptionTVEditTopic"
 
                 android:hint="Description" />
 

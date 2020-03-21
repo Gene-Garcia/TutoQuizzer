@@ -18,14 +18,35 @@
 
         >
 
+        <TextView
+            android:id="@+id/courseCodeTVEditCourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Course Code"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/colorPrimaryDark"/>
+
         <EditText
             android:id="@+id/courseCodeEditCourseEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Course Code"
-
+            android:layout_below="@id/courseCodeTVEditCourse"
             android:padding="20dp"
             />
+
+        <TextView
+            android:id="@+id/courseNameTVEditCourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Course Name"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@id/courseCodeEditCourseEditText"
+            android:textColor="@color/colorPrimaryDark"/>
 
         <EditText
             android:id="@+id/courseNameEditCourseEditText"
@@ -33,7 +54,7 @@
             android:layout_height="wrap_content"
             android:hint="Course Name"
 
-            android:layout_below="@+id/courseCodeEditCourseEditText"
+            android:layout_below="@+id/courseNameTVEditCourse"
 
             android:padding="20dp"
             />
