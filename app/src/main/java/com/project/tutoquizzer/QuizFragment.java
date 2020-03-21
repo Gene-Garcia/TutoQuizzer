@@ -225,9 +225,6 @@ public class QuizFragment extends Fragment {
 
     private RadioGroup radGroup;
 
-    // For Navigation
-    private BottomNavigationView bottomNavigationView;
-
     // End Components
 
     private void init(){
@@ -243,8 +240,6 @@ public class QuizFragment extends Fragment {
         radBtnD = rootView.findViewById(R.id.rBtnDQuizAct);
 
         btnSaveAnswer = rootView.findViewById(R.id.saveAnswerBtnQuizAct);
-
-        bottomNavigationView = rootView.findViewById(R.id.menuAct);
 
     }
 

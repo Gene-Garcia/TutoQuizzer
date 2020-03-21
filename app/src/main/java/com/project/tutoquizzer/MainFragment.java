@@ -33,14 +33,11 @@ public class MainFragment extends Fragment {
 
     // Main Activity Components
 
-    // For Navigation
-    private BottomNavigationView bottomNavigationView;
 
     // End
 
     private void init(){
-        // For Navigation
-        bottomNavigationView = rootView.findViewById(R.id.menuAct);
+
     }
 
     // For Navigation

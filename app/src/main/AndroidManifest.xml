@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".EditTopicActivity"
+            android:name=".EditTopicFragment"
             android:parentActivityName=".TutorialFragment" />
         <activity
             android:name=".EditCourseActivity"

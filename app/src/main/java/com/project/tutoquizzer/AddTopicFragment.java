@@ -69,9 +69,6 @@ public class AddTopicFragment extends Fragment {
 
     private EditText topicET, descriptionET;
 
-    // For Navigation
-    private BottomNavigationView bottomNavigationView;
-
     // End Components
 
     private void init(){
@@ -84,7 +81,6 @@ public class AddTopicFragment extends Fragment {
         topicET             = rootView.findViewById(R.id.topicAddTopicEditText);
         descriptionET       = rootView.findViewById(R.id.descriptionAddTopicEditText);
 
-        bottomNavigationView = rootView.findViewById(R.id.menuAct);
 
     }
 

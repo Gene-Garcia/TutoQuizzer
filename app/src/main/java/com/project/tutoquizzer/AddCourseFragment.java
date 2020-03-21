@@ -81,9 +81,6 @@ public class AddCourseFragment extends Fragment {
 
     private Button addBtn;
 
-    // For Navigation
-    private BottomNavigationView bottomNavigationView;
-
     // End
 
     private void init(){
@@ -93,9 +90,6 @@ public class AddCourseFragment extends Fragment {
         courseNameET    = rootView.findViewById(R.id.courseNameAddCourseEditText);
 
         addBtn          = rootView.findViewById(R.id.addBtnAddCourseActivity);
-
-        // For Navigation
-        bottomNavigationView = rootView.findViewById(R.id.menuAct);
 
     }
 

@@ -124,7 +124,6 @@ public class SelectCourseFragment extends Fragment {
                     bundle.putString(RouteValues.QUARTER_NAME_KEY, selectedQuarter);
                     bundle.putString(RouteValues.SCHOOL_YEAR_NAME_KEY, selectedSchoolYear);
 
-
                     bundle.putInt(RouteValues.COURSE_ID_KEY, selectedCourseId);
                     bundle.putInt(RouteValues.QUARTER_ID_KEY, selectedQuarterId);
                     bundle.putInt(RouteValues.SCHOOL_YEAR_ID_KEY, selectedSchoolYearId);
@@ -134,7 +133,6 @@ public class SelectCourseFragment extends Fragment {
                         bundle.putString(RouteValues.SELECT_COURSE_RE_ROUTE, RouteValues.QUIZ_SELECTED);
 
                         bundle.putInt(RouteValues.NUMBER_ITEMS_KEY, numberOfItems);
-
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -143,6 +141,7 @@ public class SelectCourseFragment extends Fragment {
 
                         fragmentTransaction.replace(R.id.fragment_container, quizFragment);
                         fragmentTransaction.commit();
+
 
                     } else {
 

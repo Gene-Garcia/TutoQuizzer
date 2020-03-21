@@ -17,6 +17,10 @@ public class RouteValues {
 
     public static final String NUMBER_ITEMS_KEY = "NUMBER_ITEMS_KEY";
 
+    public static final String TOPIC_ID_KEY = "TOPIC_ID_KEY";
+    public static final String TOPIC_NAME_KEY = "TOPIC_NAME_KEY";
+    public static final String DESCRIPTION_NAME_KEY = "DESCRIPTION_NAME_KEY";
+
     // String Routing Value
     public static final String QUIZ_SELECTED = "QUIZ";
     public static final String TUTORIAL_SELECTED = "TUTORIAL";
