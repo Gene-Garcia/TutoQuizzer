@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,32 +7,49 @@
     android:orientation="vertical"
     tools:context=".EditTopicFragment">
 
-    <EditText
-        android:id="@+id/topicEditTopicEditText"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:hint="Topic" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/descriptionEditTopicEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:maxLines="4"
-        android:hint="Description" />
+        <RelativeLayout
+            android:id="@+id/relLayoutInET"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:elevation="10dp"
+            android:background="@drawable/shadow">
 
-    <Button
-        android:id="@+id/saveEditBtnEditTopicAct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            <EditText
+                android:id="@+id/topicEditTopicEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:hint="Topic" />
 
-        android:text="Save Edit" />
+            <EditText
+                android:id="@+id/descriptionEditTopicEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:padding="20dp"
+                android:layout_below="@+id/topicEditTopicEditText"
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+                android:hint="Description" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/saveEditBtnEditTopicAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/relLayoutInET"
+            android:layout_margin="20dp"
+            android:layout_alignParentRight="true"
+
+            android:text="Save Edit" />
+
+    </RelativeLayout>
+
+
+</androidx.core.widget.NestedScrollView>
