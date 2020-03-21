@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -61,17 +63,27 @@ public class AddCourseFragment extends Fragment {
     }
 
     private void adapterListener(CoursesAdapter adapter){
-        /*adapter.setOnItemClickListener(new CoursesAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new CoursesAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Courses course) {
-                Toast.makeText(AddCourseFragment.this, course.getName(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AddCourseFragment.this, EditCourseActivity.class);
-                intent.putExtra(AppValues.INTENT_HOLDER_ID_COURSE, course.getCourseId());
-                intent.putExtra(AppValues.INTENT_HOLDER_COURSE_NAME, course.getName());
-                intent.putExtra(AppValues.INTENT_HOLDER_COURSE_CODE, course.getCode());
-                startActivityForResult(intent, AppValues.REQ_CODE_EDIT_COURSE);
+
+                Bundle bundle = new Bundle();
+
+                bundle.putInt       (RouteValues.COURSE_ID_KEY, course.getCourseId());
+                bundle.putString    (RouteValues.COURSE_NAME_KEY, course.getName());
+                bundle.putString    (RouteValues.COURSE_CODE_KEY, course.getCode());
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                EditCourseActivity editCourseActivity = new EditCourseActivity();
+                editCourseActivity.setArguments(bundle);
+
+                fragmentTransaction.replace(R.id.fragment_container, editCourseActivity);
+                fragmentTransaction.commit();
+
             }
-        });*/
+        });
     }
 
     // Components

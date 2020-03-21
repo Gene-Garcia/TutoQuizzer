@@ -15,6 +15,8 @@ public class RouteValues {
     public static final String QUARTER_NAME_KEY = "QUARTER_NAME_KEY";
     public static final String SCHOOL_YEAR_NAME_KEY = "SCHOOL_YEAR_NAME_KEY";
 
+    public static final String COURSE_CODE_KEY = "COURSEc_CODE_KEY";
+
     public static final String NUMBER_ITEMS_KEY = "NUMBER_ITEMS_KEY";
 
     public static final String TOPIC_ID_KEY = "TOPIC_ID_KEY";

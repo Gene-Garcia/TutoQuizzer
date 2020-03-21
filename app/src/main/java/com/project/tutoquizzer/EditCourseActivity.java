@@ -1,42 +1,50 @@
 package com.project.tutoquizzer;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.viewmodels.CourseViewModel;
 
-public class EditCourseActivity extends AppCompatActivity {
+public class EditCourseActivity extends Fragment {
 
     private CourseViewModel cvm;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_course_activity);
+    private View rootView;
 
-        setTitle("TutoQuizzer - Edit Course");
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.return_arrow);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        this.rootView = inflater.inflate(R.layout.fragment_edit_course, container, false);
 
         this.cvm = ViewModelProviders.of(this).get(CourseViewModel.class);
 
-        Intent intent = getIntent();
-        course = new Courses( intent.getStringExtra(AppValues.INTENT_HOLDER_COURSE_NAME), intent.getStringExtra(AppValues.INTENT_HOLDER_COURSE_CODE) );
-        course.setCourseId(intent.getIntExtra(AppValues.INTENT_HOLDER_ID_COURSE, -1));
+        Bundle bundle = getArguments();
+
+        course = new Courses(
+                bundle.getString(RouteValues.COURSE_NAME_KEY),
+                bundle.getString(RouteValues.COURSE_CODE_KEY));
+
+        course.setCourseId(bundle.getInt(RouteValues.COURSE_ID_KEY));
 
         init();
 
         displayData();
         buttonListeners();
+
+        return this.rootView;
     }
 
     private void displayData(){
@@ -48,14 +56,17 @@ public class EditCourseActivity extends AppCompatActivity {
         saveEditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 course.setName( courseName.getText().toString().trim() );
                 course.setCode( courseCode.getText().toString().trim() );
                 cvm.update(course);
 
-                Intent intent = new Intent(EditCourseActivity.this, AddCourseFragment.class);
-                startActivityForResult(intent, AppValues.REQ_CODE_ADD_COURSE);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+                AddCourseFragment addCourseFragment = new AddCourseFragment();
+
+                fragmentTransaction.replace(R.id.fragment_container, addCourseFragment);
+                fragmentTransaction.commit();
             }
         });
     }
@@ -71,11 +82,10 @@ public class EditCourseActivity extends AppCompatActivity {
     // End
 
     private void init(){
-        courseName  = findViewById(R.id.courseNameEditCourseEditText);
-        courseCode  = findViewById(R.id.courseCodeEditCourseEditText);
+        courseName  = rootView.findViewById(R.id.courseNameEditCourseEditText);
+        courseCode  = rootView.findViewById(R.id.courseCodeEditCourseEditText);
 
-        saveEditBtn = findViewById(R.id.saveEditBtnEditCourseAct);
-
+        saveEditBtn = rootView.findViewById(R.id.saveEditBtnEditCourseAct);
     }
 
 }

@@ -133,6 +133,7 @@ public class SelectCourseFragment extends Fragment {
                         bundle.putString(RouteValues.SELECT_COURSE_RE_ROUTE, RouteValues.QUIZ_SELECTED);
 
                         bundle.putInt(RouteValues.NUMBER_ITEMS_KEY, numberOfItems);
+
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
