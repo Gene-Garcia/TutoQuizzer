@@ -43,7 +43,7 @@
             android:padding="70dp"
             android:textSize="18sp"
             android:textColor="@color/colorPrimaryDark"
-            android:text="LOREM LOREM LOREM LOREM LOREM" />
+            android:text="" />
 
         <RelativeLayout
             android:id="@+id/relLayoutInQ2"

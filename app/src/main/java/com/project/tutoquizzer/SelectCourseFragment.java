@@ -2,15 +2,14 @@ package com.project.tutoquizzer;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -45,7 +44,7 @@ public class SelectCourseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.rootView = inflater.inflate(R.layout.fragment_add_topic, container, false);
+        this.rootView = inflater.inflate(R.layout.fragment_select_course, container, false);
 
         this.cvm = ViewModelProviders.of(this).get(CourseViewModel.class);
         this.qvm = ViewModelProviders.of(this).get(QuarterViewModel.class);
@@ -53,12 +52,14 @@ public class SelectCourseFragment extends Fragment {
 
         init();
 
-        /*Intent intent = getIntent();
-        if (intent.getIntExtra(AppValues.INTENT_NAME_SELECT_COURSE, 0) == AppValues.REQ_CODE_QUIZ){
-            numberItemsSpinner.setVisibility(View.VISIBLE);
-            numberItemsTV.setVisibility(View.VISIBLE);
+        Bundle bundle = getArguments();
+
+        if (bundle.get(RouteValues.HOME_TO_SELECT_COURSE_ACCESS).equals(RouteValues.QUIZ_SELECTED)){
+            // Quiz button selected
             isForQuiz = true;
-        }*/
+            numberItemsSpinner.setVisibility(rootView.getVisibility());
+            numberItemsTV.setVisibility(rootView.getVisibility());
+        }
 
         populateSpinner();
         buttonListeners();
@@ -92,11 +93,8 @@ public class SelectCourseFragment extends Fragment {
         quarterSpinner      = rootView.findViewById(R.id.quarterSpnrSelectCourseAct);
         numberItemsSpinner  = rootView.findViewById(R.id.numberItemsSpnrSelectCourseAct);
 
-        numberItemsSpinner  .setVisibility(View.INVISIBLE);
-        numberItemsTV       .setVisibility(View.INVISIBLE);
-
-        // For Navigation
-        bottomNavigationView = rootView.findViewById(R.id.menuAct);
+        numberItemsTV.setVisibility(View.INVISIBLE);
+        numberItemsSpinner.setVisibility(View.INVISIBLE);
     }
 
     private void determineIds(){
@@ -120,33 +118,46 @@ public class SelectCourseFragment extends Fragment {
                 else {
                     determineIds();
 
-                    /*if (isForQuiz) {
+                    Bundle bundle = new Bundle();
 
-                        Intent intent = new Intent(SelectCourseFragment.this, QuizFragment.class);
-                        intent.putExtra(AppValues.INTENT_HOLDER_NUMITEMS, numberOfItems);
+                    bundle.putString(RouteValues.COURSE_NAME_KEY, selectedCourse);
+                    bundle.putString(RouteValues.QUARTER_NAME_KEY, selectedQuarter);
+                    bundle.putString(RouteValues.SCHOOL_YEAR_NAME_KEY, selectedSchoolYear);
 
-                        intent.putExtra(AppValues.INTENT_HOLDER_COURSE, selectedCourse);
-                        intent.putExtra(AppValues.INTENT_HOLDER_SCHOOLYEAR, selectedSchoolYear);
-                        intent.putExtra(AppValues.INTENT_HOLDER_QUARTER, selectedQuarter);
 
-                        intent.putExtra(AppValues.INTENT_HOLDER_ID_COURSE, selectedCourseId);
-                        intent.putExtra(AppValues.INTENT_HOLDER_ID_SCHOOLYEAR, selectedSchoolYearId);
-                        intent.putExtra(AppValues.INTENT_HOLDER_ID_QUARTER, selectedQuarterId);
+                    bundle.putInt(RouteValues.COURSE_ID_KEY, selectedCourseId);
+                    bundle.putInt(RouteValues.QUARTER_ID_KEY, selectedQuarterId);
+                    bundle.putInt(RouteValues.SCHOOL_YEAR_ID_KEY, selectedSchoolYearId);
 
-                        startActivityForResult(intent, AppValues.REQ_CODE_QUIZ);
+                    if (isForQuiz) {
+
+                        bundle.putString(RouteValues.SELECT_COURSE_RE_ROUTE, RouteValues.QUIZ_SELECTED);
+
+                        bundle.putInt(RouteValues.NUMBER_ITEMS_KEY, numberOfItems);
+
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                        QuizFragment quizFragment = new QuizFragment();
+                        quizFragment.setArguments(bundle);
+
+                        fragmentTransaction.replace(R.id.fragment_container, quizFragment);
+                        fragmentTransaction.commit();
+
                     } else {
-                        Intent intent = new Intent(SelectCourseFragment.this, TutorialFragment.class);
 
-                        intent.putExtra(AppValues.INTENT_HOLDER_COURSE, selectedCourse);
-                        intent.putExtra(AppValues.INTENT_HOLDER_SCHOOLYEAR, selectedSchoolYear);
-                        intent.putExtra(AppValues.INTENT_HOLDER_QUARTER, selectedQuarter);
+                        bundle.putString(RouteValues.SELECT_COURSE_RE_ROUTE, RouteValues.TUTORIAL_SELECTED);
 
-                        intent.putExtra(AppValues.INTENT_HOLDER_ID_COURSE, selectedCourseId);
-                        intent.putExtra(AppValues.INTENT_HOLDER_ID_SCHOOLYEAR, selectedSchoolYearId);
-                        intent.putExtra(AppValues.INTENT_HOLDER_ID_QUARTER, selectedQuarterId);
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                        startActivityForResult(intent, AppValues.REQ_CODE_TUTORIAL);
-                    }*/
+                        TutorialFragment tutorialFragment = new TutorialFragment();
+                        tutorialFragment.setArguments(bundle);
+
+                        fragmentTransaction.replace(R.id.fragment_container, tutorialFragment);
+                        fragmentTransaction.commit();
+
+                    }
                 }
             }
         });

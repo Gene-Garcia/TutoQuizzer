@@ -3,15 +3,15 @@ package com.project.tutoquizzer;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -43,29 +43,17 @@ public class QuizFragment extends Fragment {
         this.tvm = ViewModelProviders.of(this).get(TopicViewModel.class);
 
         init();
-        configureCall();
 
-        /*Intent intent = getIntent();
-        setIds(intent);
-        setSelectionDisplay(intent);
-        selectedNumberOfQuestions = intent.getIntExtra(AppValues.INTENT_HOLDER_NUMITEMS, 5);*/
+        Bundle bundle = getArguments();
+        configureCall(bundle);
+        selectedNumberOfQuestions = bundle.getInt(RouteValues.NUMBER_ITEMS_KEY);
 
-        //createQuestion();
-        //createPoolOfAnswers();
-        //setRadioListeners();
-        //buttonListeners();
+        createQuestion();
+        createPoolOfAnswers();
+        setRadioListeners();
+        buttonListeners();
 
         return rootView;
-    }
-
-    private void configureCall(){
-        Bundle bundle = getArguments();
-
-        if (bundle.get(RouteValues.QUIZSELECTEDVALUEACCESS).equals(RouteValues.QUIZSELECTED)){
-            // Quiz button selected
-            Toast.makeText(getContext(), "Quiz", Toast.LENGTH_SHORT).show();
-
-        }
     }
 
     private void buttonListeners(){
@@ -81,6 +69,8 @@ public class QuizFragment extends Fragment {
                     if (userAnswer.equals(correctAnswers.get(questionCounter-1))){
                         score++;
                     }else {
+                        showMessage("Incorrect Answer", "The correct answer is " + correctAnswers.get(questionCounter-1) );
+
                         error++;
                     }
                 }
@@ -95,14 +85,26 @@ public class QuizFragment extends Fragment {
                 }else {
                     clearTexts();
                     btnSaveAnswer.setText("Submit");
-                    showMessage("TutoQuizzer", "You hae accumulated a score of " + score + " over " + (score+error));
+                    showMessage("TutoQuizzer", "You have accumulated a score of " + score + " over " + (score+error));
 
-                    // insert to statistics
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Returns to selecting course
+                            Bundle bundle = new Bundle();
+                            bundle.putString(RouteValues.HOME_TO_SELECT_COURSE_ACCESS, RouteValues.QUIZ_SELECTED);
 
-                    //Intent intent = new Intent(QuizFragment.this, MainFragment.class);
-                    //startActivityForResult(intent, AppValues.REQ_CODE_HOME);
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                            SelectCourseFragment selectCourseFragment = new SelectCourseFragment();
+                            selectCourseFragment.setArguments(bundle);
+
+                            fragmentTransaction.replace(R.id.fragment_container, selectCourseFragment);
+                            fragmentTransaction.commit();
+                        }
+                    }, 3000);
                 }
-
 
             }
         });
@@ -158,10 +160,8 @@ public class QuizFragment extends Fragment {
         radBtnC.setText("");
         radBtnD.setText("");
 
-        radBtnA.setSelected(false);
-        radBtnB.setSelected(false);
-        radBtnC.setSelected(false);
-        radBtnD.setSelected(false);
+        radGroup.clearCheck();
+
     }
 
     private void setQuestionAndAnswerView(){
@@ -199,27 +199,20 @@ public class QuizFragment extends Fragment {
     private int questionCounter             = 0;
     private int selectedNumberOfQuestions   = 0;
 
-
     private int selectedCourseId;
     private int selectedSchoolYearId;
     private int selectedQuarterId;
 
-    private String selectedCourse;
-    private String selectedSchoolYear;
-    private String selectedQuarter;
-
-    private void setIds(Intent temp){
-        selectedCourseId        = temp.getIntExtra(AppValues.INTENT_HOLDER_ID_COURSE, -1);
-        selectedSchoolYearId    = temp.getIntExtra(AppValues.INTENT_HOLDER_ID_SCHOOLYEAR, -1);
-        selectedQuarterId       = temp.getIntExtra(AppValues.INTENT_HOLDER_ID_QUARTER, -1);
-    }
-
-    private void setSelectionDisplay(Intent temp){
-        String course       = temp.getStringExtra(AppValues.INTENT_HOLDER_COURSE);
-        String schoolYear   = temp.getStringExtra(AppValues.INTENT_HOLDER_SCHOOLYEAR);
-        String quarter      = temp.getStringExtra(AppValues.INTENT_HOLDER_QUARTER);
+    private void configureCall(Bundle bundle){
+        String course       = bundle.getString(RouteValues.COURSE_NAME_KEY);
+        String schoolYear   = bundle.getString(RouteValues.SCHOOL_YEAR_NAME_KEY);
+        String quarter      = bundle.getString(RouteValues.QUARTER_NAME_KEY);
 
         selectionTV.setText( schoolYear + " > " + course.toUpperCase() + " > " + quarter.toUpperCase() );
+
+        selectedCourseId        = bundle.getInt(RouteValues.COURSE_ID_KEY);
+        selectedSchoolYearId    = bundle.getInt(RouteValues.SCHOOL_YEAR_ID_KEY);
+        selectedQuarterId       = bundle.getInt(RouteValues.QUARTER_ID_KEY);
     }
 
     // Components

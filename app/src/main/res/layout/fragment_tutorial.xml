@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".TutorialFragment">
-
-    <TextView
-        android:id="@+id/displaySelectionTextViewTutorialAct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:padding="10dp"
-        android:text="School Year > Course > Quarter"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_tutorial_act"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        tools:listitem="@layout/_topics_description_list" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/menuAct"
+        <RelativeLayout
+            android:id="@+id/relLayoutInT1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/layout_bg"
-            app:itemTextColor="#f9f8eb"
-            app:menu="@menu/main_menu" />
+            android:padding="20dp"
+            android:elevation="10dp"
+            android:background="@drawable/shadow"
+            >
+
+            <TextView
+                android:id="@+id/displaySelectionTextViewTutorialAct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="School Year > Course > Quarter"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:gravity="center"
+
+                android:textColor="@color/colorPrimary"/>
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_tutorial_act"
+            android:layout_below="@+id/relLayoutInT1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            tools:listitem="@layout/_topics_description_list" />
 
     </RelativeLayout>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

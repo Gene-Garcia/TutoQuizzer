@@ -1,7 +1,9 @@
 package com.project.tutoquizzer;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,7 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,36 +25,35 @@ import com.project.tutoquizzer.viewmodels.TopicViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TutorialFragment extends AppCompatActivity {
+public class TutorialFragment extends Fragment {
 
     private TopicViewModel tvm;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_tutorial);
+    private View rootView;
 
-        setTitle("TutoQuizzer - Tutorial");
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        this.rootView = inflater.inflate(R.layout.fragment_tutorial, container, false);
 
         this.tvm = ViewModelProviders.of(this).get(TopicViewModel.class);
 
         init();
-        navigationListener();
 
-        Intent intent = getIntent();
+        /*Intent intent = getIntent();
         setSelectionDisplay(intent);
 
         selectedCourseId        = intent.getIntExtra(AppValues.INTENT_HOLDER_ID_COURSE, -1);
         selectedSchoolYearId    = intent.getIntExtra(AppValues.INTENT_HOLDER_ID_SCHOOLYEAR, -1);
-        selectedQuarterId       = intent.getIntExtra(AppValues.INTENT_HOLDER_ID_QUARTER, -1);
+        selectedQuarterId       = intent.getIntExtra(AppValues.INTENT_HOLDER_ID_QUARTER, -1);*/
 
-        recyclerView.setLayoutManager( new LinearLayoutManager(this));
+        recyclerView.setLayoutManager( new LinearLayoutManager(rootView.getContext()));
         recyclerView.setHasFixedSize(true);
 
         final TutorialAdapter tutorialAdapter = new TutorialAdapter();
         recyclerView.setAdapter(tutorialAdapter);
 
-        this.tvm.getSelectedTopics(selectedCourseId, selectedSchoolYearId, selectedQuarterId).observe(this, new Observer<List<Topics>>() {
+        this.tvm.getSelectedTopics(selectedCourseId, selectedSchoolYearId, selectedQuarterId).observe(getViewLifecycleOwner(), new Observer<List<Topics>>() {
             @Override
             public void onChanged(List<Topics> topics) {
                 if (topics.size() < 1){
@@ -64,13 +68,14 @@ public class TutorialFragment extends AppCompatActivity {
 
         adapterListener(tutorialAdapter);
 
+        return this.rootView;
     }
 
     private void adapterListener(TutorialAdapter adapter){
         adapter.setOnItemClickListener(new TutorialAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Topics topic) {
-                Intent intent  = new Intent(TutorialFragment.this, EditTopicActivity.class);
+                /*Intent intent  = new Intent(TutorialFragment.this, EditTopicActivity.class);
                 intent.putExtra(AppValues.INTENT_HOLDER_ID_TOPIC, topic.getTopicId());
                 intent.putExtra(AppValues.INTENT_HOLDER_TOPIC, topic.getTopic());
                 intent.putExtra(AppValues.INTENT_HOLDER_MEANING, topic.getMeaning());
@@ -83,7 +88,7 @@ public class TutorialFragment extends AppCompatActivity {
                 intent.putExtra(AppValues.INTENT_HOLDER_ID_SCHOOLYEAR, selectedSchoolYearId);
                 intent.putExtra(AppValues.INTENT_HOLDER_ID_QUARTER, selectedQuarterId);
 
-                startActivityForResult(intent, AppValues.REQ_CODE_EDIT_TOPIC);
+                startActivityForResult(intent, AppValues.REQ_CODE_EDIT_TOPIC);*/
             }
         });
     }
@@ -116,61 +121,11 @@ public class TutorialFragment extends AppCompatActivity {
     // End
 
     private void init(){
-        recyclerView = findViewById(R.id.recycler_view_tutorial_act);
+        recyclerView = rootView.findViewById(R.id.recycler_view_tutorial_act);
 
-        selectionTV = findViewById(R.id.displaySelectionTextViewTutorialAct);
+        selectionTV = rootView.findViewById(R.id.displaySelectionTextViewTutorialAct);
 
         // For Navigation
-        bottomNavigationView = findViewById(R.id.menuAct);
-    }
-
-    // For Navigation
-    private void navigationListener(){
-
-        bottomNavigationView.setSelectedItemId(R.id.tutorialMenu);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                switch (menuItem.getItemId()){
-
-                    case R.id.homeMenu:
-                        Intent intent = new Intent(getApplicationContext(), MainFragment.class);
-                        startActivityForResult( intent, AppValues.REQ_CODE_HOME);
-                        return true;
-
-                    case R.id.quizMenu:
-                        Intent intent1 = new Intent(getApplicationContext(), SelectCourseFragment.class);
-                        intent1.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_QUIZ);
-                        startActivityForResult(intent1, AppValues.REQ_CODE_QUIZ);
-                        return true;
-
-                    case R.id.tutorialMenu:
-                        Intent intent2 = new Intent(getApplicationContext(), SelectCourseFragment.class);
-                        intent2.putExtra(AppValues.INTENT_NAME_SELECT_COURSE, AppValues.REQ_CODE_TUTORIAL);
-                        startActivityForResult(intent2, AppValues.REQ_CODE_TUTORIAL);
-
-                    case R.id.addCourseMenu:
-                        Intent intent3 = new Intent(getApplicationContext(), AddCourseFragment.class);
-                        startActivityForResult(intent3, AppValues.REQ_CODE_ADD_COURSE);
-                        return true;
-
-                    case R.id.addTopicMenu:
-                        Intent intent4 = new Intent(getApplicationContext(), AddTopicFragment.class);
-                        startActivityForResult(intent4, AppValues.REQ_CODE_ADD_TOPIC);
-                        return true;
-                }
-
-                return false;
-            }
-        });
-
-        //Intent intent = new Intent(MainFragment.this, AddCourseFragment.class);
-        //startActivityForResult(intent, AppValues.REQ_CODE_ADD_COURSE);
-
-        //Intent intent1 = new Intent(MainFragment.this, AddTopicFragment.class);
-        //startActivityForResult(intent1, AppValues.REQ_CODE_ADD_TOPIC);
-
+        bottomNavigationView = rootView.findViewById(R.id.menuAct);
     }
 }
