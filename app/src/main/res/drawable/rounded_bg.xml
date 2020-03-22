@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!--apply button background transparent, full opacity-->
+    <solid android:color="#00ffffff"/>
+    <!--make button border solid color, nontransparent-->
+    <stroke android:color="@android:color/white" android:width="3dp"/>
+    <corners android:radius="9000dp"/>
+
+</shape>

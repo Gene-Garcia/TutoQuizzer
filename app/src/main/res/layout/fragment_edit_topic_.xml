@@ -61,6 +61,18 @@
         </RelativeLayout>
 
         <Button
+            android:id="@+id/deleteTopicBtnEditTopicAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/relLayoutInET"
+            android:layout_margin="20dp"
+
+            android:layout_toLeftOf="@+id/saveEditBtnEditTopicAct"
+
+            android:text="Delete" />
+
+        <Button
             android:id="@+id/saveEditBtnEditTopicAct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

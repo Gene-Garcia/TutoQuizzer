@@ -1,11 +1,14 @@
 package com.project.tutoquizzer;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -39,13 +42,24 @@ public class HomeActivity extends AppCompatActivity {
                         case R.id.homeMenu:
                             selectedFragment = new MainFragment();
                             break;
-                        case R.id.addCourseMenu:
-                            selectedFragment = new AddCourseFragment();
-                            break;
-                        case R.id.addTopicMenu:
-                            selectedFragment = new AddTopicFragment();
-                            break;
+                        case R.id.addMenu:
+
+                            new AlertDialog.Builder(HomeActivity.this).setTitle("").setMessage("Choose an option.")
+                                    .setPositiveButton("Add Topic", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddTopicFragment()).commit();
+                                        }
+                                    })
+                                    .setNegativeButton("Add Course", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddCourseFragment()).commit();
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_info).show();
+
+                            return true;
                         case R.id.quizMenu:
+
                             Bundle bundle = new Bundle();
                             bundle.putString(RouteValues.HOME_TO_SELECT_COURSE_ACCESS, RouteValues.QUIZ_SELECTED);
                             selectedFragment = new SelectCourseFragment();
@@ -58,6 +72,10 @@ public class HomeActivity extends AppCompatActivity {
                             selectedFragment = new SelectCourseFragment();
                             selectedFragment.setArguments(bundle1);
 
+                            break;
+
+                        case R.id.dashboardMenu:
+                            selectedFragment = new DashboardFragment();
                             break;
                     }
 

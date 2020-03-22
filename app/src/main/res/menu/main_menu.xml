@@ -9,14 +9,8 @@
     />
 
     <item
-        android:id="@+id/addCourseMenu"
-        android:title="Add Courses"
-        android:icon="@drawable/ic_add_circle_outline_black_24dp"
-        />
-
-    <item
-        android:id="@+id/addTopicMenu"
-        android:title="Add Topic"
+        android:id="@+id/addMenu"
+        android:title="Add"
         android:icon="@drawable/ic_add_circle_outline_black_24dp"
         />
 
@@ -32,5 +26,10 @@
         android:icon="@drawable/ic_library_books_black_24dp"
         />
 
+    <item
+        android:id="@+id/dashboardMenu"
+        android:title="Dashboard"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        />
 
 </menu>

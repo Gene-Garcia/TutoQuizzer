@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashboardFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relLayoutAccountInfo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/gradient1">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                tools:src="@tools:sample/avatars"
+                android:layout_margin="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tvNameD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Juan Dela Cruz"
+                android:textColor="@color/selected"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tvSchoolD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNameD"
+                android:text="Malayan Colleges Laguna"
+                android:textColor="@color/selected"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:padding="10dp"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/criteriaTVD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Criteria"
+            android:layout_below="@id/relLayoutAccountInfo"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_margin="20dp"
+            android:textColor="@color/colorPrimaryDark"/>
+
+        <HorizontalScrollView
+            android:id="@+id/horiScollView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/criteriaTVD">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/relLayoutCriteria">
+
+                <Button
+                    android:id="@+id/coursesBtnD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Courses"
+
+                    android:paddingTop="40dp"
+                    android:paddingRight="120dp"
+                    android:paddingBottom="40dp"
+                    android:paddingLeft="30dp"
+                    android:background="@drawable/gradient2"
+                    
+                    android:textColor="@android:color/white"
+                    android:textSize="25dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="20dp"
+                    />
+
+                <Button
+                    android:id="@+id/schoolYearBtnD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="School Year"
+
+                    android:paddingTop="40dp"
+                    android:paddingRight="120dp"
+                    android:paddingBottom="40dp"
+                    android:paddingLeft="30dp"
+                    android:background="@drawable/gradient2"
+
+                    android:textColor="@android:color/white"
+                    android:textSize="25dp"
+
+                    android:layout_toRightOf="@id/coursesBtnD"
+
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    />
+
+                <Button
+                    android:id="@+id/quarterBtnD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quarter"
+
+                    android:paddingTop="40dp"
+                    android:paddingRight="120dp"
+                    android:paddingBottom="40dp"
+                    android:paddingLeft="30dp"
+                    android:background="@drawable/gradient2"
+
+                    android:textColor="@android:color/white"
+                    android:textSize="25dp"
+
+                    android:layout_toRightOf="@id/schoolYearBtnD"
+
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="10dp"
+                    />
+
+            </RelativeLayout>
+
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/statisticsTVD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Statistics"
+            android:layout_below="@id/horiScollView"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_margin="20dp"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/statisticsTVD">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/relLayoutStatistics">
+
+                <Button
+                    android:id="@+id/topicsBtnD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Topics"
+
+                    android:paddingTop="40dp"
+                    android:paddingRight="120dp"
+                    android:paddingBottom="40dp"
+                    android:paddingLeft="30dp"
+                    android:background="@drawable/gradient3"
+
+                    android:textColor="@android:color/white"
+                    android:textSize="25dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="20dp"
+                    />
+
+            </RelativeLayout>
+
+        </HorizontalScrollView>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>
