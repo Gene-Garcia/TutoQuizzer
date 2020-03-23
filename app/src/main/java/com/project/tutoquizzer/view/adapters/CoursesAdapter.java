@@ -40,7 +40,6 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseHo
         return this.courses.size();
     }
 
-
     public void setCourse(List<Courses> courses){
         this.courses = courses;
         notifyDataSetChanged();

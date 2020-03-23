@@ -26,7 +26,7 @@ public interface SchoolYearDao {
     @Query( "SELECT DISTINCT SchoolYear.YearId, SchoolYear.Year, SchoolYear.Term FROM SchoolYear INNER JOIN Topics ON SchoolYear.YearId = Topics.YearId " )
     LiveData<List<SchoolYear>> getReferencedSchoolYear();
 
-    @Query("SELECT * FROM SchoolYear")
+    @Query("SELECT * FROM SchoolYear ORDER BY Year, Term")
     LiveData< List<SchoolYear> > getAllSchoolYear();
 
     @Query(" SELECT YearId FROM SchoolYear WHERE Year = :year AND Term = :term ")

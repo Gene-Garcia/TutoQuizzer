@@ -1,14 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".dashboardFragments.SchoolYearFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="school year" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <RelativeLayout
+            android:id="@+id/relLayoutAccountInfo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/gradient1">
+
+            <TextView
+                android:id="@+id/tvNameD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Juan Dela Cruz"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tvSchoolD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNameD"
+                android:text="Malayan Colleges Laguna"
+                android:textColor="@android:color/white"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:padding="10dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relLayoutSchoolYearData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relLayoutAccountInfo"
+            android:background="@drawable/gradient2"
+            android:padding="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="School Year"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/schoolYearCountTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:layout_alignParentRight="true"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_bg"
+
+                android:editable="false"
+
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"/>
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_fragment_school_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/_school_year_list"
+
+            android:layout_below="@id/relLayoutSchoolYearData"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginTop="30dp"
+            android:elevation="10dp"
+            android:background="@drawable/shadow"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

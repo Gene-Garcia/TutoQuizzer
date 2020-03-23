@@ -2,39 +2,37 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginStart="10dp"
     >
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/shadow"
+        android:elevation="10dp"
         android:padding="15dp">
 
         <TextView
             android:id="@+id/text_view_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Code"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
+            android:text="Code"
             android:textColor="@color/text_header"
-            android:textSize="18dp"
-            />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/text_view_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_code"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:text="Course"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/text_view_code"
             android:textColor="@color/text_paragraph"
-            android:textSize="15dp"
-            />
+            android:textSize="15dp" />
 
     </RelativeLayout>
 
