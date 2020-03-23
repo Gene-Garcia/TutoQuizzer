@@ -12,6 +12,13 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/relLayoutHeader"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/gradient1" />
+
+        <RelativeLayout
+            android:layout_below="@id/relLayoutHeader"
             android:id="@+id/relLayoutInET"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

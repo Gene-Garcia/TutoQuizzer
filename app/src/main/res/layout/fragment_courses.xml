@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Juan Dela Cruz"
-                android:textColor="@color/selected"
+                android:textColor="@android:color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"
@@ -34,16 +34,16 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvNameD"
                 android:text="Malayan Colleges Laguna"
-                android:textColor="@color/selected"
+                android:textColor="@android:color/white"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"
-                android:padding="10dp"
-                />
+                android:padding="10dp"/>
 
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/relLayoutCoursesData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relLayoutAccountInfo"
@@ -63,7 +63,7 @@
                 android:layout_centerVertical="true"
                 android:textStyle="bold"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/coursesCountTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,12 +75,28 @@
                 android:layout_centerVertical="true"
                 android:background="@drawable/rounded_bg"
 
+                android:editable="false"
+
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"/>
 
         </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_select_course_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/_courses_list"
+
+            android:layout_below="@id/relLayoutCoursesData"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginTop="30dp"
+            android:elevation="10dp"
+            android:background="@drawable/shadow"
+            />
 
     </RelativeLayout>
 
