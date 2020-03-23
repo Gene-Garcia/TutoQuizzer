@@ -40,10 +40,10 @@ public class EditSchoolYearFragment extends Fragment {
         Bundle bundle = getArguments();
 
         schoolYear = new SchoolYear(
-                bundle.getInt(RouteValues.SCHOOLYEAR_YEAR_KEY),
-                bundle.getInt(RouteValues.SCHOOLYEAR_TERM_KEY));
+                bundle.getInt(RouteValues.SCHOOL_YEAR_YEAR_KEY),
+                bundle.getInt(RouteValues.SCHOOL_YEAR_TERM_KEY));
 
-        schoolYear.setYearId(bundle.getInt(RouteValues.SCHOOLYEAR_ID_KEY));
+        schoolYear.setYearId(bundle.getInt(RouteValues.SCHOOL_YEAR_ID_KEY));
 
         init();
 

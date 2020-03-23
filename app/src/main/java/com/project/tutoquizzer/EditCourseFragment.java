@@ -18,7 +18,7 @@ import android.widget.EditText;
 import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.viewmodels.CourseViewModel;
 
-public class EditCourseActivity extends Fragment {
+public class EditCourseFragment extends Fragment {
 
     private CourseViewModel cvm;
 

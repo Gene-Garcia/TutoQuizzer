@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".EditCourseFragment">
+    tools:context=".EditQuarterFragment">
 
     <RelativeLayout
         android:id="@+id/relLayoutHeader"
@@ -15,7 +13,7 @@
 
     <RelativeLayout
         android:layout_below="@id/relLayoutHeader"
-        android:id="@+id/relLayoutInsideEC"
+        android:id="@+id/relLayoutInsideEQ"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
@@ -26,57 +24,35 @@
         >
 
         <TextView
-            android:id="@+id/courseCodeTVEditCourse"
+            android:id="@+id/quarterTVEditQuarter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Course Code"
+            android:text="Quarter Name"
             android:paddingTop="20dp"
             android:paddingLeft="20dp"
             android:paddingBottom="5dp"
             android:textColor="@color/text_header"/>
 
         <EditText
-            android:id="@+id/courseCodeEditCourseEditText"
+            android:id="@+id/quarterEditQuarterEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Course Code"
-            android:layout_below="@id/courseCodeTVEditCourse"
+            android:hint="Name"
+            android:layout_below="@id/quarterTVEditQuarter"
             android:padding="20dp"
             android:textColor="@color/text_paragraph"
-            />
-
-        <TextView
-            android:id="@+id/courseNameTVEditCourse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Course Name"
-            android:paddingTop="20dp"
-            android:paddingLeft="20dp"
-            android:paddingBottom="5dp"
-            android:layout_below="@id/courseCodeEditCourseEditText"
-            android:textColor="@color/text_header"/>
-
-        <EditText
-            android:id="@+id/courseNameEditCourseEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Course Name"
-
-            android:layout_below="@+id/courseNameTVEditCourse"
-            android:textColor="@color/text_paragraph"
-            android:padding="20dp"
             />
 
     </RelativeLayout>
 
     <Button
-        android:id="@+id/saveEditBtnEditCourseAct"
+        android:id="@+id/saveEditBtnEditQuarter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save Edit"
 
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/relLayoutInsideEC"
+        android:layout_below="@+id/relLayoutInsideEQ"
 
         android:layout_margin="20dp"
         />

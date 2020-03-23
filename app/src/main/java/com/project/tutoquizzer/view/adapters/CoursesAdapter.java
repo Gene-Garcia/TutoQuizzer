@@ -65,7 +65,6 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseHo
             codeNameTv = itemView.findViewById(R.id.text_view_code);
 
             itemView.setOnClickListener( new View.OnClickListener() {
-
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();

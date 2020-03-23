@@ -77,9 +77,9 @@ public class SchoolYearFragment extends Fragment {
             public void onItemClick(SchoolYear schoolYear) {
                 Bundle bundle = new Bundle();
 
-                bundle.putInt       (RouteValues.SCHOOLYEAR_ID_KEY, schoolYear.getYearId());
-                bundle.putInt       (RouteValues.SCHOOLYEAR_TERM_KEY, schoolYear.getTerm());
-                bundle.putInt       (RouteValues.SCHOOLYEAR_YEAR_KEY, schoolYear.getYear());
+                bundle.putInt       (RouteValues.SCHOOL_YEAR_ID_KEY, schoolYear.getYearId());
+                bundle.putInt       (RouteValues.SCHOOL_YEAR_TERM_KEY, schoolYear.getTerm());
+                bundle.putInt       (RouteValues.SCHOOL_YEAR_YEAR_KEY, schoolYear.getYear());
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

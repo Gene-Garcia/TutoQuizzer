@@ -22,7 +22,7 @@
             android:name=".EditTopicFragment"
             android:parentActivityName=".TutorialFragment" />
         <activity
-            android:name=".EditCourseActivity"
+            android:name=".EditCourseFragment"
             android:parentActivityName=".AddCourseFragment" />
 
         <activity android:name=".QuizFragment" />

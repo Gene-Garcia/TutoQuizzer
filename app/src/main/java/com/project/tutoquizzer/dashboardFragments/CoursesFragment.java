@@ -17,9 +17,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.project.tutoquizzer.EditCourseActivity;
+import com.project.tutoquizzer.EditCourseFragment;
 import com.project.tutoquizzer.R;
 import com.project.tutoquizzer.RouteValues;
 import com.project.tutoquizzer.entities.Courses;
@@ -62,10 +61,10 @@ public class CoursesFragment extends Fragment {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                EditCourseActivity editCourseActivity = new EditCourseActivity();
-                editCourseActivity.setArguments(bundle);
+                EditCourseFragment editCourseFragment = new EditCourseFragment();
+                editCourseFragment.setArguments(bundle);
 
-                fragmentTransaction.replace(R.id.fragment_container, editCourseActivity);
+                fragmentTransaction.replace(R.id.fragment_container, editCourseFragment);
                 fragmentTransaction.commit();
 
             }

@@ -2,7 +2,6 @@ package com.project.tutoquizzer;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,7 +10,6 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +18,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.view.adapters.CoursesAdapter;
 import com.project.tutoquizzer.viewmodels.CourseViewModel;
@@ -76,10 +73,10 @@ public class AddCourseFragment extends Fragment {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                EditCourseActivity editCourseActivity = new EditCourseActivity();
-                editCourseActivity.setArguments(bundle);
+                EditCourseFragment editCourseFragment = new EditCourseFragment();
+                editCourseFragment.setArguments(bundle);
 
-                fragmentTransaction.replace(R.id.fragment_container, editCourseActivity);
+                fragmentTransaction.replace(R.id.fragment_container, editCourseFragment);
                 fragmentTransaction.commit();
 
             }
