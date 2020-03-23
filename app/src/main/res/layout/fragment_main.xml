@@ -14,33 +14,21 @@
         <RelativeLayout
             android:id="@+id/relLayoutAccountInfo"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:background="@drawable/gradient1">
 
             <TextView
                 android:id="@+id/tvNameD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Juan Dela Cruz"
-                android:textColor="@color/selected"
+                android:text="John Doe"
+                android:textColor="@android:color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:padding="10dp"
                 android:layout_marginTop="10dp"
-                />
-
-            <TextView
-                android:id="@+id/tvSchoolD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvNameD"
-                android:text="Malayan Colleges Laguna"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:layout_alignParentRight="true"
-                android:padding="10dp"
                 />
 
         </RelativeLayout>
@@ -62,7 +50,7 @@
                 android:padding="25dp"
                 android:text="Welcome to TutoQuizzer!"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/text_header"
                 android:textSize="24sp" />
 
             <TextView
@@ -74,88 +62,96 @@
                 android:background="@drawable/shadow"
                 android:elevation="4dp"
                 android:padding="30dp"
-                android:textColor="@color/colorBG"
+                android:textColor="@color/text_paragraph"
 
-                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
+                android:text="What is TutoQuizzer?\n\nTutoQuizzer assists students in learning and prapering for assessments. Nowadays, numerous concepts are given to students, where they need to familiarize to it."
                 />
+
+
             <TextView
                 android:id="@+id/tv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
                 android:padding="30dp"
                 android:elevation="4dp"
                 android:background="@drawable/shadow"
                 android:layout_marginBottom="20dp"
-                android:textColor="@color/colorBG"
-
+                android:textColor="@color/text_paragraph"
                 android:layout_below="@+id/tv1"
+
+                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)."
                 />
+
+
             <TextView
                 android:id="@+id/tv3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
                 android:padding="30dp"
                 android:elevation="4dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/shadow"
-                android:textColor="@color/colorBG"
-
+                android:textColor="@color/text_paragraph"
                 android:layout_below="@+id/tv2"
+
+                android:text="Tutorial allows you to read and browse topics that you’ve encoded to TutoQuizzer"
                 />
+
             <TextView
                 android:id="@+id/tv4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
                 android:padding="30dp"
                 android:elevation="4dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/shadow"
-                android:textColor="@color/colorBG"
-
+                android:textColor="@color/text_paragraph"
                 android:layout_below="@+id/tv3"
+
+                android:text="Quiz creates and identification-like with multiple choices."
                 />
+
             <TextView
                 android:id="@+id/tv5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
                 android:padding="30dp"
                 android:elevation="4dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/shadow"
-                android:textColor="@color/colorBG"
-
+                android:textColor="@color/text_paragraph"
                 android:layout_below="@+id/tv4"
+
+                android:text="You are allowed to edit the information of a certain course and topics"
                 />
+
+
             <TextView
                 android:id="@+id/tv6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
                 android:padding="30dp"
                 android:elevation="4dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/shadow"
-                android:textColor="@color/colorBG"
-
+                android:textColor="@color/text_paragraph"
                 android:layout_below="@+id/tv5"
+
+                android:text="You are given a dashboard to further maintain the information inside TutoQuizzer. Moreover, it includes graphs and summary of your information."
                 />
+
             <TextView
                 android:id="@+id/tv7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)"
                 android:padding="30dp"
                 android:elevation="4dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/shadow"
-                android:textColor="@color/colorBG"
-
+                android:textColor="@color/text_paragraph"
                 android:layout_below="@+id/tv6"
-                />
+
+                android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)" />
 
         </RelativeLayout>
 

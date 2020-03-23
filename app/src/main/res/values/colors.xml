@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Default colors -->
     <color name="colorPrimary">#413C69</color>
-    <color name="colorPrimaryDark">#413C69</color> <!-- Change color so that entire app color would be white -->
-    <color name="colorAccent">#EAB9C9</color>
+    <color name="colorPrimaryDark">#272343</color> <!-- Change color so that entire app color would be white -->
+    <color name="colorAccent">#a6b1e1</color>
+
     <color name="colorBG">#424874</color>
+
+    <!-- Menu item colors -->
     <color name="selected">#dcd6f7</color>
     <color name="notSelected">#a6b1e1</color>
 
-    <color name="gradient1Start">#a6b1e1</color>
-    <color name="gradient1End">#424874</color>
+    <!-- Text colors -->
+    <color name="text_header">#413C69</color>
+    <color name="text_paragraph">#424874</color>
+    <color name="text_white">#fafafa</color>
+
+    <!-- Gradient Colors -->
+    <color name="gradient1Start">#bbe1fa</color>
+    <color name="gradient1End">#272343</color>
 
     <color name="gradient2Start">#315b96</color>
     <color name="gradient2End">#233567</color>

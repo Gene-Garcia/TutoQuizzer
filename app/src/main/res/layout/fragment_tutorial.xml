@@ -29,7 +29,7 @@
                 android:textStyle="bold"
                 android:gravity="center"
 
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/text_header"/>
 
         </RelativeLayout>
 

@@ -22,7 +22,7 @@
             android:gravity="center"
             android:text="Lorem Ipsum"
             android:textSize="24sp"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/text_header"
             android:textStyle="bold" />
 
         <TextView
@@ -35,7 +35,7 @@
             android:fontFamily="monospace"
             android:lineSpacingExtra="8sp"
             android:text="Lorem ipsum"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/text_paragraph"
             android:textSize="14sp" />
 
     </RelativeLayout>

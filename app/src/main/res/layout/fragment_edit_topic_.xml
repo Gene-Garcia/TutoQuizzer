@@ -27,7 +27,7 @@
                 android:paddingTop="20dp"
                 android:paddingLeft="20dp"
                 android:paddingBottom="5dp"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/text_header"/>
 
             <EditText
                 android:id="@+id/topicEditTopicEditText"
@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:padding="20dp"
                 android:layout_below="@+id/topicTVEditTopic"
+                android:textColor="@color/text_paragraph"
                 android:hint="Topic" />
 
             <TextView
@@ -46,7 +47,7 @@
                 android:paddingLeft="20dp"
                 android:paddingBottom="5dp"
                 android:layout_below="@+id/topicEditTopicEditText"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/text_header"/>
 
             <EditText
                 android:id="@+id/descriptionEditTopicEditText"
@@ -55,7 +56,7 @@
                 android:inputType="textMultiLine"
                 android:padding="20dp"
                 android:layout_below="@+id/descriptionTVEditTopic"
-
+                android:textColor="@color/text_paragraph"
                 android:hint="Description" />
 
         </RelativeLayout>

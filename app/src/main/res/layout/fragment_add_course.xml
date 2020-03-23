@@ -11,6 +11,13 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/relLayoutHeader"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/gradient1" />
+
+        <RelativeLayout
+            android:layout_below="@id/relLayoutHeader"
             android:id="@+id/relLayoutInAC"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,7 +35,7 @@
                 android:paddingTop="20dp"
                 android:paddingLeft="20dp"
                 android:paddingBottom="5dp"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/text_header"/>
 
             <EditText
                 android:id="@+id/courseCodeAddCourseEditText"
@@ -37,7 +44,7 @@
                 android:padding="20dp"
                 android:layout_below="@id/courseCodeTVAddCourse"
                 android:hint="Course Code"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/text_paragraph"
                 />
 
             <TextView
@@ -49,7 +56,7 @@
                 android:paddingLeft="20dp"
                 android:paddingBottom="5dp"
                 android:layout_below="@id/courseCodeAddCourseEditText"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/text_header"/>
 
             <EditText
                 android:id="@+id/courseNameAddCourseEditText"
@@ -58,7 +65,7 @@
                 android:layout_below="@id/courseNameTVEditCourse"
                 android:padding="20dp"
                 android:hint="Course Name"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/text_paragraph"
                 />
 
         </RelativeLayout>
