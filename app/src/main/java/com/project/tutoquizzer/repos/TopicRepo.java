@@ -104,4 +104,16 @@ public class TopicRepo {
         return this.topicDao.getAllTopics();
     }
 
+    public LiveData<Integer> getReferenceTopicCountByCourse(int courseId){
+        return this.topicDao.getReferenceTopicCountByCourse(courseId);
+    }
+
+    public LiveData<Integer> getReferenceTopicCountBySchoolYear(int schoolYearId){
+        return this.topicDao.getReferenceTopicCountBySchoolYear(schoolYearId);
+    }
+
+    public LiveData<Integer> getReferenceTopicCountByQuarter(int quarterId){
+        return this.topicDao.getReferenceTopicCountByQuarter(quarterId);
+    }
+
 }

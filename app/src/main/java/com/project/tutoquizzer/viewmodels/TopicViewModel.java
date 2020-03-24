@@ -20,12 +20,40 @@ public class TopicViewModel extends AndroidViewModel {
         this.topicRepo = new TopicRepo(application);
     }
 
-    public void insert(Topics topic){ this.topicRepo.insert(topic); }
-    public void update(Topics topic){ this.topicRepo.update(topic); }
-    public void delete(Topics topic){ this.topicRepo.delete(topic); }
-    public void deleteAll() { this.topicRepo.deleteAll(); }
+    public void insert(Topics topic) {
+        this.topicRepo.insert(topic);
+    }
 
-    public LiveData<List<Topics>> getSelectedTopics(int courseId, int yearId, int quarter) { return this.topicRepo.getSelectedTopics(courseId, yearId, quarter); }
-    public LiveData<List<Topics>> getAllTopics() { return this.topicRepo.getAllTopics(); }
+    public void update(Topics topic) {
+        this.topicRepo.update(topic);
+    }
+
+    public void delete(Topics topic) {
+        this.topicRepo.delete(topic);
+    }
+
+    public void deleteAll() {
+        this.topicRepo.deleteAll();
+    }
+
+    public LiveData<List<Topics>> getSelectedTopics(int courseId, int yearId, int quarter) {
+        return this.topicRepo.getSelectedTopics(courseId, yearId, quarter);
+    }
+
+    public LiveData<List<Topics>> getAllTopics() {
+        return this.topicRepo.getAllTopics();
+    }
+
+    public LiveData<Integer> getReferenceTopicCountByCourse(int courseId) {
+        return this.topicRepo.getReferenceTopicCountByCourse(courseId);
+    }
+
+    public LiveData<Integer> getReferenceTopicCountBySchoolYear(int schoolYearId) {
+        return this.topicRepo.getReferenceTopicCountBySchoolYear(schoolYearId);
+    }
+
+    public LiveData<Integer> getReferenceTopicCountByQuarter(int quarterId) {
+        return this.topicRepo.getReferenceTopicCountByQuarter(quarterId);
+    }
 
 }
