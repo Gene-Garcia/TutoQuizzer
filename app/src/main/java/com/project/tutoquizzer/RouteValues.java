@@ -26,6 +26,8 @@ public class RouteValues {
     public static final String SCHOOL_YEAR_YEAR_KEY = "SCHOOL_YEAR_YEAR_KEY";
     public static final String SCHOOL_YEAR_TERM_KEY = "SCHOOL_YEAR_TERM_KEY";
 
+    public static final String IS_FOR_DASHBOARD = "IS_FOR_DASHBOARD";
+
     // String Routing Value
     public static final String QUIZ_SELECTED = "QUIZ";
     public static final String TUTORIAL_SELECTED = "TUTORIAL";

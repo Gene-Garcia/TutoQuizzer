@@ -20,6 +20,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.project.tutoquizzer.EditQuarterFragment;
+import com.project.tutoquizzer.Personal.GSONHelper;
+import com.project.tutoquizzer.Personal.User;
 import com.project.tutoquizzer.R;
 import com.project.tutoquizzer.RouteValues;
 import com.project.tutoquizzer.entities.Quarters;
@@ -44,9 +46,16 @@ public class QuarterFragment extends Fragment {
 
         init();
 
+        displayPersonalDetails(GSONHelper.loadData(getContext()));
+
         initRecyclerView();
 
         return this.rootView;
+    }
+
+    private void displayPersonalDetails(User user){
+        nameTV.setText(user.getFirstName() + " " + user.getLastName());
+        schoolTV.setText(user.getSchool());
     }
 
     private void adapterListener(QuarterAdapter adapter){
@@ -96,10 +105,15 @@ public class QuarterFragment extends Fragment {
 
     private RecyclerView recyclerView;
 
+    private TextView nameTV, schoolTV;
+
     private void init() {
         quarterCountTV = rootView.findViewById(R.id.quarterCountTV);
 
         recyclerView = rootView.findViewById(R.id.recycler_view_quarter_fragment);
+
+        nameTV = rootView.findViewById(R.id.tvNameD);
+        schoolTV = rootView.findViewById(R.id.tvSchoolD);
     }
 
 }

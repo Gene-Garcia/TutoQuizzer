@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditPersonalInformationFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relLayoutAccountInfo"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/gradient1" />
+
+        <RelativeLayout
+            android:id="@+id/relLayoutInputField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/relLayoutAccountInfo"
+            android:padding="20dp"
+            android:elevation="10dp"
+            android:background="@drawable/shadow">
+
+            <TextView
+                android:id="@+id/editTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update Information"
+                android:padding="20dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/text_header"/>
+
+            <TextView
+                android:id="@+id/fNameTVEditPersonal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTV"
+                android:text="First Name"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/text_header"/>
+
+            <EditText
+                android:id="@+id/fNameETEditPersonal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="First Name"
+                android:layout_below="@+id/fNameTVEditPersonal"
+                android:padding="20dp"
+                android:textColor="@color/text_paragraph" />
+
+            <TextView
+                android:id="@+id/lNameTVEditPersonal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Last Name"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="5dp"
+                android:layout_below="@id/fNameETEditPersonal"
+                android:textColor="@color/text_header"/>
+
+            <EditText
+                android:id="@+id/lNameETEditPersonal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lNameTVEditPersonal"
+                android:hint="Last Name"
+                android:inputType="textMultiLine"
+                android:padding="20dp"
+                android:textColor="@color/text_paragraph" />
+
+            <TextView
+                android:id="@+id/schoolTVEditPersonal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="School"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="5dp"
+                android:layout_below="@id/lNameETEditPersonal"
+                android:textColor="@color/text_header"/>
+
+            <EditText
+                android:id="@+id/schoolETEditPersonal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/schoolTVEditPersonal"
+                android:hint="Name"
+                android:inputType="textMultiLine"
+                android:padding="20dp"
+                android:textColor="@color/text_paragraph" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/updatePersonalInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relLayoutInputField"
+            android:layout_margin="20dp"
+            android:layout_alignParentRight="true"
+            android:text="Update Info"/>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

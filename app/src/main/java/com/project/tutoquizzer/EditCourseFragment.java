@@ -15,12 +15,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.project.tutoquizzer.dashboardFragments.CoursesFragment;
 import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.viewmodels.CourseViewModel;
 
 public class EditCourseFragment extends Fragment {
 
     private CourseViewModel cvm;
+
+    private Boolean isForDashboard;
 
     private View rootView;
 
@@ -38,6 +41,8 @@ public class EditCourseFragment extends Fragment {
                 bundle.getString(RouteValues.COURSE_CODE_KEY));
 
         course.setCourseId(bundle.getInt(RouteValues.COURSE_ID_KEY));
+
+        isForDashboard = bundle.getBoolean(RouteValues.IS_FOR_DASHBOARD);
 
         init();
 
@@ -63,9 +68,15 @@ public class EditCourseFragment extends Fragment {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                AddCourseFragment addCourseFragment = new AddCourseFragment();
+                Fragment selectedFragment;
 
-                fragmentTransaction.replace(R.id.fragment_container, addCourseFragment);
+                if (isForDashboard) {
+                    selectedFragment = new CoursesFragment();
+                } else {
+                    selectedFragment = new AddCourseFragment();
+                }
+
+                fragmentTransaction.replace(R.id.fragment_container, selectedFragment);
                 fragmentTransaction.commit();
             }
         });

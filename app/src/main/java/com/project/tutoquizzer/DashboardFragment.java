@@ -13,11 +13,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
+import com.project.tutoquizzer.Personal.GSONHelper;
+import com.project.tutoquizzer.Personal.User;
 import com.project.tutoquizzer.dashboardFragments.CoursesFragment;
 import com.project.tutoquizzer.dashboardFragments.QuarterFragment;
 import com.project.tutoquizzer.dashboardFragments.SchoolYearFragment;
 import com.project.tutoquizzer.dashboardFragments.TopicsFragment;
+
+import org.w3c.dom.Text;
 
 public class DashboardFragment extends Fragment {
 
@@ -30,8 +36,14 @@ public class DashboardFragment extends Fragment {
 
         init();
         buttonListeners();
+        displayPersonalDetails(GSONHelper.loadData(getContext()));
 
         return this.rootView;
+    }
+
+    private void displayPersonalDetails(User user){
+        nameTV.setText(user.getFirstName() + " " + user.getLastName());
+        schoolTV.setText(user.getSchool());
     }
 
     private void buttonListeners(){
@@ -62,6 +74,13 @@ public class DashboardFragment extends Fragment {
                 reRoute( new TopicsFragment() );
             }
         });
+
+        updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reRoute( new EditPersonalInformationFragment());
+            }
+        });
     }
 
     private void reRoute(Fragment fragment){
@@ -76,11 +95,19 @@ public class DashboardFragment extends Fragment {
 
     private Button coursesBtn, schoolYearBtn, quarterBtn, topicsBtn;
 
+    private TextView nameTV, schoolTV;
+
+    private ImageButton updateBtn;
+
     private void init(){
         coursesBtn      = rootView.findViewById(R.id.coursesBtnD);
         schoolYearBtn   = rootView.findViewById(R.id.schoolYearBtnD);
         quarterBtn      = rootView.findViewById(R.id.quarterBtnD);
         topicsBtn       = rootView.findViewById(R.id.topicsBtnD);
+        updateBtn       = rootView.findViewById(R.id.updateBtnD);
+
+        nameTV          = rootView.findViewById(R.id.tvNameD);
+        schoolTV        = rootView.findViewById(R.id.tvSchoolD);
     }
 
 }

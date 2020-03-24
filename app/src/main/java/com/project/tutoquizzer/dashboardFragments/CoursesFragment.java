@@ -17,8 +17,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.project.tutoquizzer.EditCourseFragment;
+import com.project.tutoquizzer.Personal.GSONHelper;
+import com.project.tutoquizzer.Personal.User;
 import com.project.tutoquizzer.R;
 import com.project.tutoquizzer.RouteValues;
 import com.project.tutoquizzer.entities.Courses;
@@ -42,9 +45,16 @@ public class CoursesFragment extends Fragment {
 
         this.cvm = ViewModelProviders.of(this).get(CourseViewModel.class);
 
+        displayPersonalDetails(GSONHelper.loadData(getContext()));
+
         initRecyclerView();
 
         return this.rootView;
+    }
+
+    private void displayPersonalDetails(User user){
+        nameTV.setText(user.getFirstName() + " " + user.getLastName());
+        schoolTV.setText(user.getSchool());
     }
 
     private void adapterListener(CoursesAdapter adapter){
@@ -57,6 +67,7 @@ public class CoursesFragment extends Fragment {
                 bundle.putInt       (RouteValues.COURSE_ID_KEY, course.getCourseId());
                 bundle.putString    (RouteValues.COURSE_NAME_KEY, course.getName());
                 bundle.putString    (RouteValues.COURSE_CODE_KEY, course.getCode());
+                bundle.putBoolean   (RouteValues.IS_FOR_DASHBOARD, true);
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -97,10 +108,15 @@ public class CoursesFragment extends Fragment {
 
     private EditText courseCountTV;
 
+    private TextView nameTV, schoolTV;
+
     private void init(){
         courseCountTV = rootView.findViewById(R.id.coursesCountTV);
 
         recyclerView = rootView.findViewById(R.id.recycler_view_select_course_act);
+
+        nameTV = rootView.findViewById(R.id.tvNameD);
+        schoolTV = rootView.findViewById(R.id.tvSchoolD);
     }
 
 }

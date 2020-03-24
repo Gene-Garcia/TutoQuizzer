@@ -17,12 +17,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.project.tutoquizzer.dashboardFragments.TopicsFragment;
 import com.project.tutoquizzer.entities.Topics;
 import com.project.tutoquizzer.viewmodels.TopicViewModel;
 
 public class EditTopicFragment extends Fragment {
 
     private TopicViewModel tvm;
+
+    private boolean isForDashboard;
+
 
     private View rootView;
 
@@ -34,6 +38,8 @@ public class EditTopicFragment extends Fragment {
         this.tvm = ViewModelProviders.of(this).get(TopicViewModel.class);
 
         Bundle bundle = getArguments();
+
+        isForDashboard = bundle.getBoolean(RouteValues.IS_FOR_DASHBOARD);
 
         setSelectedCriteria(bundle);
 
@@ -138,14 +144,21 @@ public class EditTopicFragment extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        TutorialFragment tutorialFragment = new TutorialFragment();
-        tutorialFragment.setArguments(bundle);
+        Fragment selectedFragment;
 
-        fragmentTransaction.replace(R.id.fragment_container, tutorialFragment);
+        if (isForDashboard){
+            selectedFragment = new TopicsFragment();
+        } else {
+            selectedFragment = new TutorialFragment();
+        }
+
+        selectedFragment.setArguments(bundle);
+
+        fragmentTransaction.replace(R.id.fragment_container, selectedFragment);
         fragmentTransaction.commit();
     }
 
-    // Compenents
+    // Components
 
     private EditText topic, topicDesc;
 

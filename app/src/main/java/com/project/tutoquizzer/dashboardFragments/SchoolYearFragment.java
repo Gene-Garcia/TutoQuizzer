@@ -18,8 +18,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.project.tutoquizzer.EditSchoolYearFragment;
+import com.project.tutoquizzer.Personal.GSONHelper;
+import com.project.tutoquizzer.Personal.User;
 import com.project.tutoquizzer.R;
 import com.project.tutoquizzer.RouteValues;
 import com.project.tutoquizzer.entities.Courses;
@@ -28,6 +31,8 @@ import com.project.tutoquizzer.view.adapters.CoursesAdapter;
 import com.project.tutoquizzer.view.adapters.SchoolYearAdapter;
 import com.project.tutoquizzer.viewmodels.CourseViewModel;
 import com.project.tutoquizzer.viewmodels.SchoolYearViewModel;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -46,9 +51,16 @@ public class SchoolYearFragment extends Fragment {
 
         syvm = ViewModelProviders.of(this).get(SchoolYearViewModel.class);
 
+        displayPersonalDetails(GSONHelper.loadData(getContext()));
+
         initRecyclerView();
 
         return this.rootView;
+    }
+
+    private void displayPersonalDetails(User user){
+        nameTV.setText(user.getFirstName() + " " + user.getLastName());
+        schoolTV.setText(user.getSchool());
     }
 
     private void initRecyclerView(){
@@ -100,10 +112,15 @@ public class SchoolYearFragment extends Fragment {
 
     private EditText schoolYearCountET;
 
+    private TextView nameTV, schoolTV;
+
     private void init(){
         schoolYearCountET = rootView.findViewById(R.id.schoolYearCountTV);
 
         recyclerView = rootView.findViewById(R.id.recycler_view_fragment_school_year);
+
+        nameTV = rootView.findViewById(R.id.tvNameD);
+        schoolTV = rootView.findViewById(R.id.tvSchoolD);
     }
 
 }
