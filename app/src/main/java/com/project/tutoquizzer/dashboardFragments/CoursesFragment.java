@@ -102,6 +102,12 @@ public class CoursesFragment extends Fragment {
 
     }
 
+    private void swipeListener(CoursesAdapter adapter){
+
+
+
+    }
+
     // Components
 
     private RecyclerView recyclerView;

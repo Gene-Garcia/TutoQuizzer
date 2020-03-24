@@ -23,13 +23,22 @@ public interface TopicDao {
     @Delete
     void delete(Topics topic);
 
-    @Query("DELETE FROM Topics")
+    @Query( "DELETE FROM Topics" )
     void deleteAll();
 
-    @Query(" SELECT * FROM Topics WHERE CourseId = :courseId and YearId = :yearId and QuarterId = :quarterId ")
+    @Query( "SELECT * FROM Topics WHERE CourseId = :courseId and YearId = :yearId and QuarterId = :quarterId" )
     LiveData<List<Topics>> getTopics(int courseId, int yearId, int quarterId);
 
     @Query( "SELECT * FROM Topics" )
     LiveData< List<Topics> > getAllTopics();
+
+    @Query( "SELECT COUNT() FROM Topics WHERE CourseId = :courseId " )
+    LiveData<Integer> getReferenceTopicCountByCourse(int courseId);
+
+    @Query( "SELECT COUNT() FROM Topics WHERE YearId = :yearId " )
+    LiveData<Integer> getReferenceTopicCountBySchoolYear(int yearId);
+
+    @Query( "SELECT COUNT() FROM Topics WHERE QuarterId = :quarterId " )
+    LiveData<Integer> getReferenceTopicCountByQuarter(int quarterId);
 
 }
