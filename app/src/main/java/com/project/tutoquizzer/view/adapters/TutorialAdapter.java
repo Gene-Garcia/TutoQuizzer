@@ -45,6 +45,10 @@ public class TutorialAdapter extends RecyclerView.Adapter<TutorialAdapter.Tutori
         notifyDataSetChanged();
     }
 
+    public Topics getTopicAtPosition(int pos) {
+        return topics.get(pos);
+    }
+
     public interface OnItemClickListener{
         void onItemClick(Topics courses);
     }
