@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.tutoquizzer.R;
+import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.entities.Quarters;
 
 import java.util.ArrayList;
@@ -41,6 +42,10 @@ public class QuarterAdapter extends RecyclerView.Adapter<QuarterAdapter.QuarterH
     public void setQuarters(List<Quarters> quarters){
         this.quarters = quarters;
         notifyDataSetChanged();
+    }
+
+    public Quarters getQuarterAtPos(int pos) {
+        return this.quarters.get(pos);
     }
 
     public interface OnItemClickListener{

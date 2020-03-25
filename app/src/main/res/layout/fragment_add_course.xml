@@ -71,7 +71,7 @@
         </RelativeLayout>
 
         <Button
-            android:id="@+id/addBtnAddCourseActivity"
+            android:id="@+id/addCourseBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             tools:listitem="@layout/_courses_list"
 
-            android:layout_below="@id/addBtnAddCourseActivity"
+            android:layout_below="@id/addCourseBtn"
             android:layout_alignParentBottom="true"
 
             android:padding="20dp"

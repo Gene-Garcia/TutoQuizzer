@@ -59,6 +59,7 @@ public class AddCourseFragment extends Fragment {
         return this.rootView;
     }
 
+
     private void adapterListener(CoursesAdapter adapter){
         adapter.setOnItemClickListener(new CoursesAdapter.OnItemClickListener() {
             @Override
@@ -98,7 +99,7 @@ public class AddCourseFragment extends Fragment {
         courseCodeET    = rootView.findViewById(R.id.courseCodeAddCourseEditText);
         courseNameET    = rootView.findViewById(R.id.courseNameAddCourseEditText);
 
-        addBtn          = rootView.findViewById(R.id.addBtnAddCourseActivity);
+        addBtn = rootView.findViewById(R.id.addCourseBtn);
 
     }
 
@@ -116,9 +117,9 @@ public class AddCourseFragment extends Fragment {
                     Courses courses = new Courses(courseName, courseCode);
                     cvm.insert(courses);
                     Toast.makeText(getContext(), "Course Added.", Toast.LENGTH_SHORT).show();
+                    clearTextViews();
                 }
 
-                clearTextViews();
 
             }
         });

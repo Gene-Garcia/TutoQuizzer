@@ -1,15 +1,18 @@
 package com.project.tutoquizzer.dashboardFragments;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.project.tutoquizzer.EditQuarterFragment;
 import com.project.tutoquizzer.Personal.GSONHelper;
@@ -28,12 +32,14 @@ import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.view.adapters.CoursesAdapter;
 import com.project.tutoquizzer.view.adapters.QuarterAdapter;
 import com.project.tutoquizzer.viewmodels.QuarterViewModel;
+import com.project.tutoquizzer.viewmodels.TopicViewModel;
 
 import java.util.List;
 
 public class QuarterFragment extends Fragment {
 
     private QuarterViewModel qvm;
+    private TopicViewModel tvm;
 
     private View rootView;
 
@@ -43,6 +49,7 @@ public class QuarterFragment extends Fragment {
         this.rootView = inflater.inflate(R.layout.fragment_quarter, container, false);
 
         qvm = ViewModelProviders.of(this).get(QuarterViewModel.class);
+        tvm = ViewModelProviders.of(this).get(TopicViewModel.class);
 
         init();
 
@@ -87,16 +94,62 @@ public class QuarterFragment extends Fragment {
         final QuarterAdapter quarterAdapter = new QuarterAdapter();
         recyclerView.setAdapter(quarterAdapter);
 
+        addDataToRecyclerView(quarterAdapter);
+
+        adapterListener(quarterAdapter);
+        swiperListener(quarterAdapter);
+    }
+
+    private void addDataToRecyclerView(final QuarterAdapter adapter){
         this.qvm.getAllQuarters().observe(getViewLifecycleOwner(), new Observer<List<Quarters>>() {
             @Override
             public void onChanged(List<Quarters> quarters) {
                 // Update RecyclerView
-                quarterAdapter.setQuarters(quarters);
+                adapter.setQuarters(quarters);
                 quarterCountTV.setText( Integer.toString(quarters.size()) );
             }
         });
+    }
 
-        adapterListener(quarterAdapter);
+    private void swiperListener(final QuarterAdapter adapter){
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
+
+                int quarterId = adapter.getQuarterAtPos( viewHolder.getAdapterPosition() ).getQuarterId();
+                tvm.getReferenceTopicCountByQuarter(quarterId).observe(getViewLifecycleOwner(), new Observer<Integer>() {
+                    @Override
+                    public void onChanged(Integer integer) {
+                        if (Integer.parseInt( integer.toString() ) >= 1){
+                            Toast.makeText(getContext(), "Error. This quarter has topic assigned to it. Delete topic(s) and try again.", Toast.LENGTH_SHORT).show();
+                            addDataToRecyclerView(adapter);
+                        }else{
+                            new AlertDialog.Builder(getContext()).setTitle("Confirm Delete").setMessage("Are you sure you want to delete this quarter?")
+                                    .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            qvm.delete( adapter.getQuarterAtPos( viewHolder.getPosition() ) );
+                                            Toast.makeText(getContext(), "Quarter Deleted!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            addDataToRecyclerView(adapter);
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert).show();
+                        }
+                    }
+                });
+            }
+
+        }).attachToRecyclerView(recyclerView);
+
     }
 
     // Components

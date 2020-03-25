@@ -64,7 +64,7 @@ public class QuarterRepo {
 
     // Delete
     public void delete(Quarters quarter){
-        new UpdateAsync(this.quarterDao).execute(quarter);
+        new DeleteAsync(this.quarterDao).execute(quarter);
     }
 
     private static class DeleteAsync extends AsyncTask<Quarters, Void, Void> {
