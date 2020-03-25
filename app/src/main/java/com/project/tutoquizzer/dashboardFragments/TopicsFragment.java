@@ -105,6 +105,7 @@ public class TopicsFragment extends Fragment {
                         }
                     })
                     .setIcon(android.R.drawable.ic_dialog_alert).show();
+
             }
         }).attachToRecyclerView(recyclerView);
 

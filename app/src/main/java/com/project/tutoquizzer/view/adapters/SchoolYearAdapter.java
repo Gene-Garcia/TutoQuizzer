@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.tutoquizzer.R;
+import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.entities.SchoolYear;
 
 import java.util.ArrayList;
@@ -50,6 +51,10 @@ public class SchoolYearAdapter extends  RecyclerView.Adapter<SchoolYearAdapter.S
 
     public void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;
+    }
+
+    public SchoolYear getSchoolYearAtPos(int pos){
+        return schoolYears.get(pos);
     }
 
     class SchoolYearHolder extends RecyclerView.ViewHolder {

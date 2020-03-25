@@ -49,6 +49,10 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseHo
         void onItemClick(Courses courses);
     }
 
+    public Courses getCourseAtPos(int pos){
+        return courses.get(pos);
+    }
+
     public void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;
     }
