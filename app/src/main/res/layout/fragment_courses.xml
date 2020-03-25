@@ -15,6 +15,17 @@
             android:layout_height="100dp"
             android:background="@drawable/gradient1">
 
+            <ImageButton
+                android:id="@+id/addCourseD"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:scrollbarSize="10dp"
+                android:src="@drawable/ic_add_circle_outline_black_24dp"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="15dp"
+                android:scaleType="fitCenter"/>
+
             <TextView
                 android:id="@+id/tvNameD"
                 android:layout_width="wrap_content"
@@ -54,6 +65,7 @@
             android:layout_marginRight="10dp">
 
             <TextView
+                android:id="@+id/tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Courses"

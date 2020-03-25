@@ -21,9 +21,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.project.tutoquizzer.AddTopicFragment;
 import com.project.tutoquizzer.EditTopicFragment;
 import com.project.tutoquizzer.Personal.GSONHelper;
 import com.project.tutoquizzer.Personal.User;
@@ -53,6 +55,7 @@ public class TopicsFragment extends Fragment {
         displayPersonalDetails(GSONHelper.loadData(getContext()));
 
         initRecyclerView();
+        buttonListener();
 
         return this.rootView;
     }
@@ -140,18 +143,34 @@ public class TopicsFragment extends Fragment {
         });
     }
 
+    private void buttonListener(){
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, new AddTopicFragment());
+                fragmentTransaction.commit();
+            }
+        });
+    }
+
     // Components
 
     private TextView topicCount, nameTV, schoolTV;
 
     private RecyclerView recyclerView;
 
+    private ImageButton addBtn;
+
     private void init(){
-        topicCount = rootView.findViewById(R.id.topicCountTV);
+        topicCount      = rootView.findViewById(R.id.topicCountTV);
 
-        recyclerView = rootView.findViewById(R.id.recycler_view_topics_fragment);
+        recyclerView    = rootView.findViewById(R.id.recycler_view_topics_fragment);
 
-        nameTV = rootView.findViewById(R.id.tvNameD);
-        schoolTV = rootView.findViewById(R.id.tvSchoolD);
+        nameTV          = rootView.findViewById(R.id.tvNameD);
+        schoolTV        = rootView.findViewById(R.id.tvSchoolD);
+
+        addBtn          = rootView.findViewById(R.id.addTopicD);
     }
 }

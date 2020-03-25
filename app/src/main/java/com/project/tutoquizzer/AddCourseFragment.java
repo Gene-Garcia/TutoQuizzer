@@ -111,7 +111,7 @@ public class AddCourseFragment extends Fragment {
                 String courseName = courseNameET.getText().toString().trim();
                 String courseCode = courseCodeET.getText().toString().trim();
 
-                if(courseName == "" || courseCode == ""){
+                if(courseName.isEmpty() || courseCode.isEmpty()){
                     Toast.makeText(getContext(), "Fill out all the fields.", Toast.LENGTH_SHORT).show();
                 }else{
                     Courses courses = new Courses(courseName, courseCode);

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.project.tutoquizzer.dashboardFragments.CoursesFragment;
 import com.project.tutoquizzer.entities.Courses;
@@ -60,23 +61,29 @@ public class EditCourseFragment extends Fragment {
         saveEditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                course.setName( courseName.getText().toString().trim() );
-                course.setCode( courseCode.getText().toString().trim() );
-                cvm.update(course);
 
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                Fragment selectedFragment;
-
-                if (isForDashboard) {
-                    selectedFragment = new CoursesFragment();
+                if (courseName.getText().toString().trim().isEmpty() || courseCode.getText().toString().trim().isEmpty()){
+                    Toast.makeText(getContext(), "Fields cannot be empty.", Toast.LENGTH_SHORT).show();
                 } else {
-                    selectedFragment = new AddCourseFragment();
+                    course.setName( courseName.getText().toString().trim() );
+                    course.setCode( courseCode.getText().toString().trim() );
+                    cvm.update(course);
+
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                    Fragment selectedFragment;
+
+                    if (isForDashboard) {
+                        selectedFragment = new CoursesFragment();
+                    } else {
+                        selectedFragment = new AddCourseFragment();
+                    }
+
+                    fragmentTransaction.replace(R.id.fragment_container, selectedFragment);
+                    fragmentTransaction.commit();
                 }
 
-                fragmentTransaction.replace(R.id.fragment_container, selectedFragment);
-                fragmentTransaction.commit();
             }
         });
     }

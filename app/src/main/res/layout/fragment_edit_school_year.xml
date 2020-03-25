@@ -12,58 +12,56 @@
         android:background="@drawable/gradient1" />
 
     <RelativeLayout
-        android:layout_below="@id/relLayoutHeader"
         android:id="@+id/relLayoutInsideESY"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:layout_below="@id/relLayoutHeader"
+        android:layout_marginTop="0dp"
 
-        android:elevation="10dp"
         android:background="@drawable/shadow"
+        android:elevation="10dp"
 
-        >
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/courseCodeTVEditCourse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Year"
-            android:paddingTop="20dp"
             android:paddingLeft="20dp"
+            android:paddingTop="20dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/text_header"/>
+            android:text="Year"
+            android:textColor="@color/text_header" />
 
         <EditText
             android:id="@+id/yearEditSchoolYearEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Year"
             android:layout_below="@id/courseCodeTVEditCourse"
+            android:hint="Year"
             android:padding="20dp"
-            android:textColor="@color/text_paragraph"
-            />
+            android:textColor="@color/text_paragraph" />
 
         <TextView
             android:id="@+id/courseNameTVEditCourse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Term"
-            android:paddingTop="20dp"
-            android:paddingLeft="20dp"
-            android:paddingBottom="5dp"
             android:layout_below="@id/yearEditSchoolYearEditText"
-            android:textColor="@color/text_header"/>
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="5dp"
+            android:text="Term"
+            android:textColor="@color/text_header" />
 
         <EditText
             android:id="@+id/termEditSchoolYearEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/courseNameTVEditCourse"
             android:hint="Term"
             android:inputType="number"
-            android:layout_below="@+id/courseNameTVEditCourse"
-            android:textColor="@color/text_paragraph"
             android:padding="20dp"
-            />
+            android:textColor="@color/text_paragraph" />
 
     </RelativeLayout>
 

@@ -20,9 +20,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.project.tutoquizzer.AddQuarterFragment;
 import com.project.tutoquizzer.EditQuarterFragment;
 import com.project.tutoquizzer.Personal.GSONHelper;
 import com.project.tutoquizzer.Personal.User;
@@ -56,7 +58,7 @@ public class QuarterFragment extends Fragment {
         displayPersonalDetails(GSONHelper.loadData(getContext()));
 
         initRecyclerView();
-
+        buttonListeners();
         return this.rootView;
     }
 
@@ -152,6 +154,19 @@ public class QuarterFragment extends Fragment {
 
     }
 
+    private void buttonListeners(){
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                fragmentTransaction.replace(R.id.fragment_container, new AddQuarterFragment());
+                fragmentTransaction.commit();
+            }
+        });
+    }
+
     // Components
 
     private EditText quarterCountTV;
@@ -160,13 +175,17 @@ public class QuarterFragment extends Fragment {
 
     private TextView nameTV, schoolTV;
 
+    private ImageButton addBtn;
+
     private void init() {
-        quarterCountTV = rootView.findViewById(R.id.quarterCountTV);
+        quarterCountTV      = rootView.findViewById(R.id.quarterCountTV);
 
-        recyclerView = rootView.findViewById(R.id.recycler_view_quarter_fragment);
+        recyclerView        = rootView.findViewById(R.id.recycler_view_quarter_fragment);
 
-        nameTV = rootView.findViewById(R.id.tvNameD);
-        schoolTV = rootView.findViewById(R.id.tvSchoolD);
+        nameTV              = rootView.findViewById(R.id.tvNameD);
+        schoolTV            = rootView.findViewById(R.id.tvSchoolD);
+
+        addBtn              = rootView.findViewById(R.id.addQuarterBtnD);
     }
 
 }

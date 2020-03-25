@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddCourseFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relLayoutHeader"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/gradient1" />
+
+        <RelativeLayout
+            android:id="@+id/relLayoutInsideESY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relLayoutHeader"
+            android:layout_marginTop="0dp"
+
+            android:background="@drawable/shadow"
+            android:elevation="10dp"
+
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/courseCodeTVEditCourse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="5dp"
+                android:text="Year"
+                android:textColor="@color/text_header" />
+
+            <EditText
+                android:id="@+id/yearAddSchoolYearEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/courseCodeTVEditCourse"
+                android:hint="Year"
+                android:padding="20dp"
+                android:inputType="number"
+                android:textColor="@color/text_paragraph" />
+
+            <TextView
+                android:id="@+id/courseNameTVEditCourse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/yearAddSchoolYearEditText"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="5dp"
+                android:text="Term"
+                android:textColor="@color/text_header" />
+
+            <EditText
+                android:id="@+id/termAddSchoolYearEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/courseNameTVEditCourse"
+                android:hint="Term"
+                android:inputType="number"
+                android:padding="20dp"
+                android:textColor="@color/text_paragraph" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/addSchoolYearBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/relLayoutInsideESY"
+
+            android:layout_alignParentRight="true"
+            android:layout_margin="20dp"
+
+            android:text="Add"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_fragment_school_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/_school_year_list"
+
+            android:layout_below="@id/addSchoolYearBtn"
+            android:layout_alignParentBottom="true"
+
+            android:padding="20dp"
+
+            android:elevation="10dp"
+            android:background="@drawable/shadow"
+            />
+
+
+    </RelativeLayout>
+
+
+</androidx.core.widget.NestedScrollView>

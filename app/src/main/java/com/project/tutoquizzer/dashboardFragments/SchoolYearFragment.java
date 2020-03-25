@@ -21,9 +21,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.project.tutoquizzer.AddSchoolYearFragment;
 import com.project.tutoquizzer.EditSchoolYearFragment;
 import com.project.tutoquizzer.Personal.GSONHelper;
 import com.project.tutoquizzer.Personal.User;
@@ -61,6 +63,7 @@ public class SchoolYearFragment extends Fragment {
         displayPersonalDetails(GSONHelper.loadData(getContext()));
 
         initRecyclerView();
+        buttonListeners();
 
         return this.rootView;
     }
@@ -158,6 +161,19 @@ public class SchoolYearFragment extends Fragment {
         }).attachToRecyclerView(recyclerView);
     }
 
+    private void buttonListeners(){
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                fragmentTransaction.replace(R.id.fragment_container, new AddSchoolYearFragment());
+                fragmentTransaction.commit();
+            }
+        });
+    }
+
     // Components
 
     private RecyclerView recyclerView;
@@ -166,13 +182,17 @@ public class SchoolYearFragment extends Fragment {
 
     private TextView nameTV, schoolTV;
 
+    private ImageButton addBtn;
+
     private void init(){
-        schoolYearCountET = rootView.findViewById(R.id.schoolYearCountTV);
+        schoolYearCountET   = rootView.findViewById(R.id.schoolYearCountTV);
 
-        recyclerView = rootView.findViewById(R.id.recycler_view_fragment_school_year);
+        recyclerView        = rootView.findViewById(R.id.recycler_view_fragment_school_year);
 
-        nameTV = rootView.findViewById(R.id.tvNameD);
-        schoolTV = rootView.findViewById(R.id.tvSchoolD);
+        nameTV              = rootView.findViewById(R.id.tvNameD);
+        schoolTV            = rootView.findViewById(R.id.tvSchoolD);
+
+        addBtn              = rootView.findViewById(R.id.addSchoolYearD);
     }
 
 }

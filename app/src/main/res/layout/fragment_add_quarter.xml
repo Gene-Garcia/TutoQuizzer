@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddCourseFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relLayoutHeader"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/gradient1" />
+
+        <RelativeLayout
+            android:layout_below="@id/relLayoutHeader"
+            android:id="@+id/relLayoutInsideEQ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+
+            android:elevation="10dp"
+            android:background="@drawable/shadow"
+
+            >
+
+            <TextView
+                android:id="@+id/quarterTVEditQuarter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Quarter Name"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/text_header"/>
+
+            <EditText
+                android:id="@+id/quarterAddQuarterEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:layout_below="@id/quarterTVEditQuarter"
+                android:padding="20dp"
+                android:textColor="@color/text_paragraph"
+                />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/addQuarterD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/relLayoutInsideEQ"
+
+            android:layout_alignParentRight="true"
+            android:layout_margin="20dp"
+
+            android:text="Add"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_quarter_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/_quarters_list"
+
+            android:layout_below="@id/addQuarterD"
+            android:layout_alignParentBottom="true"
+
+            android:padding="20dp"
+
+            android:elevation="10dp"
+            android:background="@drawable/shadow"
+            />
+
+
+    </RelativeLayout>
+
+
+</androidx.core.widget.NestedScrollView>

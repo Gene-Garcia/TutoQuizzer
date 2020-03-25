@@ -94,14 +94,20 @@ public class EditTopicFragment extends Fragment {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                topics.setTopic( topic.getText().toString().trim() );
-                topics.setMeaning( topicDesc.getText().toString().trim() );
 
-                tvm.update(topics);
+                if(topic.getText().toString().trim().isEmpty() || topicDesc.getText().toString().trim().isEmpty() ){
+                    Toast.makeText(getContext(), "Fields cannot be empty.", Toast.LENGTH_SHORT).show();
+                } else {
+                    topics.setTopic( topic.getText().toString().trim() );
+                    topics.setMeaning( topicDesc.getText().toString().trim() );
 
-                Toast.makeText(getContext(), "Topic Successfully Edited.", Toast.LENGTH_SHORT).show();
+                    tvm.update(topics);
 
-                returnToSelect();
+                    Toast.makeText(getContext(), "Topic Successfully Edited.", Toast.LENGTH_SHORT).show();
+
+                    returnToSelect();
+                }
+
             }
         });
 
