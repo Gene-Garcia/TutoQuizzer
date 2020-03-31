@@ -18,6 +18,9 @@ public interface ScoreboardDao {
     @Insert
     void insert(Scoreboard scoreboard);
 
-    @Query( "SELECT * FROM Scoreboard " )
-    LiveData< List<Scoreboard> > getAllScoreboard();
+    @Query( "SELECT AVG(items) AS Items, AVG(score) AS Score, DateAdded FROM scoreboard GROUP BY DateAdded, CourseCode HAVING CourseCode = :courseCode ORDER BY DateAdded ASC" )
+    LiveData<List<Integer>> getAvgByCourse(String courseCode);
+
+    @Query( "SELECT DISTINCT CourseCode FROM Scoreboard" )
+    LiveData<List<String>> getRecordedCourses();
 }

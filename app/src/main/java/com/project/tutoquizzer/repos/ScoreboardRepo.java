@@ -43,8 +43,12 @@ public class ScoreboardRepo {
 
     // Read
 
-    public LiveData<List<Scoreboard>> getAllScoreboards(){
-        return this.scoreboardDao.getAllScoreboard();
+    public LiveData<List<Integer>> getAvgByCourse(String courseCode){
+        return this.scoreboardDao.getAvgByCourse(courseCode);
+    }
+
+    public LiveData<List<String>> getRecordedCourses(){
+        return this.scoreboardDao.getRecordedCourses();
     }
 
 }

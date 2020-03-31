@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,11 +27,16 @@ import com.anychart.enums.TooltipPositionMode;
 import com.anychart.graphics.vector.Stroke;
 import com.project.tutoquizzer.R;
 import com.project.tutoquizzer.entities.Courses;
+import com.project.tutoquizzer.entities.Scoreboard;
+import com.project.tutoquizzer.viewmodels.ScoreboardViewModel;
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ScoreAccumulationFragment extends Fragment {
+
+    private ScoreboardViewModel svm;
 
     private View rootView;
 
@@ -38,11 +45,15 @@ public class ScoreAccumulationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.rootView = inflater.inflate(R.layout.fragment_score_accumulation, container, false);
 
+        svm = ViewModelProviders.of(this).get(ScoreboardViewModel.class);
+
         init();
         populateChart();
 
         return rootView;
     }
+
+    // IMPORTANT, GAWIN MO NALANG NA KADA COURSE ISANG CHART, GAWA KA NALANG NG DROPDOWN PARA DYNAMIC
 
     private void populateChart(){
         Cartesian cartesian = AnyChart.line();
@@ -130,38 +141,9 @@ public class ScoreAccumulationFragment extends Fragment {
 
     }
 
+    private void prepareValues(){
 
 
-    private void tryPopulate(){
-        ArrayList<Course> courses = new ArrayList<>();
-        courses.add( new Course("CS100")  );
-
-        // loop
-
-    }
-
-    private class Course {
-
-        public Course (String courseCode){
-            this.courseCode = courseCode;
-        }
-
-        public String courseCode;
-        public ArrayList<Content> contents;
-
-    }
-
-    private class Content{
-
-        public Content(String date, int score, int totalItems) {
-            this.date = date;
-            this.score = score;
-            this.totalItems = totalItems;
-        }
-
-        public String date;
-        public int score;
-        public int totalItems;
     }
 
     private AnyChartView anyChartView;
