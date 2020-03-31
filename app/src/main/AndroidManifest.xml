@@ -13,33 +13,18 @@
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".EditTopicFragment"
-            android:parentActivityName=".TutorialFragment" />
-        <activity
-            android:name=".EditCourseFragment"
-            android:parentActivityName=".AddCourseFragment" />
-
+        <activity android:name=".EditTopicFragment"/>
+        <activity android:name=".EditCourseFragment"/>
         <activity android:name=".QuizFragment" />
-
         <activity android:name=".TutorialFragment" />
-
-        <activity
-            android:name=".SelectCourseFragment"
-            android:parentActivityName=".MainFragment" />
-
+        <activity android:name=".SelectCourseFragment"/>
         <activity android:name=".AddCourseFragment" />
-
         <activity android:name=".AddTopicFragment" />
-
-        <activity android:name=".MainFragment">
-
-        </activity>
+        <activity android:name=".MainFragment"/>
 
         <meta-data
             android:name="preloaded_fonts"

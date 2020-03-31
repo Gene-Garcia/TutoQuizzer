@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".charts.ChartFragment">
+
+        <RelativeLayout
+            android:id="@+id/relLayoutAccountInfo"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/gradient1" />
+
+        <TextView
+            android:id="@+id/chartsTVC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Charts"
+            android:layout_below="@id/relLayoutAccountInfo"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:layout_margin="15dp"
+            android:textColor="@color/colorPrimaryDark"/>
+
+        <HorizontalScrollView
+            android:id="@+id/horiScrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chartsTVC">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/relLayoutCharts"
+                android:layout_margin="10dp">
+
+                <Button
+                android:id="@+id/scoreAccumulationChartBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Score Accumulation"
+
+                android:padding="10dp"
+                android:background="@drawable/gradient3"
+
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                />
+
+                <Button
+                android:id="@+id/dailyScoreChartBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daily Scores"
+
+                android:padding="10dp"
+                android:background="@drawable/gradient3"
+                android:layout_toRightOf="@id/scoreAccumulationChartBtn"
+
+                android:textColor="@android:color/white"
+                    android:textSize="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                />
+
+                <Button
+                    android:id="@+id/topicCourseChartBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Topic per Course"
+
+                    android:padding="10dp"
+                    android:background="@drawable/gradient3"
+                    android:layout_toRightOf="@id/dailyScoreChartBtn"
+
+                    android:textColor="@android:color/white"
+                    android:textSize="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    />
+
+            </RelativeLayout>
+
+        </HorizontalScrollView>
+
+        <FrameLayout
+            android:id="@+id/fragment_chart_container"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/horiScrollView"
+            android:layout_margin="15dp"
+            android:background="@drawable/shadow"
+            android:elevation="15dp">
+        </FrameLayout>
+
+</RelativeLayout>

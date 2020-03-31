@@ -14,9 +14,10 @@ import com.project.tutoquizzer.dao.*;
 import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.entities.SchoolYear;
+import com.project.tutoquizzer.entities.Scoreboard;
 import com.project.tutoquizzer.entities.Topics;
 
-@Database(entities = {Courses.class, Quarters.class, SchoolYear.class, Topics.class}, version = 1, exportSchema = true) // if more than 1, {.class, .class, .class}
+@Database(entities = {Courses.class, Quarters.class, SchoolYear.class, Topics.class, Scoreboard.class}, version = 1, exportSchema = true) // if more than 1, {.class, .class, .class}
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase instance;
@@ -25,6 +26,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract QuarterDao quarterDao();
     public abstract SchoolYearDao schoolYearDao();
     public abstract TopicDao topicDao();
+    public abstract ScoreboardDao scoreboardDao();
 
     public static synchronized AppDatabase getInstance(Context ctx){
         if (instance == null){

@@ -18,12 +18,11 @@ import android.widget.TextView;
 
 import com.project.tutoquizzer.Personal.GSONHelper;
 import com.project.tutoquizzer.Personal.User;
+import com.project.tutoquizzer.charts.ChartFragment;
 import com.project.tutoquizzer.dashboardFragments.CoursesFragment;
 import com.project.tutoquizzer.dashboardFragments.QuarterFragment;
 import com.project.tutoquizzer.dashboardFragments.SchoolYearFragment;
 import com.project.tutoquizzer.dashboardFragments.TopicsFragment;
-
-import org.w3c.dom.Text;
 
 public class DashboardFragment extends Fragment {
 
@@ -81,6 +80,13 @@ public class DashboardFragment extends Fragment {
                 reRoute( new EditPersonalInformationFragment());
             }
         });
+
+        chartsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reRoute( new ChartFragment());
+            }
+        });
     }
 
     private void reRoute(Fragment fragment){
@@ -93,7 +99,7 @@ public class DashboardFragment extends Fragment {
 
     // Components
 
-    private Button coursesBtn, schoolYearBtn, quarterBtn, topicsBtn;
+    private Button coursesBtn, schoolYearBtn, quarterBtn, topicsBtn, chartsBtn;
 
     private TextView nameTV, schoolTV;
 
@@ -105,6 +111,7 @@ public class DashboardFragment extends Fragment {
         quarterBtn      = rootView.findViewById(R.id.quarterBtnD);
         topicsBtn       = rootView.findViewById(R.id.topicsBtnD);
         updateBtn       = rootView.findViewById(R.id.updateBtnD);
+        chartsBtn       = rootView.findViewById(R.id.chartsBtnD);
 
         nameTV          = rootView.findViewById(R.id.tvNameD);
         schoolTV        = rootView.findViewById(R.id.tvSchoolD);

@@ -34,7 +34,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    // FROM WEB
+    //Any charts
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+
     // Lifecycle components
     def lifecycle_version = "2.2.0"
     def arch_version = "2.1.0"
@@ -52,5 +54,5 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    // END FROM WEB
+
 }

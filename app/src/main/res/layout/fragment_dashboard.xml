@@ -179,6 +179,25 @@
                     android:layout_marginLeft="20dp"
                     />
 
+                <Button
+                    android:id="@+id/chartsBtnD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Charts"
+
+                    android:paddingTop="40dp"
+                    android:paddingRight="120dp"
+                    android:paddingBottom="40dp"
+                    android:paddingLeft="30dp"
+                    android:background="@drawable/gradient3"
+                    android:layout_toRightOf="@+id/topicsBtnD"
+
+                    android:textColor="@android:color/white"
+                    android:textSize="25dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="10dp"
+                    />
+
             </RelativeLayout>
 
         </HorizontalScrollView>
