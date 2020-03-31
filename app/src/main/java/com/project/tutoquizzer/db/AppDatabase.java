@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.project.tutoquizzer.AppValues;
@@ -16,8 +17,10 @@ import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.entities.SchoolYear;
 import com.project.tutoquizzer.entities.Scoreboard;
 import com.project.tutoquizzer.entities.Topics;
+import com.project.tutoquizzer.typeconverters.Converter;
 
 @Database(entities = {Courses.class, Quarters.class, SchoolYear.class, Topics.class, Scoreboard.class}, version = 1, exportSchema = true) // if more than 1, {.class, .class, .class}
+@TypeConverters({Converter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase instance;
