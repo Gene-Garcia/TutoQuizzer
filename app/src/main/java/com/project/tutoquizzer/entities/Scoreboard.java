@@ -3,36 +3,35 @@ package com.project.tutoquizzer.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
 @Entity (tableName = "Scoreboard")
 public class Scoreboard {
 
-    public Scoreboard(int score, int items, String courseCode, String quarterName, String schoolYearName, Date dateAdded) {
-        Score = score;
-        Items = items;
-        CourseCode = courseCode;
-        QuarterName = quarterName;
-        SchoolYearName = schoolYearName;
-        DateAdded = dateAdded;
+    public Scoreboard(int Score, int Items, String CourseCode, String QuarterName, String SchoolYearName, String DateAdded) {
+        this.Score = Score;
+        this.Items = Items;
+        this.CourseCode = CourseCode;
+        this.QuarterName = QuarterName;
+        this.SchoolYearName = SchoolYearName;
+        this.DateAdded = DateAdded;
     }
 
     @PrimaryKey (autoGenerate = true)
-    private int ScoreboardId;
+    private int scoreboardId;
 
     private int Score;
     private int Items;
     private String CourseCode;
     private String QuarterName;
     private String SchoolYearName;
-    private Date DateAdded;
+
+    private String DateAdded;
 
     public int getScoreboardId() {
-        return ScoreboardId;
+        return scoreboardId;
     }
 
     public void setScoreboardId(int scoreboardId) {
-        ScoreboardId = scoreboardId;
+        this.scoreboardId = scoreboardId;
     }
 
     public int getScore() {
@@ -40,7 +39,7 @@ public class Scoreboard {
     }
 
     public void setScore(int score) {
-        Score = score;
+        this.Score = score;
     }
 
     public int getItems() {
@@ -48,7 +47,7 @@ public class Scoreboard {
     }
 
     public void setItems(int items) {
-        Items = items;
+        this.Items = items;
     }
 
     public String getCourseCode() {
@@ -56,7 +55,7 @@ public class Scoreboard {
     }
 
     public void setCourseCode(String courseCode) {
-        CourseCode = courseCode;
+        this.CourseCode = courseCode;
     }
 
     public String getQuarterName() {
@@ -64,7 +63,7 @@ public class Scoreboard {
     }
 
     public void setQuarterName(String quarterName) {
-        QuarterName = quarterName;
+        this.QuarterName = quarterName;
     }
 
     public String getSchoolYearName() {
@@ -72,14 +71,14 @@ public class Scoreboard {
     }
 
     public void setSchoolYearName(String schoolYearName) {
-        SchoolYearName = schoolYearName;
+        this.SchoolYearName = schoolYearName;
     }
 
-    public Date getDateAdded() {
+    public String getDateAdded() {
         return DateAdded;
     }
 
-    public void setDateAdded(Date dateAdded) {
-        DateAdded = dateAdded;
+    public void setDateAdded(String dateAdded) {
+        this.DateAdded = dateAdded;
     }
 }

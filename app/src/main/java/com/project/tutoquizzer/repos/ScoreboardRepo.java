@@ -10,6 +10,7 @@ import com.project.tutoquizzer.dao.ScoreboardDao;
 import com.project.tutoquizzer.db.AppDatabase;
 import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.entities.Scoreboard;
+import com.project.tutoquizzer.viewmodels.ScoreboardQueryStorage;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class ScoreboardRepo {
 
     // Read
 
-    public LiveData<List<Integer>> getAvgByCourse(String courseCode){
+    public LiveData<List<ScoreboardQueryStorage>> getAvgByCourse(String courseCode){
         return this.scoreboardDao.getAvgByCourse(courseCode);
     }
 

@@ -7,20 +7,16 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.project.tutoquizzer.AppValues;
 import com.project.tutoquizzer.dao.*;
 import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.entities.SchoolYear;
 import com.project.tutoquizzer.entities.Scoreboard;
 import com.project.tutoquizzer.entities.Topics;
-import com.project.tutoquizzer.typeconverters.Converter;
 
-@Database(entities = {Courses.class, Quarters.class, SchoolYear.class, Topics.class, Scoreboard.class}, version = 1, exportSchema = true) // if more than 1, {.class, .class, .class}
-@TypeConverters({Converter.class})
+@Database(entities = {Courses.class, Quarters.class, SchoolYear.class, Topics.class, Scoreboard.class}, version = 1, exportSchema = false) // if more than 1, {.class, .class, .class}
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase instance;
@@ -56,10 +52,12 @@ public abstract class AppDatabase extends RoomDatabase {
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void>{
         private SchoolYearDao schoolYearDao;
         private QuarterDao quarterDao;
+        private ScoreboardDao scoreboardDao;
 
         public PopulateDbAsync(AppDatabase db) {
             this.schoolYearDao = db.schoolYearDao();
             this.quarterDao = db.quarterDao();
+            this.scoreboardDao = db.scoreboardDao();
         }
 
         @Override
@@ -93,6 +91,14 @@ public abstract class AppDatabase extends RoomDatabase {
             this.quarterDao.insert( new Quarters("Prelims") );
             this.quarterDao.insert( new Quarters("Midterms") );
             this.quarterDao.insert( new Quarters("Finals") );
+
+            this.scoreboardDao.insert( new Scoreboard(10, 15, "IS100", "P", "1", "2020-03-31") );
+            this.scoreboardDao.insert( new Scoreboard(5, 5, "IS100", "P", "1", "2020-03-31") );
+
+            this.scoreboardDao.insert( new Scoreboard(25, 30, "IS100", "P", "1", "2020-04-02") );
+
+            this.scoreboardDao.insert( new Scoreboard(10, 10, "IS100", "P", "1", "2020-04-05") );
+            this.scoreboardDao.insert( new Scoreboard(6, 10, "IS100", "P", "1", "2020-04-05") );
 
             return null;
         }

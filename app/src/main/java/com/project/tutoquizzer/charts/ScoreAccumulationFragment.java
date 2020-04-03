@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
@@ -28,6 +29,7 @@ import com.anychart.graphics.vector.Stroke;
 import com.project.tutoquizzer.R;
 import com.project.tutoquizzer.entities.Courses;
 import com.project.tutoquizzer.entities.Scoreboard;
+import com.project.tutoquizzer.viewmodels.ScoreboardQueryStorage;
 import com.project.tutoquizzer.viewmodels.ScoreboardViewModel;
 
 import java.util.Date;
@@ -48,7 +50,7 @@ public class ScoreAccumulationFragment extends Fragment {
         svm = ViewModelProviders.of(this).get(ScoreboardViewModel.class);
 
         init();
-        populateChart();
+        prepareValues();
 
         return rootView;
     }
@@ -143,6 +145,16 @@ public class ScoreAccumulationFragment extends Fragment {
 
     private void prepareValues(){
 
+        this.svm.getAvgByCourse("IS100").observe(getViewLifecycleOwner(), new Observer<List<ScoreboardQueryStorage>>() {
+            @Override
+            public void onChanged(List<ScoreboardQueryStorage> scoreboardQueryStorages) {
+
+                for (int i = 0; i < scoreboardQueryStorages.size(); i++){
+                    Toast.makeText(getContext(), "Score" + scoreboardQueryStorages.get(i).getScore() + " Items " + scoreboardQueryStorages.get(i).getItems() + " Date " + scoreboardQueryStorages.get(i).getDateAdded(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
     }
 
