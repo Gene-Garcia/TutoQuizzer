@@ -42,7 +42,7 @@ public class ChartFragment extends Fragment {
         scoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                reRoute( new DailyScoreFragment());
             }
         });
 

@@ -6,10 +6,10 @@ public class DailyScoreStorage {
     private int Items;
     private String DateAdded;
 
-    public DailyScoreStorage(int score, int items, String dateAdded) {
-        Score = score;
-        Items = items;
-        DateAdded = dateAdded;
+    public DailyScoreStorage(int Score, int Items, String DateAdded) {
+        this.Score = Score;
+        this.Items = Items;
+        this.DateAdded = DateAdded;
     }
 
     public int getScore() {
