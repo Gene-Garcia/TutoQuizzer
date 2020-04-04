@@ -66,10 +66,10 @@
                 />
 
                 <Button
-                    android:id="@+id/topicCourseChartBtn"
+                    android:id="@+id/dailyUsageChartBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Topic per Course"
+                    android:text="Daily Quiz Usage"
 
                     android:padding="10dp"
                     android:background="@drawable/gradient3"

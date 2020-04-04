@@ -30,12 +30,9 @@ import com.anychart.enums.MarkerType;
 import com.anychart.enums.TooltipPositionMode;
 import com.anychart.graphics.vector.Stroke;
 import com.project.tutoquizzer.R;
-import com.project.tutoquizzer.entities.Courses;
-import com.project.tutoquizzer.entities.Scoreboard;
-import com.project.tutoquizzer.viewmodels.ScoreboardQueryStorage;
+import com.project.tutoquizzer.viewmodels.ScoreAccumulationStorage;
 import com.project.tutoquizzer.viewmodels.ScoreboardViewModel;
 
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,9 +56,9 @@ public class ScoreAccumulationFragment extends Fragment {
     }
 
     private void populateChart(final String courseCode){
-        this.svm.getAvgByCourse(courseCode).observe(getViewLifecycleOwner(), new Observer<List<ScoreboardQueryStorage>>() {
+        this.svm.getAvgByCourse(courseCode).observe(getViewLifecycleOwner(), new Observer<List<ScoreAccumulationStorage>>() {
             @Override
-            public void onChanged(List<ScoreboardQueryStorage> scoreboardQueryStorages) {
+            public void onChanged(List<ScoreAccumulationStorage> scoreAccumulationStorages) {
                 anyChartView = rootView.findViewById(R.id.any_chart_view);
 
                 Cartesian cartesian = AnyChart.line();
@@ -85,8 +82,8 @@ public class ScoreAccumulationFragment extends Fragment {
 
                 List<DataEntry> seriesData = new ArrayList<>();
 
-                for (int i = 0; i < scoreboardQueryStorages.size(); i++){
-                    seriesData.add(new CustomDataEntry(scoreboardQueryStorages.get(i).getDateAdded(), scoreboardQueryStorages.get(i).getScore(), scoreboardQueryStorages.get(i).getItems()));
+                for (int i = 0; i < scoreAccumulationStorages.size(); i++){
+                    seriesData.add(new CustomDataEntry(scoreAccumulationStorages.get(i).getDateAdded(), scoreAccumulationStorages.get(i).getScore(), scoreAccumulationStorages.get(i).getItems()));
                 }
 
                 Set set = Set.instantiate();
@@ -143,12 +140,12 @@ public class ScoreAccumulationFragment extends Fragment {
 
         spinnerListener();
 
-        this.svm.getAvgByCourse("IS100").observe(getViewLifecycleOwner(), new Observer<List<ScoreboardQueryStorage>>() {
+        this.svm.getAvgByCourse("IS100").observe(getViewLifecycleOwner(), new Observer<List<ScoreAccumulationStorage>>() {
             @Override
-            public void onChanged(List<ScoreboardQueryStorage> scoreboardQueryStorages) {
+            public void onChanged(List<ScoreAccumulationStorage> scoreAccumulationStorages) {
 
-                for (int i = 0; i < scoreboardQueryStorages.size(); i++){
-                    Toast.makeText(getContext(), "Score" + scoreboardQueryStorages.get(i).getScore() + " Items " + scoreboardQueryStorages.get(i).getItems() + " Date " + scoreboardQueryStorages.get(i).getDateAdded(), Toast.LENGTH_SHORT).show();
+                for (int i = 0; i < scoreAccumulationStorages.size(); i++){
+                    Toast.makeText(getContext(), "Score" + scoreAccumulationStorages.get(i).getScore() + " Items " + scoreAccumulationStorages.get(i).getItems() + " Date " + scoreAccumulationStorages.get(i).getDateAdded(), Toast.LENGTH_SHORT).show();
                 }
 
             }

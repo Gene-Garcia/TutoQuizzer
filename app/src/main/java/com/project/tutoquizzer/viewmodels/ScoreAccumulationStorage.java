@@ -2,10 +2,10 @@ package com.project.tutoquizzer.viewmodels;
 
 import androidx.room.Entity;
 
-@Entity(tableName = "ScoreboardQueryStorage")
-public class ScoreboardQueryStorage{
+@Entity(tableName = "ScoreAccumulationStorage")
+public class ScoreAccumulationStorage {
 
-    public ScoreboardQueryStorage(int Score, int Items, String DateAdded) {
+    public ScoreAccumulationStorage(int Score, int Items, String DateAdded) {
         this.Score = Score;
         this.Items = Items;
         this.DateAdded = DateAdded;

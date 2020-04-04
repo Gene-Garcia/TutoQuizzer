@@ -8,7 +8,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.project.tutoquizzer.entities.Topics;
-import com.project.tutoquizzer.viewmodels.TopicQueryStorage;
 
 import java.util.List;
 
@@ -42,7 +41,5 @@ public interface TopicDao {
     @Query( "SELECT COUNT() FROM Topics WHERE QuarterId = :quarterId " )
     LiveData<Integer> getReferenceTopicCountByQuarter(int quarterId);
 
-    @Query( "  SELECT COUNT(Topic) as TCount, CourseId FROM Topics Group BY CourseId" )
-    LiveData<List<TopicQueryStorage>> getCountPerTopic();
 
 }

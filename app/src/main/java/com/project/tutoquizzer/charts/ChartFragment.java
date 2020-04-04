@@ -46,10 +46,10 @@ public class ChartFragment extends Fragment {
             }
         });
 
-        topicCourseBtn.setOnClickListener(new View.OnClickListener() {
+        dailyUsageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reRoute( new TopicPerCourseFragment());
+
             }
         });
     }
@@ -62,12 +62,12 @@ public class ChartFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
-    private Button scoreAccuBtn, scoreBtn, topicCourseBtn;
+    private Button scoreAccuBtn, scoreBtn, dailyUsageBtn;
 
     private void init(){
         scoreAccuBtn    = rootView.findViewById(R.id.scoreAccumulationChartBtn);
         scoreBtn        = rootView.findViewById(R.id.dailyScoreChartBtn);
-        topicCourseBtn  = rootView.findViewById(R.id.topicCourseChartBtn);
+        dailyUsageBtn = rootView.findViewById(R.id.dailyUsageChartBtn);
     }
 
 }

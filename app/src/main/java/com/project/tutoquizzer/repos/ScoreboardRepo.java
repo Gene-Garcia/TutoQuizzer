@@ -5,13 +5,10 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.project.tutoquizzer.dao.QuarterDao;
 import com.project.tutoquizzer.dao.ScoreboardDao;
 import com.project.tutoquizzer.db.AppDatabase;
-import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.entities.Scoreboard;
-import com.project.tutoquizzer.viewmodels.ScoreboardQueryStorage;
-import com.project.tutoquizzer.viewmodels.ScoreboardQueryStorageV2;
+import com.project.tutoquizzer.viewmodels.ScoreAccumulationStorage;
 
 import java.util.List;
 
@@ -45,7 +42,7 @@ public class ScoreboardRepo {
 
     // Read
 
-    public LiveData<List<ScoreboardQueryStorage>> getAvgByCourse(String courseCode){
+    public LiveData<List<ScoreAccumulationStorage>> getAvgByCourse(String courseCode){
         return this.scoreboardDao.getAvgByCourse(courseCode);
     }
 

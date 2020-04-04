@@ -26,4 +26,5 @@ public class CourseViewModel extends AndroidViewModel {
 
     public LiveData<List<Courses>> getReferencedCourses() { return this.courseRepo.getReferencedCourses(); }
     public LiveData<List<Courses>> getAllCourses() { return this.courseRepo.getAllCourses(); }
+
 }

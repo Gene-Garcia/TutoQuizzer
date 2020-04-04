@@ -56,8 +56,4 @@ public class TopicViewModel extends AndroidViewModel {
         return this.topicRepo.getReferenceTopicCountByQuarter(quarterId);
     }
 
-    public LiveData<List<TopicQueryStorage>> getCountPerTopic(){
-        return this.topicRepo.getCountPerTopic();
-    }
-
 }
