@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import com.project.tutoquizzer.dao.ScoreboardDao;
 import com.project.tutoquizzer.db.AppDatabase;
 import com.project.tutoquizzer.entities.Scoreboard;
+import com.project.tutoquizzer.viewmodels.DailyScoreStorage;
 import com.project.tutoquizzer.viewmodels.ScoreAccumulationStorage;
 
 import java.util.List;
@@ -48,6 +49,10 @@ public class ScoreboardRepo {
 
     public LiveData<List<String>> getRecordedCourses(){
         return this.scoreboardDao.getRecordedCourses();
+    }
+
+    public LiveData<List<DailyScoreStorage>> getDailyScore(){
+        return this.scoreboardDao.getDailyScore();
     }
 
 }

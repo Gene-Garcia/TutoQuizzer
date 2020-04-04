@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.project.tutoquizzer.entities.Scoreboard;
+import com.project.tutoquizzer.viewmodels.DailyScoreStorage;
 import com.project.tutoquizzer.viewmodels.ScoreAccumulationStorage;
 
 import java.util.List;
@@ -23,6 +24,6 @@ public interface ScoreboardDao {
     LiveData<List<String>> getRecordedCourses();
 
     @Query( "  SELECT AVG(Score) AS Score, AVG(Items) AS Items, DateAdded FROM Scoreboard GROUP BY DateAdded" )
-    LiveData<List<Scoreboard>> getDailyScore();
+    LiveData<List<DailyScoreStorage>> getDailyScore();
 
 }

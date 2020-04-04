@@ -24,4 +24,7 @@ public class ScoreboardViewModel extends AndroidViewModel {
 
     public LiveData<List<ScoreAccumulationStorage>> getAvgByCourse(String courseCode) { return this.scoreboardRepo.getAvgByCourse(courseCode); }
     public LiveData<List<String>> getRecordedCourses() { return this.scoreboardRepo.getRecordedCourses(); }
+    public LiveData<List<DailyScoreStorage>> getDailyScore(){
+        return this.scoreboardRepo.getDailyScore();
+    }
 }
