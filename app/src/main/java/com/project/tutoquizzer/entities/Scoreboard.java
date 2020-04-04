@@ -14,6 +14,7 @@ public class Scoreboard {
         this.SchoolYearName = SchoolYearName;
         this.DateAdded = DateAdded;
     }
+    
 
     @PrimaryKey (autoGenerate = true)
     private int scoreboardId;

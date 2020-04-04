@@ -7,6 +7,7 @@ import androidx.room.Query;
 
 import com.project.tutoquizzer.entities.Scoreboard;
 import com.project.tutoquizzer.viewmodels.ScoreboardQueryStorage;
+import com.project.tutoquizzer.viewmodels.ScoreboardQueryStorageV2;
 
 import java.util.List;
 
@@ -21,4 +22,5 @@ public interface ScoreboardDao {
 
     @Query( "SELECT DISTINCT CourseCode FROM Scoreboard" )
     LiveData<List<String>> getRecordedCourses();
+
 }

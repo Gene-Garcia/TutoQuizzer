@@ -9,6 +9,7 @@ import androidx.room.Delete;
 import com.project.tutoquizzer.dao.TopicDao;
 import com.project.tutoquizzer.db.AppDatabase;
 import com.project.tutoquizzer.entities.Topics;
+import com.project.tutoquizzer.viewmodels.TopicQueryStorage;
 
 import java.util.List;
 
@@ -114,6 +115,10 @@ public class TopicRepo {
 
     public LiveData<Integer> getReferenceTopicCountByQuarter(int quarterId){
         return this.topicDao.getReferenceTopicCountByQuarter(quarterId);
+    }
+
+    public LiveData<List<TopicQueryStorage>> getCountPerTopic(){
+        return this.topicDao.getCountPerTopic();
     }
 
 }

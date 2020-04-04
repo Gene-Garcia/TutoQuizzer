@@ -11,6 +11,7 @@ import com.project.tutoquizzer.db.AppDatabase;
 import com.project.tutoquizzer.entities.Quarters;
 import com.project.tutoquizzer.entities.Scoreboard;
 import com.project.tutoquizzer.viewmodels.ScoreboardQueryStorage;
+import com.project.tutoquizzer.viewmodels.ScoreboardQueryStorageV2;
 
 import java.util.List;
 

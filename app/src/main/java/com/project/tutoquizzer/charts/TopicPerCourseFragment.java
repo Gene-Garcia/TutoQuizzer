@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +21,17 @@ import com.anychart.chart.common.dataentry.ValueDataEntry;
 import com.anychart.charts.Pie;
 import com.anychart.enums.LegendLayout;
 import com.project.tutoquizzer.R;
+import com.project.tutoquizzer.viewmodels.ScoreboardQueryStorageV2;
+import com.project.tutoquizzer.viewmodels.ScoreboardViewModel;
+import com.project.tutoquizzer.viewmodels.TopicQueryStorage;
+import com.project.tutoquizzer.viewmodels.TopicViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TopicPerCourseFragment extends Fragment {
 
+    private TopicViewModel tvm;
 
     private View rootView;
 
@@ -33,6 +40,8 @@ public class TopicPerCourseFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.rootView = inflater.inflate(R.layout.fragment_topic_course, container, false);
 
+        tvm = ViewModelProviders.of(this).get(TopicViewModel.class);
+
         init();
         populateChart();
 
@@ -40,37 +49,38 @@ public class TopicPerCourseFragment extends Fragment {
     }
 
     private void populateChart(){
-        String[] courses = {"IS100", "IT101-1", "CS100", "MGT101"};
-        int[] count = {20, 15, 10, 30, 50};
 
-        Pie pie = AnyChart.pie();
-        List<DataEntry> data = new ArrayList<>();
+        this.tvm.getCountPerTopic().observe(getViewLifecycleOwner(), new Observer<List<TopicQueryStorage>>() {
+            @Override
+            public void onChanged(List<TopicQueryStorage> topicQueryStorages) {
 
-        for(int i = 0; i < courses.length; i++){
+                Pie pie = AnyChart.pie();
+                List<DataEntry> data = new ArrayList<>();
 
-            data.add( new ValueDataEntry(courses[i], count[i]));
+                for (int i = 0; i < topicQueryStorages.size(); i++){
+                    data.add( new ValueDataEntry(topicQueryStorages.get(i).getCourseId(), topicQueryStorages.get(i).getTCount()));
+                }
 
-        }
+                pie.data(data);
 
-        pie.data(data);
+                pie.title("Topics per Courses");
 
-        pie.title("Topics per Courses");
+                pie.labels().position("outside");
 
-        pie.labels().position("outside");
+                pie.legend().title().enabled(true);
+                pie.legend().title()
+                        .text("Course Codes")
+                        .padding(5d, 5d, 10d, 5d);
 
-        pie.legend().title().enabled(true);
-        pie.legend().title()
-                .text("Course Codes")
-                .padding(5d, 5d, 10d, 5d);
+                pie.legend()
+                        .position("center-bottom")
+                        .itemsLayout(LegendLayout.HORIZONTAL)
+                        .align(String.valueOf(Paint.Align.CENTER));
 
+                anyChartView.setChart(pie);
 
-
-        pie.legend()
-                .position("center-bottom")
-                .itemsLayout(LegendLayout.HORIZONTAL)
-                .align(String.valueOf(Paint.Align.CENTER));
-
-        anyChartView.setChart(pie);
+            }
+        });
 
     }
 
