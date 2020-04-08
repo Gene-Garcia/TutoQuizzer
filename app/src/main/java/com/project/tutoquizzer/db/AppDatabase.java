@@ -92,12 +92,6 @@ public abstract class AppDatabase extends RoomDatabase {
             this.quarterDao.insert( new Quarters("Midterms") );
             this.quarterDao.insert( new Quarters("Finals") );
 
-            this.scoreboardDao.insert( new Scoreboard(10, 15, "IS100", "P", "1", "2020-03-31") );
-            this.scoreboardDao.insert( new Scoreboard(5, 5, "IS100", "P", "1", "2020-03-31") );
-            this.scoreboardDao.insert( new Scoreboard(25, 30, "IS100", "P", "1", "2020-04-02") );
-            this.scoreboardDao.insert( new Scoreboard(10, 10, "IS100", "P", "1", "2020-04-05") );
-            this.scoreboardDao.insert( new Scoreboard(6, 10, "IS100", "P", "1", "2020-04-05") );
-
             return null;
         }
     }
