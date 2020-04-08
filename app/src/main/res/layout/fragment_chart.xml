@@ -46,7 +46,6 @@
                 android:textColor="@android:color/white"
                 android:textSize="15dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
                 />
 
                 <Button
@@ -60,9 +59,8 @@
                 android:layout_toRightOf="@id/scoreAccumulationChartBtn"
 
                 android:textColor="@android:color/white"
-                    android:textSize="15dp"
+                android:textSize="15dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
                 />
 
                 <Button
@@ -77,8 +75,7 @@
 
                     android:textColor="@android:color/white"
                     android:textSize="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
                     />
 
             </RelativeLayout>
