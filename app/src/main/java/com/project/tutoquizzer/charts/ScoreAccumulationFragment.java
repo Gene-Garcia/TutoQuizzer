@@ -70,7 +70,6 @@ public class ScoreAccumulationFragment extends Fragment {
                 cartesian.crosshair().enabled(true);
                 cartesian.crosshair()
                         .yLabel(true)
-                        // TODO ystroke
                         .yStroke((Stroke) null, null, null, (String) null, (String) null);
 
                 cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
@@ -140,17 +139,6 @@ public class ScoreAccumulationFragment extends Fragment {
 
         spinnerListener();
 
-        this.svm.getAvgByCourse("IS100").observe(getViewLifecycleOwner(), new Observer<List<ScoreAccumulationStorage>>() {
-            @Override
-            public void onChanged(List<ScoreAccumulationStorage> scoreAccumulationStorages) {
-
-                for (int i = 0; i < scoreAccumulationStorages.size(); i++){
-                    Toast.makeText(getContext(), "Score" + scoreAccumulationStorages.get(i).getScore() + " Items " + scoreAccumulationStorages.get(i).getItems() + " Date " + scoreAccumulationStorages.get(i).getDateAdded(), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-
         final List<String> courses = new ArrayList<String>();
         courses.add("Select item");
         Observer<List<String>> observer = new Observer<List<String>>() {
@@ -177,8 +165,6 @@ public class ScoreAccumulationFragment extends Fragment {
                 String courseCode = parent.getItemAtPosition(position).toString();
 
                 if (courseCode != "Select item"){
-                    Toast.makeText(getContext(), courseCode, Toast.LENGTH_SHORT).show();
-
                     populateChart(courseCode);
                 }
 
