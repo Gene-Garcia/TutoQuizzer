@@ -92,8 +92,6 @@
             android:layout_below="@id/addCourseBtn"
             android:layout_alignParentBottom="true"
 
-            android:padding="20dp"
-
             android:elevation="10dp"
             android:background="@drawable/shadow"
             />
