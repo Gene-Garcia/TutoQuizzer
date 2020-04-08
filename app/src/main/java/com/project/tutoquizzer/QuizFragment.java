@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -21,17 +22,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.project.tutoquizzer.entities.Scoreboard;
 import com.project.tutoquizzer.entities.Topics;
+import com.project.tutoquizzer.viewmodels.ScoreboardViewModel;
 import com.project.tutoquizzer.viewmodels.TopicViewModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 public class QuizFragment extends Fragment {
 
     private TopicViewModel tvm;
+    private ScoreboardViewModel svm;
 
     private View rootView;
 
@@ -41,6 +48,7 @@ public class QuizFragment extends Fragment {
         this.rootView = inflater.inflate(R.layout.fragment_quiz, container, false);
 
         this.tvm = ViewModelProviders.of(this).get(TopicViewModel.class);
+        this.svm = ViewModelProviders.of(this).get(ScoreboardViewModel.class);
 
         init();
 
@@ -85,6 +93,14 @@ public class QuizFragment extends Fragment {
                 }else {
                     clearTexts();
                     btnSaveAnswer.setText("Submit");
+                    btnSaveAnswer.setEnabled(false);
+
+                    // Insert to database
+                    String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                    Scoreboard scoreboard = new Scoreboard(score, selectedNumberOfQuestions, courseStr, quarterStr, schoolYearStr, date);
+                    svm.insert( scoreboard );
+                    // End
+
                     showMessage("TutoQuizzer", "You have accumulated a score of " + score + " over " + (score+error));
 
                     new Handler().postDelayed(new Runnable() {
@@ -203,12 +219,16 @@ public class QuizFragment extends Fragment {
     private int selectedSchoolYearId;
     private int selectedQuarterId;
 
-    private void configureCall(Bundle bundle){
-        String course       = bundle.getString(RouteValues.COURSE_NAME_KEY);
-        String schoolYear   = bundle.getString(RouteValues.SCHOOL_YEAR_NAME_KEY);
-        String quarter      = bundle.getString(RouteValues.QUARTER_NAME_KEY);
+    private String courseStr;
+    private String schoolYearStr;
+    private String quarterStr;
 
-        selectionTV.setText( schoolYear + " > " + course.toUpperCase() + " > " + quarter.toUpperCase() );
+    private void configureCall(Bundle bundle){
+        courseStr       = bundle.getString(RouteValues.COURSE_NAME_KEY);
+        schoolYearStr   = bundle.getString(RouteValues.SCHOOL_YEAR_NAME_KEY);
+        quarterStr      = bundle.getString(RouteValues.QUARTER_NAME_KEY);
+
+        selectionTV.setText( schoolYearStr + " > " + courseStr.toUpperCase() + " > " + quarterStr.toUpperCase() );
 
         selectedCourseId        = bundle.getInt(RouteValues.COURSE_ID_KEY);
         selectedSchoolYearId    = bundle.getInt(RouteValues.SCHOOL_YEAR_ID_KEY);
