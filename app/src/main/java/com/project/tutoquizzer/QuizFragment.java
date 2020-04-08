@@ -250,7 +250,6 @@ public class QuizFragment extends Fragment {
                 if (selectedNumberOfQuestions >= topics.size()){
                     selectedNumberOfQuestions = topics.size();
                 }
-                Toast.makeText(getContext(), String.valueOf(selectedNumberOfQuestions), Toast.LENGTH_SHORT).show();
                 Collections.shuffle(topics);
 
                 for (int i = 0; i < selectedNumberOfQuestions; i++){
@@ -266,7 +265,6 @@ public class QuizFragment extends Fragment {
 
     private void createPoolOfAnswers(){
 
-        final Random random = new Random();
         Observer<List<Topics>> observer = new Observer<List<Topics>>() {
             @Override
             public void onChanged(@Nullable List<Topics> topics) {
