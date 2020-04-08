@@ -49,7 +49,7 @@ public class ChartFragment extends Fragment {
         dailyUsageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                reRoute( new DailyUsageFragment());
             }
         });
     }
