@@ -70,14 +70,14 @@ public class DailyUsageFragment extends Fragment {
                         .anchor(Anchor.CENTER_BOTTOM)
                         .offsetX(0d)
                         .offsetY(5d)
-                        .format("${%Value}{groupsSeparator: }");
+                        .format("Usage Count - {%Value}{groupsSeparator: }");
 
                 cartesian.animation(true);
                 cartesian.title("Daily Quiz Usage");
 
                 cartesian.yScale().minimum(0d);
 
-                cartesian.yAxis(0).labels().format("${%Value}{groupsSeparator: }");
+                cartesian.yAxis(0).labels().format("{%Value}{groupsSeparator: }");
 
                 cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
                 cartesian.interactivity().hoverMode(HoverMode.BY_X);
