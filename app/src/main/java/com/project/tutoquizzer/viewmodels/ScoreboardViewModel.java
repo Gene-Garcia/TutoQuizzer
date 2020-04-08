@@ -27,4 +27,7 @@ public class ScoreboardViewModel extends AndroidViewModel {
     public LiveData<List<DailyScoreStorage>> getDailyScore(){
         return this.scoreboardRepo.getDailyScore();
     }
+    public LiveData<List<DailyUsageStorage>> getDailyUsage(){
+        return this.scoreboardRepo.getDailyUsage();
+    }
 }

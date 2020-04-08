@@ -9,6 +9,7 @@ import com.project.tutoquizzer.dao.ScoreboardDao;
 import com.project.tutoquizzer.db.AppDatabase;
 import com.project.tutoquizzer.entities.Scoreboard;
 import com.project.tutoquizzer.viewmodels.DailyScoreStorage;
+import com.project.tutoquizzer.viewmodels.DailyUsageStorage;
 import com.project.tutoquizzer.viewmodels.ScoreAccumulationStorage;
 
 import java.util.List;
@@ -53,6 +54,10 @@ public class ScoreboardRepo {
 
     public LiveData<List<DailyScoreStorage>> getDailyScore(){
         return this.scoreboardDao.getDailyScore();
+    }
+
+    public LiveData<List<DailyUsageStorage>> getDailyUsage(){
+        return this.scoreboardDao.getDailyUsage();
     }
 
 }
