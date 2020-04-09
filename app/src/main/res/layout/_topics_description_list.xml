@@ -32,8 +32,8 @@
             android:layout_below="@+id/text_view_topic_tutorial_act"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
-            android:fontFamily="monospace"
-            android:lineSpacingExtra="8sp"
+            android:fontFamily="@font/noticia_text"
+            android:lineSpacingExtra="12sp"
             android:text="Lorem ipsum"
             android:textColor="@color/text_paragraph"
             android:textSize="14sp" />
