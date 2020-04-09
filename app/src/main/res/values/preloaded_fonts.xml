@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/averia_libre_light</item>
         <item>@font/biorhyme_extralight</item>
+        <item>@font/lato</item>
         <item>@font/noticia_text</item>
         <item>@font/sumana</item>
     </array>

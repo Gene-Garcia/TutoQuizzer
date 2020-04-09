@@ -70,7 +70,7 @@ public class QuizFragment extends Fragment {
             public void onClick(View v) {
 
                 if(btnSaveAnswer.getText().toString().equals("Start")){
-                    btnSaveAnswer.setText("Save Answer");
+                    btnSaveAnswer.setText("Submit");
                 }
 
                 if (questionCounter > 0 ) {
