@@ -16,7 +16,7 @@ import com.project.tutoquizzer.entities.SchoolYear;
 import com.project.tutoquizzer.entities.Scoreboard;
 import com.project.tutoquizzer.entities.Topics;
 
-@Database(entities = {Courses.class, Quarters.class, SchoolYear.class, Topics.class, Scoreboard.class}, version = 1, exportSchema = false) // if more than 1, {.class, .class, .class}
+@Database(entities = {Courses.class, Quarters.class, SchoolYear.class, Topics.class, Scoreboard.class}, version = 1) // if more than 1, {.class, .class, .class}
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase instance;
@@ -27,11 +27,13 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract TopicDao topicDao();
     public abstract ScoreboardDao scoreboardDao();
 
+    private static final String DATABASE_NAME = "ApplicationDb";
+
     public static synchronized AppDatabase getInstance(Context ctx){
         if (instance == null){
             instance = Room.databaseBuilder(ctx.getApplicationContext(),
                     AppDatabase.class,
-                    "TutoQuizzerDb").
+                    DATABASE_NAME).
                     fallbackToDestructiveMigration().
                     addCallback(roomCallback).
                     build();
@@ -52,12 +54,10 @@ public abstract class AppDatabase extends RoomDatabase {
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void>{
         private SchoolYearDao schoolYearDao;
         private QuarterDao quarterDao;
-        private ScoreboardDao scoreboardDao;
 
         public PopulateDbAsync(AppDatabase db) {
             this.schoolYearDao = db.schoolYearDao();
             this.quarterDao = db.quarterDao();
-            this.scoreboardDao = db.scoreboardDao();
         }
 
         @Override
