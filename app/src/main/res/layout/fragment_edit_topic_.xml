@@ -78,7 +78,10 @@
 
             android:layout_toLeftOf="@+id/saveEditBtnEditTopicAct"
 
-            android:text="Delete" />
+            android:text="Delete"
+            android:background="@drawable/bg_danger"
+            android:textColor="@color/text_white"
+            android:textSize="17dp"/>
 
         <Button
             android:id="@+id/saveEditBtnEditTopicAct"
@@ -89,7 +92,10 @@
             android:layout_margin="20dp"
             android:layout_alignParentRight="true"
 
-            android:text="Save Edit" />
+            android:text="Save"
+            android:background="@drawable/bg_primary"
+            android:textColor="@color/text_white"
+            android:textSize="17dp"/>
 
     </RelativeLayout>
 

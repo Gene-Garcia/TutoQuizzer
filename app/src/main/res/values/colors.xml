@@ -26,4 +26,12 @@
 
     <color name="gradient3Start">#0c7b93</color>
     <color name="gradient3End">#142850</color>
+
+    <!-- Other color -->
+    <color name="primary">#0275d8</color>
+    <color name="success">#5cb85c</color>
+    <color name="info">#5bc0de</color>
+    <color name="warning">#f0ad4e</color>
+    <color name="danger">#d9534f</color>
+
 </resources>

@@ -120,6 +120,10 @@
             android:layout_below="@+id/relLayoutInAT2"
             android:layout_alignParentRight="true"
 
+            android:background="@drawable/bg_primary"
+            android:textColor="@color/text_white"
+            android:textSize="17dp"
+
             android:text="Add" />
 
 

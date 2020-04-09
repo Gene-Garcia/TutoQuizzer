@@ -69,10 +69,14 @@
         android:id="@+id/saveEditBtnSchoolYearCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save Edit"
+        android:text="Save"
 
         android:layout_alignParentRight="true"
         android:layout_below="@+id/relLayoutInsideESY"
+
+        android:background="@drawable/bg_primary"
+        android:textColor="@color/text_white"
+        android:textSize="17dp"
 
         android:layout_margin="20dp"
         />

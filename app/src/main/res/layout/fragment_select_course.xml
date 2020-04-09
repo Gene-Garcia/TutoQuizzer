@@ -88,7 +88,10 @@
             android:layout_below="@+id/relLayoutInSC"
             android:layout_margin="20dp"
             android:layout_alignParentRight="true"
-            android:text="Select"
+            android:text="Proceed"
+            android:background="@drawable/bg_primary"
+            android:textColor="@color/text_white"
+            android:textSize="17dp"
             />
 
     </RelativeLayout>

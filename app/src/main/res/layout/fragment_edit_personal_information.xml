@@ -105,7 +105,10 @@
             android:layout_below="@+id/relLayoutInputField"
             android:layout_margin="20dp"
             android:layout_alignParentRight="true"
-            android:text="Update Info"/>
+            android:text="Update"
+            android:background="@drawable/bg_primary"
+            android:textColor="@color/text_white"
+            android:textSize="17dp"/>
 
     </RelativeLayout>
 
