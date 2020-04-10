@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.project.tutoquizzer.Personal.GSONHelper;
 import com.project.tutoquizzer.Personal.User;
@@ -48,13 +49,19 @@ public class EditPersonalInformationFragment extends Fragment {
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GSONHelper.saveData(getContext(), new User(fNameET.getText().toString(), lNameET.getText().toString(), schoolET.getText().toString()));
 
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                if (fNameET.getText().toString().equals("") || lNameET.getText().toString().equals("") || schoolET.getText().toString().equals("")){
+                    Toast.makeText(getContext(), "Personal information cannot be empty.", Toast.LENGTH_SHORT).show();
+                }else {
+                    GSONHelper.saveData(getContext(), new User(fNameET.getText().toString(), lNameET.getText().toString(), schoolET.getText().toString()));
 
-                fragmentTransaction.replace(R.id.fragment_container, new DashboardFragment());
-                fragmentTransaction.commit();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                    fragmentTransaction.replace(R.id.fragment_container, new DashboardFragment());
+                    fragmentTransaction.commit();
+                }
+
             }
         });
 
