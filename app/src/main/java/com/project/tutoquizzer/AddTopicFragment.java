@@ -108,6 +108,8 @@ public class AddTopicFragment extends Fragment {
 
                     topicET.setText("");
                     descriptionET.setText("");
+
+                    // Add this to another button
                     courseSpinner.setSelection(0);
                     schoolYearSpinner.setSelection(0);
                     quarterSpinner.setSelection(0);
