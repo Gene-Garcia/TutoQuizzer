@@ -9,7 +9,7 @@
     <color name="colorBG">#424874</color>
 
     <!-- Menu item colors -->
-    <color name="selected">#dcd6f7</color>
+    <color name="selected">#fafafa</color>
     <color name="notSelected">#a6b1e1</color>
 
     <!-- Text colors -->
