@@ -103,23 +103,18 @@ public class QuizFragment extends Fragment {
 
                     showMessage("TutoQuizzer", "You have accumulated a score of " + score + " over " + (score+error));
 
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Returns to selecting course
-                            Bundle bundle = new Bundle();
-                            bundle.putString(RouteValues.HOME_TO_SELECT_COURSE_ACCESS, RouteValues.QUIZ_SELECTED);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(RouteValues.HOME_TO_SELECT_COURSE_ACCESS, RouteValues.QUIZ_SELECTED);
 
-                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                            SelectCourseFragment selectCourseFragment = new SelectCourseFragment();
-                            selectCourseFragment.setArguments(bundle);
+                    SelectCourseFragment selectCourseFragment = new SelectCourseFragment();
+                    selectCourseFragment.setArguments(bundle);
 
-                            fragmentTransaction.replace(R.id.fragment_container, selectCourseFragment);
-                            fragmentTransaction.commit();
-                        }
-                    }, 3000);
+                    fragmentTransaction.replace(R.id.fragment_container, selectCourseFragment);
+                    fragmentTransaction.commit();
+
                 }
 
             }
@@ -267,16 +262,33 @@ public class QuizFragment extends Fragment {
         Observer<List<Topics>> observer = new Observer<List<Topics>>() {
             @Override
             public void onChanged(@Nullable List<Topics> topics) {
-                if (selectedNumberOfQuestions >= topics.size()){
-                    selectedNumberOfQuestions = topics.size();
-                }
-                Collections.shuffle(topics);
 
-                for (int i = 0; i < selectedNumberOfQuestions; i++){
-                    questions.add(topics.get(i).getMeaning());
+                if (topics.isEmpty()){
+                    showMessage("Warning", "No topics found.");
+                    Bundle bundle = new Bundle();
+                    bundle.putString(RouteValues.HOME_TO_SELECT_COURSE_ACCESS, RouteValues.QUIZ_SELECTED);
 
-                    correctAnswers.add(topics.get(i).getTopic());
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                    SelectCourseFragment selectCourseFragment = new SelectCourseFragment();
+                    selectCourseFragment.setArguments(bundle);
+
+                    fragmentTransaction.replace(R.id.fragment_container, selectCourseFragment);
+                    fragmentTransaction.commit();
+                } else {
+                    if (selectedNumberOfQuestions >= topics.size()){
+                        selectedNumberOfQuestions = topics.size();
+                    }
+                    Collections.shuffle(topics);
+
+                    for (int i = 0; i < selectedNumberOfQuestions; i++){
+                        questions.add(topics.get(i).getMeaning());
+
+                        correctAnswers.add(topics.get(i).getTopic());
+                    }
                 }
+
             }
         };
         tvm.getSelectedTopics(selectedCourseId, selectedSchoolYearId, selectedQuarterId).observe(getViewLifecycleOwner(), observer);

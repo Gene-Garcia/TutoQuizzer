@@ -76,7 +76,7 @@ public class ScoreAccumulationFragment extends Fragment {
 
                 cartesian.title("Score Accumulation in " + courseCode);
 
-                cartesian.yAxis(0).title("Scores " + courseCode);
+                cartesian.yAxis(0).title("Scores");
                 cartesian.xAxis(0).labels().padding(5d, 5d, 5d, 5d);
 
                 List<DataEntry> seriesData = new ArrayList<>();
