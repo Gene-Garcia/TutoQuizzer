@@ -57,20 +57,30 @@ public class EditPersonalInformationFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+        clearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fNameET.setText("");
+                lNameET.setText("");
+                schoolET.setText("");
+            }
+        });
     }
 
     // Components
 
     private EditText fNameET, lNameET, schoolET;
 
-    private Button updateBtn;
+    private Button updateBtn, clearBtn;
 
     private void init(){
-        fNameET = rootView.findViewById(R.id.fNameETEditPersonal);
-        lNameET = rootView.findViewById(R.id.lNameETEditPersonal);
-        schoolET = rootView.findViewById(R.id.schoolETEditPersonal);
+        fNameET     = rootView.findViewById(R.id.fNameETEditPersonal);
+        lNameET     = rootView.findViewById(R.id.lNameETEditPersonal);
+        schoolET    = rootView.findViewById(R.id.schoolETEditPersonal);
 
-        updateBtn = rootView.findViewById(R.id.updatePersonalInfo);
+        updateBtn   = rootView.findViewById(R.id.updatePersonalInfo);
+        clearBtn    = rootView.findViewById(R.id.clearPersonalInfo);
     }
 
 }

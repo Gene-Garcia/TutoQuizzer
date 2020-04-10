@@ -23,7 +23,7 @@ import com.project.tutoquizzer.viewmodels.QuarterViewModel;
 import com.project.tutoquizzer.viewmodels.SchoolYearViewModel;
 import com.project.tutoquizzer.viewmodels.TopicViewModel;
 
-public class MainFragment extends Fragment {
+public class HelpFragment extends Fragment {
 
     private View rootView;
 

@@ -3,10 +3,10 @@
     >
 
     <item
-        android:id="@+id/homeMenu"
-        android:title="Home"
-        android:icon="@drawable/ic_home_black_24dp"
-    />
+        android:id="@+id/dashboardMenu"
+        android:title="Dashboard"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        />
 
     <item
         android:id="@+id/addMenu"
@@ -27,9 +27,8 @@
         />
 
     <item
-        android:id="@+id/dashboardMenu"
-        android:title="Dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:id="@+id/helpMenu"
+        android:title="Help"
+        android:icon="@drawable/ic_info_black_24dp"
         />
-
 </menu>

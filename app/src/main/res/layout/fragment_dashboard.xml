@@ -61,7 +61,7 @@
             android:text="Criteria"
             android:layout_below="@id/relLayoutAccountInfo"
             android:textStyle="bold"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:layout_margin="20dp"
             android:textColor="@color/colorPrimaryDark"/>
 
@@ -147,7 +147,7 @@
             android:text="Statistics"
             android:layout_below="@id/horiScollView"
             android:textStyle="bold"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:layout_margin="20dp"
             android:textColor="@color/colorPrimaryDark" />
 

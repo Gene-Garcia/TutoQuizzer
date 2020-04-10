@@ -103,11 +103,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relLayoutInputField"
-            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_alignParentRight="true"
             android:text="Update"
             android:background="@drawable/bg_primary"
             android:textColor="@color/text_white"
+            android:textSize="17dp"/>
+
+        <Button
+            android:id="@+id/clearPersonalInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relLayoutInputField"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/updatePersonalInfo"
+            android:text="Clear"
+            android:background="@drawable/bg_light"
             android:textSize="17dp"/>
 
     </RelativeLayout>

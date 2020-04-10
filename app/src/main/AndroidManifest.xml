@@ -24,7 +24,7 @@
         <activity android:name=".SelectCourseFragment"/>
         <activity android:name=".AddCourseFragment" />
         <activity android:name=".AddTopicFragment" />
-        <activity android:name=".MainFragment"/>
+        <activity android:name=".HelpFragment"/>
 
         <meta-data
             android:name="preloaded_fonts"
