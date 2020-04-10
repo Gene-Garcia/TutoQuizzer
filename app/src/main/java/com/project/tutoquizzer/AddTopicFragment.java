@@ -63,7 +63,7 @@ public class AddTopicFragment extends Fragment {
 
     // Components
 
-    private Button btnAdd;
+    private Button btnAdd, btnClear;
 
     private Spinner courseSpinner, schoolYearSpinner, quarterSpinner;
 
@@ -73,6 +73,7 @@ public class AddTopicFragment extends Fragment {
 
     private void init(){
         btnAdd              = rootView.findViewById(R.id.addBtnAddTopicActivity);
+        btnClear            = rootView.findViewById(R.id.clearBtnAddTopicActivity);
 
         courseSpinner       = rootView.findViewById(R.id.coursesSpnrAddTopicActivity);
         schoolYearSpinner   = rootView.findViewById(R.id.schoolYearSpnrAddTopicActivity);
@@ -105,16 +106,20 @@ public class AddTopicFragment extends Fragment {
                     tvm.insert(topics);
 
                     Toast.makeText(getContext(), "Topic Successfully Inserted", Toast.LENGTH_SHORT).show();
-
                     topicET.setText("");
                     descriptionET.setText("");
-
-                    // Add this to another button
-                    courseSpinner.setSelection(0);
-                    schoolYearSpinner.setSelection(0);
-                    quarterSpinner.setSelection(0);
-
                 }
+            }
+        });
+
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                topicET.setText("");
+                descriptionET.setText("");
+                courseSpinner.setSelection(0);
+                schoolYearSpinner.setSelection(0);
+                quarterSpinner.setSelection(0);
             }
         });
     }

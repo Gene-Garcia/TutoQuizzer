@@ -116,7 +116,10 @@
             android:id="@+id/addBtnAddTopicActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_below="@+id/relLayoutInAT2"
             android:layout_alignParentRight="true"
 
@@ -125,6 +128,24 @@
             android:textSize="17dp"
 
             android:text="Add" />
+
+        <Button
+            android:id="@+id/clearBtnAddTopicActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+
+            android:layout_below="@+id/relLayoutInAT2"
+            android:layout_toLeftOf="@+id/addBtnAddTopicActivity"
+
+            android:background="@drawable/bg_light"
+            android:textSize="17dp"
+
+            android:text="Clear" />
 
 
     </RelativeLayout>
