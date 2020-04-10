@@ -153,6 +153,19 @@
 
                 android:text="TutoQuizzer lets you personalize your learning experience. You’re given to the freedom to categorized each topic by course school year, and quarter (prelim, midterm, finals)" />
 
+                <TextView
+                    android:id="@+id/tv8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    android:elevation="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/shadow"
+                    android:textColor="@color/text_paragraph"
+                    android:layout_below="@+id/tv7"
+
+                    android:text="Icons is created by Freepik from Flaticon." />
+
         </RelativeLayout>
 
     </RelativeLayout>
